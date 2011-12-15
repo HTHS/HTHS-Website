@@ -12,7 +12,7 @@
     
 		<div id="header">
         	<div id="faq_search_wrapper">
-        		FAQ | Contact
+        		FAQ | Contact | Search
         	</div>
             
             <div id="title_wrapper">
@@ -20,14 +20,43 @@
             </div>
             
             <div id="navbar">
-            	something
+                <ul>
+            		<li><a href="" class="current">Home</a></li><li><a href="">About</a></li><li><a href="">Academics</a></li><li><a href="">Clubs</a></li><li><a href="">Guidance</a></li><li><a href="">PFA</a></li><li><a href="">Downloads</a></li>
+                </ul>
             </div>
         </div>
         
         <div id="container">
+        	<div id="content_left">
+                <img src="makeshift_hths_image.png" />
+                
+                    <div id="content_left_left">
+                        <h1>CALENDAR</h1>
+                        <p>insert calendar here</p>
+                        <span>Stay Connected</span>
+                        <p>insert links here </p>
+                    </div>
+                    
+                    <div id="content_left_right">
+                        <h1>NEWS</h1>
+                        <p> insert news here</p>
+                    </div>
+            </div>
+            
+            <div id="clear_float">
+            </div>
         </div>
         
         <div id="footer">
+			<div class="left">
+            	765 Newman Springs Road, Lincroft, New Jersey 07738<br />
+            	Phone: (732) 842-8444 | Fax: (732) 219-9418
+            </div>
+            
+            <div class="right">
+            	(c) 2011 High Technology High School <br  />
+                Non-Discrimination Clause
+            </div>
         </div>
 
 	</body>

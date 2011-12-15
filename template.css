@@ -1,6 +1,14 @@
-body, h1, h2, h3, p {
+body, h1, h2, h3, p, ul, ol {
 	margin: 0;
 	padding: 0;
+}
+
+body {
+	font-family: helvetica, arial, sans-serif;
+}
+
+h1, h2, h3 {
+	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
 }
 
 #faq_search_wrapper {
@@ -9,14 +17,14 @@ body, h1, h2, h3, p {
 	color: #ffffff;
 	margin-left: auto;
 	margin-right: auto;
+	font-size: 10pt;
 }
 
 #title_wrapper {
 	width: 800px;
 	text-align: left;
 	color: #ffffff;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 20px auto 5px;
 }
 
 #header {
@@ -24,14 +32,106 @@ body, h1, h2, h3, p {
 	width: 100%;
 }
 
-#navbar, container {
+#navbar, #container {
 	margin-left: auto;
 	margin-right: auto;
 	width: 800px;
 }
 
-#content {
+#navbar a:link, #navbar a:visited {
+	display: block;
+	background-color: #c0504d;
+	color: #ffffff;
+	width: 100px;
+	text-decoration: none;
+	text-align: center;
+	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
+	font-size: 11pt;
+}
+
+#navbar a:hover, #navbar a:active, #navbar a.current {
+	display: block;
+	background-color: #993333;
+	color: #ffffff;
+	width: 100px;
+	text-decoration: none;
+	text-align: center;
+	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
+	font-size: 11pt;
+}
+
+#navbar ul, #navbar li {
+	list-style-type: none;
+	display: inline-block;
+}
+
+#content_left {
+	width: 580px;
+	margin: 0;
+	float: left;	
+}
+
+#content_left_left {
+	width: 250px;
+	margin-top: 10px;
+	float: left;
+}
+
+#content_left_right {
+	width: 320px;
+	margin-top: 10px;
+	float: right;
+}
+
+#content_left_left h1 {
+	display: block;
+	width: 230px;
+	color: #ffffff;
+	background-color: #993333;
+	padding: 10px;
+	margin: 0px 0px 10px;
+}
+
+#content_left_right h1 {
+	display: block;
+	width: 320px;
+	color: #ffffff;
+	background-color: #000000;
+	padding: 10px;
+	margin: 0px 0px 10px;
+}
+
+#content_left_left span {
+	display: block;
+	width: 230px;
+	color: #ffffff;
+	background-color: #993333;
+	padding: 10px;
+	margin: 10px 0px 10px;
+}
+
+#clear_float {
+	clear: both;
 }
 
 #footer {
+	border-width: 20px 0px 0px;
+	border-style: solid;
+	border-color: #660000;
+	margin-top: 50px;
+	padding: 10px 5px 5px;
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 10pt;
+}
+
+#footer .left {
+	float: left;
+	text-align: left;
+}
+
+#footer .right {
+	float: right;
+	text-align: right;
 }
