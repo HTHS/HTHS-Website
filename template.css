@@ -112,6 +112,14 @@ div.fancybox {
 	float: left;
 }
 
+#content_left_above {
+
+}
+
+#content_left_below {
+	margin-top: 10px;
+}
+
 #content_left_left {
 	width: 250px;
 	float: left;

@@ -39,6 +39,7 @@
 					<img src="makeshift_hths_image.png" />
 				</div>
                 
+				<div id="content_left_below">
                     <div id="content_left_left">
 						<div id="calendar" class="fancybox">
 							<h1>CALENDAR</h1>
@@ -54,6 +55,7 @@
 							<p> insert news here</p>
 						</div>
                     </div>
+				</div>
             </div>
             
             <div id="clear_float">
