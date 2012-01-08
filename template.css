@@ -92,21 +92,33 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	padding-top: 20px;
 }
 
+div.fancybox {
+	border: 1px solid #CCC;
+	background: #f9f9f9; /* Old browsers */
+	background: -moz-linear-gradient(top, #f9f9f9 1%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#f9f9f9), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #f9f9f9 1%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #f9f9f9 1%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #f9f9f9 1%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(top, #f9f9f9 1%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+	box-shadow: 0 5px 10px #CCC;
+	border-radius: 2px;
+}
+
 #content_left {
 	width: 580px;
 	margin: 0;
-	float: left;	
+	float: left;
 }
 
 #content_left_left {
 	width: 250px;
-	margin-top: 10px;
 	float: left;
 }
 
 #content_left_right {
 	width: 320px;
-	margin-top: 10px;
 	float: right;
 }
 
