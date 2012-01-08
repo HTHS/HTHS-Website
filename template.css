@@ -30,6 +30,7 @@ h1, h2, h3 {
 #header {
 	background-color: #660000;
 	width: 100%;
+	box-shadow: 0px 0px 10px #333;
 }
 
 #container {
@@ -39,10 +40,13 @@ h1, h2, h3 {
 }
 
 #navbar {
+	position: relative;
+	top: 5px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 800px;
 	overflow: hidden;
+	box-shadow: 0px 0px 10px #333;
 }
 
 #navbar a {
@@ -59,10 +63,12 @@ background: linear-gradient(top,  #eeeeee 0%,#dbdbdb 18%,#cccccc 100%); /* W3C *
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
 
 	
-	color: #222222;
+	color: black;
 	text-shadow: 1px 1px 1px #FFF;
 	
-	width: 100px;
+	width: 88px;
+	font-weight: bold;
+	
 	text-decoration: none;
 	text-align: center;
 	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
@@ -80,6 +86,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	list-style-type: none;
 	display: block;
 	float: left;
+}
+
+#container {
+	padding-top: 20px;
 }
 
 #content_left {
