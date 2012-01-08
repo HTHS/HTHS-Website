@@ -11,7 +11,7 @@
 
     
 		<div id="header">
-        	<div id="faq_search_wrapper">
+        	<div id="header_links">
         		FAQ | Contact | Search
         	</div>
             
