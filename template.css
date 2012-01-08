@@ -32,13 +32,20 @@ h1, h2, h3 {
 	width: 100%;
 }
 
-#navbar, #container {
+#container {
 	margin-left: auto;
 	margin-right: auto;
 	width: 800px;
 }
 
-#navbar a:link, #navbar a:visited {
+#navbar {
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+	overflow: hidden;
+}
+
+#navbar a {
 	display: block;
 	background-color: #c0504d;
 	color: #ffffff;
@@ -47,22 +54,17 @@ h1, h2, h3 {
 	text-align: center;
 	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
 	font-size: 11pt;
+	padding: 10px 5px 10px 5px;
 }
 
 #navbar a:hover, #navbar a:active, #navbar a.current {
-	display: block;
 	background-color: #993333;
-	color: #ffffff;
-	width: 100px;
-	text-decoration: none;
-	text-align: center;
-	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
-	font-size: 11pt;
 }
 
 #navbar ul, #navbar li {
 	list-style-type: none;
-	display: inline-block;
+	display: block;
+	float: left;
 }
 
 #content_left {

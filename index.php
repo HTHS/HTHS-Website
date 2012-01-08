@@ -21,7 +21,13 @@
             
             <div id="navbar">
                 <ul>
-            		<li><a href="" class="current">Home</a></li><li><a href="">About</a></li><li><a href="">Academics</a></li><li><a href="">Clubs</a></li><li><a href="">Guidance</a></li><li><a href="">PFA</a></li><li><a href="">Downloads</a></li>
+            		<li><a href="" class="current">Home</a></li>
+					<li><a href="">About</a></li>
+					<li><a href="">Academics</a></li>
+					<li><a href="">Clubs</a></li>
+					<li><a href="">Guidance</a></li>
+					<li><a href="">PFA</a></li>
+					<li><a href="">Downloads</a></li>
                 </ul>
             </div>
         </div>
