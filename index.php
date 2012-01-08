@@ -11,26 +11,28 @@
 
     
 		<div id="header">
-        	<div id="header_links">
-        		FAQ | Contact | Search
-        	</div>
-            
-            <div id="title_wrapper">
-            	<h1>HIGH TECHNOLOGY HIGH SCHOOL</h1>
-            </div>
-            
-            <div id="navbar">
-                <ul>
-            		<li><a href="" class="current">Home</a></li>
-					<li><a href="">About</a></li>
-					<li><a href="">Academics</a></li>
-					<li><a href="">Clubs</a></li>
-					<li><a href="">Guidance</a></li>
-					<li><a href="">PFA</a></li>
-					<li><a href="">Downloads</a></li>
-					<li><a href="">Qwertyuiop</a></li>
-                </ul>
-            </div>
+			<div id="header_container">
+				<div id="header_links">
+					FAQ | Contact | Search
+				</div>
+				
+				<div id="title_wrapper">
+					<h1>HIGH TECHNOLOGY HIGH SCHOOL</h1>
+				</div>
+				
+				<div id="navbar">
+					<ul>
+						<li><a href="" class="current">Home</a></li>
+						<li><a href="">About</a></li>
+						<li><a href="">Academics</a></li>
+						<li><a href="">Clubs</a></li>
+						<li><a href="">Guidance</a></li>
+						<li><a href="">PFA</a></li>
+						<li><a href="">Downloads</a></li>
+						<li><a href="">Qwertyuiop</a></li>
+					</ul>
+				</div>
+			</div>
         </div>
         
         <div id="container">

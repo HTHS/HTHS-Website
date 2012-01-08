@@ -11,20 +11,28 @@ h1, h2, h3 {
 	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
 }
 
-#header_links {
+#header_container {
 	width: 800px;
-	text-align: right;
-	color: #ffffff;
 	margin-left: auto;
 	margin-right: auto;
+	position: relative;
+	height: 100px;
+}
+
+#header_links {
+	text-align: right;
+	color: #ffffff;
 	font-size: 10pt;
+	position: absolute; 
+	right: 0;
+	top: 10px;
 }
 
 #title_wrapper {
-	width: 800px;
 	text-align: left;
 	color: #ffffff;
-	margin: 20px auto 5px;
+	position: absolute;
+	bottom: 40px;
 }
 
 #header {
@@ -40,8 +48,8 @@ h1, h2, h3 {
 }
 
 #navbar {
-	position: relative;
-	top: 5px;
+	position: absolute;
+	bottom: -5px;
 	margin-left: auto;
 	margin-right: auto;
 	width: 800px;
