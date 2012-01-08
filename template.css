@@ -47,14 +47,29 @@ h1, h2, h3 {
 
 #navbar a {
 	display: block;
-	background-color: #c0504d;
-	color: #ffffff;
+	/*background-color: #c0504d;*/
+	
+	background: #eeeeee; /* Old browsers */
+background: -moz-linear-gradient(top,  #eeeeee 0%, #dbdbdb 18%, #cccccc 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(18%,#dbdbdb), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #eeeeee 0%,#dbdbdb 18%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #eeeeee 0%,#dbdbdb 18%,#cccccc 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #eeeeee 0%,#dbdbdb 18%,#cccccc 100%); /* IE10+ */
+background: linear-gradient(top,  #eeeeee 0%,#dbdbdb 18%,#cccccc 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+
+	
+	color: #222222;
+	text-shadow: 1px 1px 1px #FFF;
+	
 	width: 100px;
 	text-decoration: none;
 	text-align: center;
 	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
 	font-size: 11pt;
 	padding: 10px 5px 10px 5px;
+	border-left: 1px solid #EEEEEE;
+	border-right: 1px solid #AAAAAA;
 }
 
 #navbar a:hover, #navbar a:active, #navbar a.current {
