@@ -51,7 +51,7 @@
 							<span>Stay Connected</span>
 							<p>insert links here </p>
 						</div>
-                    </div>
+                    </div>	
                     
                     <div id="content_left_right">
 						<div id="news" class="fancybox">
