@@ -118,10 +118,13 @@ div.fancybox {
 
 .fancytitle {
 	display: block;
-	padding: 3px 10px 3px 10px;
+	padding: 3px 10px 3px 15px;
 	margin: 2px 5px 8px -15px;
 	text-transform: uppercase; 
 	position: relative;
+	font-size: 16pt;
+	box-shadow: 2px 2px 5px #999;
+	color: #FFF;
 }
 
 .fancytitle:before {
@@ -172,12 +175,10 @@ div.fancybox {
 }
 
 #content_left_left h2 {
-	color: #ffffff;
 	background-color: #993333;
 }
 
 #content_left_right h2 {
-	color: #ffffff;
 	background-color: #000000;
 }
 
