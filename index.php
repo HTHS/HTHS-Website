@@ -38,8 +38,10 @@
         <div id="container">
         	<div id="content_left">
 				<div id="content_left_above">
-					<div id="gallery">
-						<img src="makeshift_hths_image.png" />
+					<div id="gallery_wrapper" class="fancybox">
+						<div id="gallery">
+							<img src="makeshift_hths_image.png" />
+						</div>
 					</div>
 				</div>
                 

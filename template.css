@@ -150,6 +150,10 @@ div.fancybox {
 	
 }
 
+#gallery_wrapper {
+	background: none;
+}
+
 #gallery {
 	box-shadow: inset 0 0 20px #555;
 }
