@@ -115,6 +115,13 @@ div.fancybox {
 	padding: 5px; 
 }
 
+.fancytitle {
+	display: block;
+	position: relative;
+	padding: 10px;
+	margin: 0px 0px 10px;
+}
+
 #content_left {
 	width: 580px;
 	margin: 0;
@@ -150,21 +157,13 @@ div.fancybox {
 }
 
 #content_left_left h2 {
-	display: block;
-	width: 230px;
 	color: #ffffff;
 	background-color: #993333;
-	padding: 10px;
-	margin: 0px 0px 10px;
 }
 
 #content_left_right h2 {
-	display: block;
-	width: 320px;
 	color: #ffffff;
 	background-color: #000000;
-	padding: 10px;
-	margin: 0px 0px 10px;
 }
 
 #content_left_left span {
