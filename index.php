@@ -46,16 +46,16 @@
 				<div id="content_left_below">
                     <div id="content_left_left">
 						<div id="calendar" class="fancybox">
-							<h2 class="fancytitle">CALENDAR</h2>
+							<h2 class="fancytitle">Calendar</h2>
 							<p>insert calendar here</p>
-							<span>Stay Connected</span>
+							<h2 class="fancytitle">Stay Connected</h2>
 							<p>insert links here </p>
 						</div>
                     </div>	
                     
                     <div id="content_left_right">
 						<div id="news" class="fancybox">
-							<h2 class="fancytitle">NEWS</h2>
+							<h2 class="fancytitle">News</h2>
 							<p> insert news here</p>
 						</div>
                     </div>
