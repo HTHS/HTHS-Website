@@ -38,13 +38,15 @@
         <div id="container">
         	<div id="content_left">
 				<div id="content_left_above">
-					<img src="makeshift_hths_image.png" />
+					<div id="gallery">
+						<img src="makeshift_hths_image.png" />
+					</div>
 				</div>
                 
 				<div id="content_left_below">
                     <div id="content_left_left">
 						<div id="calendar" class="fancybox">
-							<h1>CALENDAR</h1>
+							<h2>CALENDAR</h2>
 							<p>insert calendar here</p>
 							<span>Stay Connected</span>
 							<p>insert links here </p>
@@ -53,7 +55,7 @@
                     
                     <div id="content_left_right">
 						<div id="news" class="fancybox">
-							<h1>NEWS</h1>
+							<h2>NEWS</h2>
 							<p> insert news here</p>
 						</div>
                     </div>
