@@ -146,8 +146,10 @@ div.fancybox {
 	float: left;
 }
 
-#content_left_above {
-	
+#sidebar {
+	width: 200px;
+	margin: 0;
+	float: right;
 }
 
 #gallery_wrapper {
@@ -219,4 +221,15 @@ div.fancybox {
 #footer .right {
 	float: right;
 	text-align: right;
+}
+
+#sidebar .button_link {
+	display: block;
+	width: 170px;
+	background-color: #660000;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 5px;
+	margin: 0;
+	height: 25px;
 }

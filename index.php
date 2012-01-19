@@ -29,7 +29,7 @@
 						<li><a href="">Guidance</a></li>
 						<li><a href="">PFA</a></li>
 						<li><a href="">Downloads</a></li>
-						<li><a href="">Qwertyuiop</a></li>
+						<li><a href="">Link?</a></li>
 					</ul>
 				</div>
 			</div>
@@ -47,9 +47,9 @@
                 
 				<div id="content_left_below">
                     <div id="content_left_left">
-						<div id="calendar" class="fancybox">
-							<h2 class="fancytitle">Calendar</h2>
-							<p>insert calendar here</p>
+						<div id="feed" class="fancybox">
+							<h2 class="fancytitle">Facebook + Twitter</h2>
+							<p>insert integrated feed here</p>
 							<h2 class="fancytitle">Stay Connected</h2>
 							<p>insert links here </p>
 						</div>
@@ -60,8 +60,20 @@
 							<h2 class="fancytitle">News</h2>
 							<p> insert news here</p>
 						</div>
-                    </div>
+                    </div>  
 				</div>
+            </div>
+            
+            <div id="sidebar">
+            	<div class="fancybox">
+                    <a href="" class="button_link">> Prospective Students</a>             
+                    <a href="" class="button_link">> Alumni</a>
+				</div> 
+                <div class="fancybox">
+                    <p>insert pretty google calendar here</p>
+                </div>
+                insert icon here<br />
+                insert another icon here
             </div>
             
             <div id="clear_float">
