@@ -13,7 +13,7 @@
 		<div id="header">
 			<div id="header_container">
 				<div id="header_links">
-					FAQ | Contact | Search
+					Search engine goes here
 				</div>
 				
 				<div id="title_wrapper">
@@ -29,7 +29,7 @@
 						<li><a href="">Guidance</a></li>
 						<li><a href="">PFA</a></li>
 						<li><a href="">Downloads</a></li>
-						<li><a href="">Link?</a></li>
+                        <li><a href="">Contact Us</a></li>
 					</ul>
 				</div>
 			</div>
@@ -51,7 +51,24 @@
 							<h2 class="fancytitle">Facebook + Twitter</h2>
 							<p>insert integrated feed here</p>
 							<h2 class="fancytitle">Stay Connected</h2>
-							<p>insert links here </p>
+							<table>
+                            	<tr>
+                                	<td><img src="icons/news_archive.gif" /></td>
+                                    <td><a href="">News Archive</a></td>
+                                </tr>
+                                <tr>
+                                	<td><img src="icons/rss.gif" /></td>
+                                    <td><a href="">RSS Feed</a></td>
+                                </tr>
+                                <tr>
+                                	<td><img src="icons/facebook.gif" /></td>
+                                    <td><a href="">Like Us on Facebook</a></td>
+                                </tr>
+                                <tr>
+                                	<td><img src="icons/twitter.gif" /></td>
+                                    <td><a href="">Follow Us on Twitter</a></td>
+                                </tr>
+                            </table>
 						</div>
                     </div>	
                     
@@ -66,14 +83,29 @@
             
             <div id="sidebar">
             	<div class="fancybox">
-                    <a href="" class="button_link">> Prospective Students</a>             
-                    <a href="" class="button_link">> Alumni</a>
+                    <a href="" class="button_link">>> Prospective Students</a>             
+                    <a href="" class="button_link">>> Alumni</a>
 				</div> 
                 <div class="fancybox">
                     <p>insert pretty google calendar here</p>
                 </div>
-                insert icon here<br />
-                insert another icon here
+                <div class="fancybox">
+                    <img src="icons/one-call-now-banner-logo.gif" /><br />
+                    <table>
+                    	<tr>
+                        	<td><img src="icons/one-call-now-banner-play-message-green-24.gif" /></td> 
+                            <td>Click here to replay the latest message from High Technology High School.</td>
+                    </tr></table>
+                </div>
+                <div class="fancybox">
+                    <img src="icons/one-call-now-banner-logo-family-profile.gif" /><br />
+                    <table>
+                    	<tr>
+                        	<td><img src="icons/plus.gif" /></td>
+                        	<td>Click here to add additional phone numbers and e-mail addresses to our automated messaging system.</td>
+                      	</tr>
+                    </table>
+                </div>
             </div>
             
             <div id="clear_float">
@@ -87,7 +119,7 @@
             </div>
             
             <div class="right">
-            	(c) 2011 High Technology High School <br  />
+            	(c) 2012 High Technology High School <br  />
                 Non-Discrimination Clause
             </div>
         </div>

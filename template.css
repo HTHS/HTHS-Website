@@ -5,6 +5,7 @@ body, h1, h2, h3, p, ul, ol {
 
 body {
 	font-family: helvetica, arial, sans-serif;
+	font-size: 11pt;
 }
 
 h1, h2, h3 {
@@ -146,11 +147,7 @@ div.fancybox {
 	float: left;
 }
 
-#sidebar {
-	width: 200px;
-	margin: 0;
-	float: right;
-}
+
 
 #gallery_wrapper {
 	background: none;
@@ -197,6 +194,23 @@ div.fancybox {
 	margin: 10px 0px 10px;
 }
 
+#sidebar {
+	width: 200px;
+	margin: 0;
+	float: right;
+}
+
+#sidebar .button_link {
+	display: block;
+	width: 170px;
+	background-color: #660000;
+	text-decoration: none;
+	color: #ffffff;
+	padding: 5px;
+	margin: 0;
+	height: 25px;
+}
+
 #clear_float {
 	clear: both;
 }
@@ -223,13 +237,10 @@ div.fancybox {
 	text-align: right;
 }
 
-#sidebar .button_link {
-	display: block;
-	width: 170px;
-	background-color: #660000;
-	text-decoration: none;
-	color: #ffffff;
-	padding: 5px;
-	margin: 0;
-	height: 25px;
+a:link, a:visited {
+	color: #000000;
+}
+
+td {
+	vertical-align: top;
 }
