@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 01, 2012 at 01:14 AM
+-- Generation Time: Feb 01, 2012 at 05:12 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `hash`, `salt`, `username`) VALUES
-(1, '8c83be656b130cb9421a9d53c80a7e67', 'HKcqMGkXkwolG8RS', 'root');
+(1, '3bd42e44ed94af5419292232ac92073f', 'CnsbN9dCSmQfQwUP', 'root');
 
 -- --------------------------------------------------------
 
@@ -334,6 +334,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+('0c3a90a3a2d05056bf529108f852251a', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7', 1328073116, ''),
 ('9c7887152b77fe1206aea3b9bc75a574', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7', 1328058659, 'a:5:{s:9:"user_data";s:0:"";s:5:"login";b:1;s:2:"id";s:1:"1";s:4:"area";s:5:"admin";s:8:"username";s:4:"root";}');
 
 -- --------------------------------------------------------
