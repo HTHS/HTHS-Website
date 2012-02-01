@@ -77,7 +77,7 @@ class Pagesmod extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->delete('pages');
 	}
-	
+
 	function getPageList()
 	{
 		return $this->db->get('pages');

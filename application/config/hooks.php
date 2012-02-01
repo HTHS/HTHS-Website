@@ -17,6 +17,14 @@ $hook['post_controller_constructor'] = array(
                                 'filepath' => 'hooks',
                                 'params'   => array()
                                 );
+							
+$hook['post_controller'] = array(
+                                'class'    => 'Site_status',
+                                'function' => 'checkStatus',
+                                'filename' => 'Site_status.php',
+                                'filepath' => 'hooks',
+                                'params'   => array()
+                                );
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

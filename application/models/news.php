@@ -8,18 +8,14 @@ class News extends CI_Model {
         parent::__construct();
     }
     
-	function getNews($number = 3, $offset = 0, $startDate = 0, $endDate = NULL, $all = false)
+	function getNews($number = 3, $offset = 0, $all = false)
 	{
-		if($endDate == NULL) { $endDate = time(); }
-
 		$this->db->select('*');
 		$this->db->from('news');
-		if(!$all)
-		{
-			$this->db->where('start >=', $startDate);
-			$this->db->where('expires <=', $endDate);
+		if(!$all) {
+			$this->db->where('`start` <= '.time().' AND (`expires` >= '.time().' OR `expires` = 0)');
+			$this->db->limit($number, $offset);
 		}
-		$this->db->limit($number, $offset);
 		$this->db->order_by('id', 'desc');
 		
 		$entries = $this->db->get();
@@ -35,11 +31,18 @@ class News extends CI_Model {
 	
 	function addNews()
 	{
+		$this->load->helper('date');
+		if($this->input->post('expires') == '')
+			$expires = 0;
+		else
+			$expires = friendly_to_unix($this->input->post('expires'));
+			
 		$data = array (
 			'title' => $this->input->post('title'),
 			'contents' => $this->input->post('contents'),
-			'start' => $this->input->post('start'),
-			'expires' => $this->input->post('expires')
+			'start' => friendly_to_unix($this->input->post('start')),
+			'expires' => $expires,
+			'urgent' => $this->input->post('urgent')
 		);
 		
 		$this->db->insert('news', $data);
@@ -47,11 +50,18 @@ class News extends CI_Model {
 	
 	function editNews($id)
 	{
+		$this->load->helper('date');
+		if($this->input->post('expires') == '')
+			$expires = 0;
+		else
+			$expires = friendly_to_unix($this->input->post('expires'));
+			
 		$data = array (
 			'title' => $this->input->post('title'),
 			'contents' => $this->input->post('contents'),
-			'start' => $this->input->post('start'),
-			'expires' => $this->input->post('expires')
+			'start' => friendly_to_unix($this->input->post('start')),
+			'expires' => $this->input->post('expires'),
+			'urgent' => $this->input->post('urgent')
 		);
 		
 		$this->db->where('id', $id);

@@ -18,7 +18,7 @@ class Admin extends CI_Controller {
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 			
-		$data = array();
+		$data['news'] = $this->news->getNews();
 		
 		$this->load->view('wrapper/admin/header');
 		$this->load->view('admin/index',$data);
@@ -27,25 +27,34 @@ class Admin extends CI_Controller {
 	
 	public function login()
 	{
-		$data['loginFailed'] = false;
-		
 		if($this->loginmod->checkLogin('admin'))
 			redirect('admin');
 			
+		$this->load->view('wrapper/header');
+		$this->load->library('form_validation');
+		
 		if(count($_POST) > 0)
 		{
-			if($this->loginmod->checkPassword('admin', $this->loginmod->getUserId('admin'))) 
-			{
+			$this->form_validation->set_rules('username', 'Username', 'trim|required|is_not_unique[mentorship_users.username]');
+			$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_password');
+			$this->form_validation->set_message('is_not_unique','Your username was not found.');
+			$this->form_validation->set_message('check_password','Your password was incorrect.');
+			if($this->form_validation->run()) {
 				$this->loginmod->addSession('admin');
 				redirect('admin');
 			}
 			else
-				$data['loginFailed'] = true;
+				$this->load->view('admin/login');
 		}
-		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/login', $data);
-		$this->load->view('wrapper/admin/footer');
+		else
+			$this->load->view('admin/login');
+			
+		$this->load->view('wrapper/footer');
+	}
+	
+	public function check_password()
+	{
+		return $this->loginmod->checkPassword('admin', $this->loginmod->getUserId('admin'));
 	}
 	
 	public function logout()
@@ -54,9 +63,7 @@ class Admin extends CI_Controller {
 			redirect('admin/login');
 			
 		$this->session->sess_destroy();
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/logout');
-		$this->load->view('wrapper/admin/footer');
+		redirect();
 	}
 	
 	public function change_password()
@@ -64,11 +71,25 @@ class Admin extends CI_Controller {
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 
-		if(count($_POST) > 0)
-			if($this->adminmod->changePassword('admin', $this->session->userdata('id')))
-		
 		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/change_password');
+		$this->load->library('form_validation');
+		
+		if(count($_POST) > 0)
+		{
+			$this->form_validation->set_rules('password', 'Current Password Password', 'trim|required|callback_check_password');
+			$this->form_validation->set_rules('new_password', 'New Password', 'trim|required|min_length[6]');
+			$this->form_validation->set_rules('confirm', 'Confirm New Password', 'trim|required|matches[new_password]');
+			$this->form_validation->set_message('check_password','Your password was incorrect.');
+			if($this->form_validation->run()) {
+				$this->loginmod->changePassword('admin');
+				redirect('admin');
+			}
+			else
+				$this->load->view('admin/change_password');
+		}
+		else
+			$this->load->view('admin/change_password');
+		
 		$this->load->view('wrapper/admin/footer');
 	}
 	
@@ -243,18 +264,26 @@ class Admin extends CI_Controller {
 	{
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
+
+		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0)
-		{
-			$this->news->addNews();
+		{		
+			$this->form_validation->set_rules('title', 'Title', 'trim|required');
+			$this->form_validation->set_rules('contents', 'Contents', 'required');
+			$this->form_validation->set_rules('start', 'Begins On', 'trim|required');
+			$this->form_validation->set_rules('expires', 'Ends On', 'trim');
 			
-			if($this->input->post('send_email') == 1) {
-			
-				$this->load->library('email');
-				$this->load->model('emailmod');
+			if($this->form_validation->run()) {
+				$this->news->addNews();
 				
-				$emailList = $this->emailmod->getEmails();
+				if($this->input->post('email') == 1) {
 				
+					$this->load->library('email');
+					$this->load->model('emailmod');
+					
+					$emailList = $this->emailmod->getEmails();
+					
 $emailSuffix = '
 
 ------------
@@ -263,34 +292,37 @@ This email was sent automatically from the High Technology High School Website.
 
 To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 				
-				while($email = $emailList->result())
-				{
-					$this->email->clear();
-					
-					$this->email->to($email->email_address);
-					$this->email->from('noreply@hths.mcvsd.org','High Technology High School');
-					$this->email->subject($this->input->post('title'));
-					$this->email->message($this->input->post('contents').$emailSuffix);
-					
-					$this->email->send();
+					foreach($emailList->result() as $email)
+					{
+						$this->email->clear();
+						
+						$this->email->to($email->email_address);
+						$this->email->from('noreply@hths.mcvsd.org','High Technology High School');
+						$this->email->subject($this->input->post('title'));
+						$this->email->message($this->input->post('contents').$emailSuffix);
+						
+						$this->email->send();
+					}
 				}
+				redirect('admin/news');
 			}
 		}
-		
+	
 		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/add_page');
+		$this->load->view('admin/add_news');
 		$this->load->view('wrapper/admin/footer');
 	}
 	
-	public function manage_news()
+	public function news()
 	{
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 			
-		$data['news'] = $this->news->getNews(true, 0, 0, 0, NULL, true);
+		$this->load->helper('date');
+		$data['news'] = $this->news->getNews(true, 0, true);
 		
 		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/manage_pages',$data);
+		$this->load->view('admin/manage_news',$data);
 		$this->load->view('wrapper/admin/footer');
 	}
 	
@@ -299,43 +331,36 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 			
-		if(count($_POST) > 0)
-			$this->news->editNews($id);
-			
-		$data['news'] = $this->news->getNewsItem($id);
-		
 		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/edit_news',$data);
-		$this->load->view('wrapper/admin/footer');
-	}
-	
-	public function archive_news($id)
-	{
-		if(!$this->loginmod->checkLogin('admin'))
-			redirect('admin/login');
+		$this->load->library('form_validation');
 			
-		$this->news->archiveNews($id);
-	}
-	
-	public function unarchive_news($id)
-	{
-		if(!$this->loginmod->checkLogin('admin'))
-			redirect('admin/login');
-		
-		$this->news->unArchiveNews($id);
+		if(count($_POST) > 0)
+		{
+			$this->form_validation->set_rules('title', 'Title', 'trim|required');
+			$this->form_validation->set_rules('contents', 'Contents', 'required');
+			$this->form_validation->set_rules('start', 'Begins On', 'trim|required');
+			$this->form_validation->set_rules('expires', 'Ends On', 'trim');
+			if($this->form_validation->run())
+			{
+				$this->news->editNews($id);
+				redirect('admin/news');
+			}
+			else
+				$this->load->view('admin/edit_news');
+		}
+		else
+			$this->load->view('admin/edit_news');
+			
+		$this->load->view('wrapper/admin/footer');
 	}
 	
 	public function delete_news($id)
 	{
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
-			
-		if(count($_POST) > 0)
-			$this->news->deleteNews($id);
-			
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/delete_news');
-		$this->load->view('wrapper/admin/footer');
+		
+		$this->news->deleteNews($id);	
+		redirect('admin/news');
 	}
 	
 }

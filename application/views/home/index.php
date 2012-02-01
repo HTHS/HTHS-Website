@@ -51,5 +51,31 @@
                     </div>  
 				</div>
             </div>
+			<? foreach($news->result() as $newsItem): ?>
+				<? if($newsItem->urgent == 1 && $this->input->cookie('un') != $newsItem->id):
+					$cookie = array(
+						'name'   => 'un',
+						'value'  => $newsItem->id,
+						'expire' => '86500',
+						'secure' => FALSE
+					);
+					$this->input->set_cookie($cookie); ?>
+					<div id="urgentNews">
+						<?=$newsItem->contents?>
+					</div>
+					<script type="text/javascript">
+						$('#urgentNews').dialog({ autoOpen: true, title: "Important Message from HTHS: <?=$newsItem->title?>" });
+					</script>
+					<? break; ?>
+				<? else: 
+					$cookie = array(
+						'name'   => 'un',
+						'value'  => $this->input->cookie('un'),
+						'expire' => '86500',
+						'secure' => FALSE
+					);
+					$this->input->set_cookie($cookie);
+				endif; ?>
+			<? endforeach; ?>
 			
 			

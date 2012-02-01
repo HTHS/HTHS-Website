@@ -48,7 +48,7 @@ class Loginmod extends CI_Model {
 	function addSession($table)
 	{
 		$user_id = $this->getUserId($table);
-		$this->session->set_userdata(array('login' => true, 'id' => $user_id, 'area' => $table));
+		$this->session->set_userdata(array('login' => true, 'id' => $user_id, 'area' => $table, 'username' => $this->input->post('username')));
 	}
 	
 	function checkLogin($table)

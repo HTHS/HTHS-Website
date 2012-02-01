@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 29, 2012 at 06:06 PM
+-- Generation Time: Feb 01, 2012 at 01:14 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -34,7 +34,14 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `salt` text NOT NULL,
   `username` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `hash`, `salt`, `username`) VALUES
+(1, '8c83be656b130cb9421a9d53c80a7e67', 'HKcqMGkXkwolG8RS', 'root');
 
 -- --------------------------------------------------------
 
@@ -49,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `captcha`
@@ -75,7 +82,8 @@ INSERT INTO `captcha` (`captcha_id`, `captcha_time`, `ip_address`, `word`) VALUE
 (17, 1327704598, '127.0.0.1', 'KHJFU4pT'),
 (18, 1327704617, '127.0.0.1', 'Pn9YFxQV'),
 (19, 1327704635, '127.0.0.1', 'CLSgMeZS'),
-(20, 1327777984, '127.0.0.1', 'UJb4fHfF');
+(20, 1327777984, '127.0.0.1', 'UJb4fHfF'),
+(21, 1328035495, '127.0.0.1', 'xZxqFofV');
 
 -- --------------------------------------------------------
 
@@ -221,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `news` (
   `expires` int(11) NOT NULL,
   `urgent` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=149 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=168 ;
 
 --
 -- Dumping data for table `news`
@@ -296,7 +304,14 @@ CREATE TABLE IF NOT EXISTS `parent_emails` (
   `email_address` text NOT NULL,
   `ip_address` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `parent_emails`
+--
+
+INSERT INTO `parent_emails` (`id`, `email_address`, `ip_address`) VALUES
+(1, 'JmooneyhamHTHS@gmail.com', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -319,9 +334,26 @@ CREATE TABLE IF NOT EXISTS `sessions` (
 --
 
 INSERT INTO `sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('22ab336eeb6d8a4bdc70079c2d8bc6a1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7', 1327721746, ''),
-('7ea8efc85d839bf2b8bc4f6e5c25e555', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7', 1327860311, ''),
-('cfb48e64a13d5fb32386a23e6a111806', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7', 1327777983, '');
+('9c7887152b77fe1206aea3b9bc75a574', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.77 Safari/535.7', 1328058659, 'a:5:{s:9:"user_data";s:0:"";s:5:"login";b:1;s:2:"id";s:1:"1";s:4:"area";s:5:"admin";s:8:"username";s:4:"root";}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE IF NOT EXISTS `site_settings` (
+  `setting_name` text NOT NULL,
+  `setting_value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `site_settings`
+--
+
+INSERT INTO `site_settings` (`setting_name`, `setting_value`) VALUES
+('online', '1'),
+('offline_message', 'Our site is temporarily down for mantinance and will be back up and running again soon!');
 
 -- --------------------------------------------------------
 
