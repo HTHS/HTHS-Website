@@ -40,11 +40,40 @@
 		<div id="content_left_left">
 			<div class="fancybox">
 				<h2 class="fancytitle">Administrators</h2>
+				<form action="<?=site_url('admin/add_admin')?>" method="post">
+				<h3>Add Administrator</h3>
+				<table>
+					<tr>
+						<td>Username: </td>
+						<td><input type="text" name="username" size="15" /></td>
+					</tr>
+					<tr>
+						<td>Email Address :</td>
+						<td><input type="text" name="email" size="15" /></td>
+					</tr>
+					<tr colspan="2">
+						<td><input type="submit" value="Add Admin" /></td>
+					</tr>
+				</table>
+				</form>
 			</div>
 		</div>
 		<div id="content_left_right">
 			<div class="fancybox">
-				<h2 class="fancytitle red">Teachers</h2>
+				<h2 class="fancytitle red">Settings</h2>
+				<form action="<?=site_url('admin/settings')?>" method="post">
+				<h3>Site Status</h3>
+				<table>
+					<tr>
+						<td>Offline </td>
+						<td><input type="radio" name="online" value="0" <?=set_radio('online', '0', $settings[0]['setting_value'] == 0)?> /></td>
+					</tr>
+					<tr>
+						<td>Online </td>
+						<td><input type="radio" name="online" value="1" <?=set_radio('online', '1', $settings[0]['setting_value'] == 1)?> /></td>
+					</tr>
+				</table>
+				</form>
 			</div>
 		</div>
 	</div>

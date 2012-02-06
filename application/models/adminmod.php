@@ -18,12 +18,9 @@ class Adminmod extends CI_Model {
     
 	function addAdmin()
 	{
-		$this->db->where('username', $this->input->post('username'));
-		if($this->db->get('admin')->num_rows() > 0)
-			return false;
-		
 		$salt = random_string('alnum', 16);
-		$hash = md5($this->config->item('hardsalt') . $this->input->post('password') . $salt);
+		$password = random_string('alnum', 16);
+		$hash = md5($this->config->item('hardsalt') . $password . $salt);
 		
 		$data = array (
 			'hash' => $hash,
@@ -32,8 +29,7 @@ class Adminmod extends CI_Model {
 		);
 		
 		$this->db->insert('admin', $data);
-		
-		return true;
+		return $password;
 	}
 	
 	function deleteAdmin($id)
@@ -54,7 +50,8 @@ class Adminmod extends CI_Model {
 			return false;
 			
 		$salt = random_string('alnum', 16);
-		$hash = md5($this->config->item('hardsalt') . $this->input->post('password') . $salt);
+		$password = random_string('alnum', 16);
+		$hash = md5($this->config->item('hardsalt') . $password . $salt);
 		
 		$data = array (
 			'name' => $this->input->post('name'),
@@ -74,6 +71,7 @@ class Adminmod extends CI_Model {
 		);
 		
 		$this->db->insert('teacher_pages', $data);
+		return $password;
 	}
 	
 	function editTeacher($id)
@@ -110,6 +108,16 @@ class Adminmod extends CI_Model {
 	function getTeacherList()
 	{
 		return $this->db->get('teacher');
+	}
+	
+	function saveSettings()
+	{
+	
+	}
+	
+	function getSettings()
+	{
+		return $this->db->get('site_settings');
 	}
 }
 

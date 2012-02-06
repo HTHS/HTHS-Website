@@ -27,9 +27,9 @@
 					<ul>
 						<li><a href="<?=site_url()?>">Site Home</a></li>
 						<li><a href="<?=site_url('admin')?>">ACP Home</a></li>
-						<li><a href="<?=site_url('admin/manage_admins')?>">Admins</a></li>
-						<li><a href="<?=site_url('admin/manage_pages')?>">Pages</a></li>
-						<li><a href="<?=site_url('admin/manage_teachers')?>">Teachers</a></li>
+						<li><a href="<?=site_url('admin/admins')?>">Admins</a></li>
+						<li><a href="<?=site_url('admin/pages')?>">Pages</a></li>
+						<li><a href="<?=site_url('admin/teachers')?>">Teachers</a></li>
 						<li><a href="<?=site_url('admin/news')?>">News</a></li>
 						<li><a href="<?=site_url('admin/settings')?>">Settings</a></li>
                         <li><a href="<?=site_url('admin/logout')?>">Logout</a></li>

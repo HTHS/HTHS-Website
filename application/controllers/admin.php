@@ -19,6 +19,7 @@ class Admin extends CI_Controller {
 			redirect('admin/login');
 			
 		$data['news'] = $this->news->getNews();
+		$data['settings'] = $this->adminmod->getSettings()->result_array();
 		
 		$this->load->view('wrapper/admin/header');
 		$this->load->view('admin/index',$data);
@@ -98,22 +99,43 @@ class Admin extends CI_Controller {
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 			
-		$data = Array('success' => false, 'failed' => false);
-		
-		if(count($_POST) > 0)
-		{
-			if($this->adminmod->addAdmin())
-				$data['success'] = true;
-			else
-				$data['failed'] = true;
-		}
-		
 		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/add_admin',$data);
+		$this->load->library('form_validation');
+
+		if(count($_POST) > 0) {
+			$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]');
+			$this->form_validation->set_rules('email', 'Email Address', 'trim|required|valid_email');
+			if($this->form_validation->run()) {
+				$newPass = $this->adminmod->addAdmin();
+				$this->load->library('email');
+				$this->email->subject('HTHS Website Account Activation');
+				$this->email->to($this->input->post('email'));
+				$this->email->from('noreply@hths.mcvsd.org', 'HTHS Security Robot');
+				$this->email->message('Your High Technology High School website administrator account has been successfully created.
+
+Username: '.$this->input->post('username').'
+Password: '.$newPass.'
+
+Please use the link below to access the administrator panel, one you login you can change your password within the panel.
+'.site_url('admin').'
+
+Thank You,
+The HTHS Web Team');
+
+				$this->email->send();
+				
+				redirect('admin/admins');
+			}
+			else
+				$this->load->view('admin/add_admin');
+		}
+		else
+			$this->load->view('admin/add_admin');
+		
 		$this->load->view('wrapper/admin/footer');
 	}
 	
-	public function manage_admins()
+	public function admins()
 	{
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
@@ -130,12 +152,8 @@ class Admin extends CI_Controller {
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 		
-		if(count($_POST) > 0)
-			$this->adminmod->deleteAdmin($id);
-		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/delete_admin');
-		$this->load->view('wrapper/admin/footer');
+		$this->adminmod->deleteAdmin($id);
+		redirect('admin/admins');
 	}
 	
 	public function add_teacher()
@@ -143,18 +161,39 @@ class Admin extends CI_Controller {
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 			
-		$data = Array('success' => false, 'failed' => false);
-		
-		if(count($_POST) > 0)
-		{
-			if($this->adminmod->addTeacher())
-				$data['success'] = true;
-			else
-				$data['failed'] = true;
-		}
-		
 		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/add_teacher',$data);
+		$this->load->library('form_validation');
+
+		if(count($_POST) > 0) {
+			$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]');
+			$this->form_validation->set_rules('email', 'Email Address', 'trim|required|valid_email');
+			if($this->form_validation->run()) {
+				$newPass = $this->adminmod->addTeacher();
+				$this->load->library('email');
+				$this->email->subject('HTHS Website Account Activation');
+				$this->email->to($this->input->post('email'));
+				$this->email->from('noreply@hths.mcvsd.org', 'HTHS Security Robot');
+				$this->email->message('Your High Technology High School website teacher account has been successfully created.
+
+Username: '.$this->input->post('username').'
+Password: '.$newPass.'
+
+Please use the link below to access the administrator panel, one you login you can change your password within the panel.
+'.site_url('admin').'
+
+Thank You,
+The HTHS Web Team');
+
+				$this->email->send();
+				
+				redirect('admin/teachers');
+			}
+			else
+				$this->load->view('admin/add_teacher');
+		}
+		else
+			$this->load->view('admin/add_teacher');
+		
 		$this->load->view('wrapper/admin/footer');
 	}
 	
@@ -361,6 +400,22 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		
 		$this->news->deleteNews($id);	
 		redirect('admin/news');
+	}
+	
+	public function settings()
+	{
+		if(!$this->loginmod->checkLogin('admin'))
+			redirect('admin/login');
+			
+		$this->load->library('form_validation');
+		
+		if(count($_POST) > 0)
+			if($this->form_validation->run())
+				$this->adminmod->saveSettings();
+		
+		$this->load->view('wrapper/admin/header');
+		$this->load->view('admin/settings');
+		$this->load->view('wrapper/admin/footer');
 	}
 	
 }
