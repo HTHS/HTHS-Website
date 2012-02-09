@@ -65,12 +65,15 @@
 				<h3>Site Status</h3>
 				<table>
 					<tr>
-						<td>Offline </td>
-						<td><input type="radio" name="online" value="0" <?=set_radio('online', '0', $settings[0]['setting_value'] == 0)?> /></td>
+						<td>Online</td>
+						<td><input type="radio" name="online" value="1" <?=set_radio('online', '1', $settings['online'] == 1)?> /></td>
 					</tr>
 					<tr>
-						<td>Online </td>
-						<td><input type="radio" name="online" value="1" <?=set_radio('online', '1', $settings[0]['setting_value'] == 1)?> /></td>
+						<td>Offline</td>
+						<td><input type="radio" name="online" value="0" <?=set_radio('online', '0', $settings['online'] == 0)?> /></td>
+					</tr>
+					<tr>
+						<td colspan="2"><input type="submit" value="Save Settings" /></td>
 					</tr>
 				</table>
 				</form>

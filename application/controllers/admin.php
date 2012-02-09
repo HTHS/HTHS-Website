@@ -19,7 +19,10 @@ class Admin extends CI_Controller {
 			redirect('admin/login');
 			
 		$data['news'] = $this->news->getNews();
-		$data['settings'] = $this->adminmod->getSettings()->result_array();
+		$settings = $this->adminmod->getSettings()->result_array();
+		$data['settings'] = array();
+		foreach($settings as $setting)
+			$data['settings'][$setting['setting_name']] = $setting['setting_value'];
 		
 		$this->load->view('wrapper/admin/header');
 		$this->load->view('admin/index',$data);
@@ -410,11 +413,15 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0)
-			if($this->form_validation->run())
-				$this->adminmod->saveSettings();
+			$this->adminmod->saveSettings();
+		
+		$settings = $this->adminmod->getSettings()->result_array();
+		$data['settings'] = array();
+		foreach($settings as $setting)
+			$data['settings'][$setting['setting_name']] = $setting['setting_value'];
 		
 		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/settings');
+		$this->load->view('admin/settings',$data);
 		$this->load->view('wrapper/admin/footer');
 	}
 	

@@ -112,7 +112,16 @@ class Adminmod extends CI_Model {
 	
 	function saveSettings()
 	{
-	
+		$data = array ('setting_value' => $this->input->post('online') );
+		$this->db->where('setting_name', 'online');
+		$this->db->update('site_settings', $data);
+		
+		if($this->input->post('message') != false)
+		{
+			$data = array ('setting_value' => $this->input->post('message') );
+			$this->db->where('setting_name', 'offline_message');
+			$this->db->update('site_settings', $data);
+		}
 	}
 	
 	function getSettings()

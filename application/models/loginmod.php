@@ -53,9 +53,11 @@ class Loginmod extends CI_Model {
 	
 	function checkLogin($table)
 	{
-		if($this->session->userdata('login') == true)
-			if($this->session->userdata('area') == $table)
+		if($this->session->userdata('login') == true) 
+			if($this->session->userdata('area') == $table) 
 				return true;
+			else
+				$this->session->sess_destroy();
 		
 		return false;
 	}
