@@ -54,11 +54,10 @@ h1, h2, h3 {
 	margin-left: auto;
 	margin-right: auto;
 	width: 800px;
-	overflow: hidden;
 	box-shadow: 0px 0px 10px #333;
 }
 
-#navbar a {
+#navbar a:link, #navbar a:visited {
 	display: block;
 	/*background-color: #c0504d;*/
 	
@@ -88,7 +87,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 }
 
 #navbar a:hover, #navbar a:active, #navbar a.current {
-	background-color: #993333;
+	background: #eeeeee;
 }
 
 #navbar ul, #navbar li {
@@ -101,24 +100,46 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 }
 
 #navbar li ul {
-	display: none;
+	position: absolute;
+	left: -999em;
+	top: 42px;
+	clear: left;
+	z-index: 1;
+
 }
 
-#navbar li ul li a {
+#navbar li ul li {
+	clear: left;
+}
+
+#navbar li ul li a:link, #navbar li ul li a:visited {
 	display: block;
 	text-decoration: none;
 	background: #eeeeee;
 	color: black;
-	padding: 10px 5px 10px 5px;
+	padding: 5px;
 	text-align: left;
 	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
 	font-size: 11pt;
-	width: 200px;
-	height: 1%; /* IE*/
+	width: 188px;
+	z-index: 1;
+}
+
+#navbar li ul li a:hover, #navbar li ul li a:active {
+	display: block;
+	text-decoration: underline;
+	background: #eeeeee;
+	color: black;
+	padding: 5px;
+	text-align: left;
+	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
+	font-size: 11pt;
+	width: 188px;
+	z-index: 1;
 }
 
 #navbar li:hover ul {
-	display: block;
+	left: auto;
 }
 
 #container {
