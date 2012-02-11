@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Cache-Control" content="NO-CACHE" />
 		<title>High Technology High School</title>
         <link type="text/css" href="<?=site_url('css/template.css')?>" rel="stylesheet" />
 		<link type="text/css" href="<?=site_url('css/jquery-ui-1.8.17.custom.css')?>" rel="stylesheet" />

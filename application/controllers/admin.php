@@ -106,7 +106,8 @@ class Admin extends CI_Controller {
 		$this->load->library('form_validation');
 
 		if(count($_POST) > 0) {
-			$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]');
+			$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]|is_unique[admin.username]');
+			$this->form_validation->set_message('is_unique','An admin with that username already exists.');
 			$this->form_validation->set_rules('email', 'Email Address', 'trim|required|valid_email');
 			if($this->form_validation->run()) {
 				$newPass = $this->adminmod->addAdmin();
@@ -168,17 +169,20 @@ The HTHS Web Team');
 		$this->load->library('form_validation');
 
 		if(count($_POST) > 0) {
-			$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]');
+			$this->form_validation->set_rules('first', 'First Name', 'trim|required');
+			$this->form_validation->set_rules('last', 'Last Name', 'trim|required');
 			$this->form_validation->set_rules('email', 'Email Address', 'trim|required|valid_email');
+			$this->form_validation->set_rules('subject', 'Subject', 'trim|required');
 			if($this->form_validation->run()) {
-				$newPass = $this->adminmod->addTeacher();
+				$username = substr($this->input->post('first'), 0, 1).$this->input->post('last');
+				$newPass = $this->adminmod->addTeacher($username);
 				$this->load->library('email');
 				$this->email->subject('HTHS Website Account Activation');
 				$this->email->to($this->input->post('email'));
 				$this->email->from('noreply@hths.mcvsd.org', 'HTHS Security Robot');
 				$this->email->message('Your High Technology High School website teacher account has been successfully created.
 
-Username: '.$this->input->post('username').'
+Username: '.$username.'
 Password: '.$newPass.'
 
 Please use the link below to access the administrator panel, one you login you can change your password within the panel.
@@ -200,12 +204,12 @@ The HTHS Web Team');
 		$this->load->view('wrapper/admin/footer');
 	}
 	
-	public function manage_teachers()
+	public function teachers()
 	{
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 			
-		$data['admins'] = $this->adminmod->getTeacherList();
+		$data['teachers'] = $this->adminmod->getTeacherList();
 		
 		$this->load->view('wrapper/admin/header');
 		$this->load->view('admin/manage_teachers',$data);
@@ -216,28 +220,33 @@ The HTHS Web Team');
 	{
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/logout');
+			
+		$this->load->library('form_validation');
 
-		if(count($_POST) > 0)
-			$this->adminmod->editTeacher($id);
-	
-		$data['teacher'] = $this->adminmod->getTeacher($id);
+		if(count($_POST) > 0) {
+			$this->form_validation->set_rules('first', 'First Name', 'trim|required');
+			$this->form_validation->set_rules('last', 'Last Name', 'trim|required');
+			$this->form_validation->set_rules('email', 'Email Address', 'trim|required|valid_email');
+			$this->form_validation->set_rules('subject', 'Subject', 'trim|required');
+			if($this->form_validation->run()) {
+				$username = substr($this->input->post('first'), 0, 1).$this->input->post('last');
+				$this->adminmod->editTeacher($id, $username);
+				redirect('admin/teachers');
+			}
+			else
+				redirect('admin/teachers?error');
+		}
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/edit_teacher',$data);
-		$this->load->view('wrapper/admin/footer');
+		redirect('admin/teachers?error');
 	}
 	
 	public function delete_teacher($id)
-	{
+	{		
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 			
-		if(count($_POST) > 0)
-			$this->adminmod->deleteTeacher($id);
-		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/delete_teacher');
-		$this->load->view('wrapper/admin/footer');
+		$this->adminmod->deleteTeacher($id);
+		redirect('admin/teachers');
 	}
 	
 	public function add_page()
@@ -245,23 +254,26 @@ The HTHS Web Team');
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 			
-		$data = Array('failed' => false, 'success' => false, 'contents' => '');
-		if(count($_POST) > 0)
-		{
-			$data['contents'] = $this->input->post('contents');
-			
-			if($this->pagesmod->addPage()) 
-				$data['success'] = true;
-			else
-				$data['failed'] = true;
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[5]|is_unique[pages.title]');
+		$this->form_validation->set_message('is_unique','A page with that title already exists.');
+		$this->form_validation->set_rules('contents', 'Page Contents', 'trim|required');
+		
+		if(count($_POST) > 0) {
+			if($this->form_validation->run()) {
+				$this->pagesmod->addPage();
+				redirect('admin/pages');
+			}
 		}
+				
 		
 		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/add_page',$data);
+		$this->load->view('admin/add_page');
 		$this->load->view('wrapper/admin/footer');
 	}
 	
-	public function manage_pages()
+	public function pages()
 	{
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
@@ -278,8 +290,17 @@ The HTHS Web Team');
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 		
-		if(count($_POST) > 0)
-			$this->pagesmod->updatePage($id);
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[5]');
+		$this->form_validation->set_rules('contents', 'Page Contents', 'trim|required');
+		
+		if(count($_POST) > 0) {
+			if($this->form_validation->run()) {
+				$this->pagesmod->updatePage($id);
+				redirect('admin/pages');
+			}
+		}
 
 		$data['page'] = $this->pagesmod->getPageById($id);
 		$data['contents'] = read_file('html/'.$data['page']->filename);
@@ -294,12 +315,8 @@ The HTHS Web Team');
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 		
-		if(count($_POST) > 0)
-			$this->pagesmod->deletePage($id);
-		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/delete_page');
-		$this->load->view('wrapper/admin/footer');
+		$this->pagesmod->deletePage($id);
+		redirect('admin/pages');
 	}
 	
 	public function add_news()
