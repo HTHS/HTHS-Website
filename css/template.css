@@ -97,13 +97,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	float: left;
 	margin: 0;
 	padding: 0;
-	position: relative;
+	border-bottom: 1px solid #ccc;
 }
 
 #navbar li ul {
-	position: absolute;
-	left: 87px;
-	top: 0;
 	display: none;
 }
 
@@ -117,6 +114,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
 	font-size: 11pt;
 	width: 200px;
+	height: 1%; /* IE*/
+}
+
+#navbar li:hover ul {
+	display: block;
 }
 
 #container {
