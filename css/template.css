@@ -104,7 +104,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	display: none;
 }
 
-#navbar ul li a {
+#navbar li ul li a {
 	display: block;
 	text-decoration: none;
 	background: #eeeeee;
