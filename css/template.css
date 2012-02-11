@@ -97,6 +97,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	float: left;
 	margin: 0;
 	padding: 0;
+	position: relative;
+}
+
+#navbar li ul {
+	position: absolute;
+	left: 87px;
+	top: 0;
+	display: none;
+}
+
+#navbar ul li a {
+	display: block;
+	text-decoration: none;
+	background: #eeeeee;
+	color: black;
+	padding: 10px 5px 10px 5px;
+	text-align: left;
+	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
+	font-size: 11pt;
+	width: 200px;
 }
 
 #container {

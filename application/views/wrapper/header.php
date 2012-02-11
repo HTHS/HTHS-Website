@@ -30,11 +30,48 @@
 				<div id="navbar">
 					<ul>
 						<li><a href="<?=site_url()?>">Home</a></li>
-						<li><a href="">About</a></li>
-						<li><a href="">Academics</a></li>
-						<li><a href="">Clubs</a></li>
-						<li><a href="">Guidance</a></li>
-						<li><a href="">PFA</a></li>
+						<li><a href="">About</a>
+                        	<ul>
+                            	<li><a href="">Mission Statement</a></li>
+                                <li><a href="">History</a></li>
+                                <li><a href="">Facility</a></li>
+                                <li><a href="">Accreditation</a></li>
+                                <li><a href="">Awards</a></li>
+                            </ul>
+                        </li>
+						<li><a href="">Academics</a>
+                        	<ul>
+                            	<li><a href="">Curriculum</a></li>
+                                <li><a href="">Faculty Directory</a></li>
+                            </ul>
+                        </li>
+						<li><a href="">Clubs</a>
+                        	<ul>
+                            	<li><a href="">List of Clubs</a></li>
+                            </ul>
+                        </li>
+						<li><a href="">Guidance</a>
+                        	<ul>
+                            	<li><a href="">Naviance</a></li>
+                                <li><a href="">Career Information</a></li>
+                                <li><a href="">College Information/Applications</a></li>
+                                <li><a href="">Personality/Interest Tests</a></li>
+                                <li><a href="">Financial Aid/Scholarships</a></li>
+                                <li><a href="">SAT/ACT Prep Information</a></li>
+                                <li><a href="">Guidance Forms</a></li>
+                            </ul>
+                        </li>
+						<li><a href="">PFA</a>
+                        	<ul>
+                            	<li><a href="">Mission Statement</a></li>
+                                <li><a href="">Member List</a></li>
+                                <li><a href="">Calendar of Events</a></li>
+                                <li><a href="">History</a></li>
+                                <li><a href="">PFA Committees</a></li>
+                                <li><a href="">Scholarship Awards</a></li>
+                                <li><a href="">Newsletters</a></li>
+                            </ul>
+                        </li>
 						<li><a href="<?=site_url('home/downloads')?>">Downloads</a></li>
                         <li><a href="">Contact Us</a></li>
 					</ul>
