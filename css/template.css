@@ -105,20 +105,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	float: left;
 	margin: 0;
 	padding: 0;
-	border-bottom: 1px solid #ccc;
 }
 
 #navbar li ul {
 	position: absolute;
 	left: -999em;
-	top: 42px;
+	top: 38px;
 	clear: left;
 	z-index: 1;
-
 }
 
 #navbar li ul li {
 	clear: left;
+	border-bottom: 1px solid #ccc;
 }
 
 #navbar li ul li a:link, #navbar li ul li a:visited {
