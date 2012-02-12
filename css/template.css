@@ -62,6 +62,10 @@ a {
 	box-shadow: 0px 0px 10px #333;
 }
 
+#navbar a {
+	border-bottom: none;
+}
+
 #navbar a:link, #navbar a:visited {
 	display: block;
 	/*background-color: #c0504d;*/
