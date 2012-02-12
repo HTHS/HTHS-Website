@@ -38,42 +38,46 @@ class Pagesmod extends CI_Model {
 	
 	function addPage()
 	{
-		$this->db->where("`filename` = '".$this->input->post('filename')."' OR `title` = '".$this->input->post('title')."'");
-		if($this->db->get('pages')->num_rows() > 0)
-			return false;
+		$filename = str_replace(' ','_',$this->input->post('title')).'.htm';
 		
 		$data = array ( 
-			'filename' => $this->input->post('filename'),
+			'filename' => $filename,
 			'last_updated' => time(),
 			'title' => $this->input->post('title')
 		);
 		
 		$this->db->insert('pages', $data);
-		$this->createPageFile();
+		$this->createPageFile($filename);
 		
 		return true;
 	}
 	
-	function createPageFile()
+	function createPageFile($filename)
 	{
-		write_file('html/'.$this->input->post('filename'), $this->input->post('contents'));
+		write_file('html/'.$filename, $this->input->post('contents'));
 	}
 	
 	function updatePage($id)
 	{
+		$filename = str_replace(' ','_',$this->input->post('title')).'.htm';
+		
 		$data = array ( 
-			'filename' => $this->input->post('filename'),
+			'filename' => $filename,
 			'last_updated' => time(),
 			'title' => $this->input->post('title')
 		);
 		
 		$this->db->where('id', $id);
 		$this->db->update('pages', $data);
-		$this->createPageFile();
+		$this->createPageFile($filename);
 	}
 	
 	function deletePage($id)
 	{
+		$this->db->where('id', $id);
+		$filename = $this->db->get('pages')->row()->filename;
+		unlink('html/'.$filename);
+		
 		$this->db->where('id', $id);
 		$this->db->delete('pages');
 	}

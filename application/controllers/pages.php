@@ -16,17 +16,21 @@ class Pages extends CI_Controller {
 		if($page == '')
 			redirect();
 			
+		$page = str_replace('-',' ',$page);
+			
 		$fileData = $this->pagesmod->getPageFilename($page);
 		
 		if($fileData->num_rows() == 0)
 			show_404($page);
 			
-		$filename = 'html/'.$fileData->filename;
+		$filename = 'html/'.$fileData->row()->filename;
 		
 		if(!file_exists($filename)) 
 			show_404($page);
 		
 		$data['contents'] = read_file($filename);
+		$data['title'] = $fileData->row()->title;
+		$data['lastUpdated'] = $fileData->row()->last_updated;
 		$this->load->view('wrapper/header');
 		$this->load->view('pages/index',$data);
 		$this->load->view('wrapper/footer');
