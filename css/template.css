@@ -12,6 +12,11 @@ h1, h2, h3 {
 	font-family: "Franklin Gothic Book", helvetica, arial, sans-serif;
 }
 
+a {
+	text-decoration: none;
+	border-bottom: 1px solid #999;
+}
+
 #header_container {
 	width: 800px;
 	margin-left: auto;
@@ -122,12 +127,17 @@ div.fancybox {
 .fancytitle {
 	display: block;
 	padding: 3px 10px 3px 15px;
-	margin: 2px 5px 8px -15px;
+	margin: 15px 5px 8px -15px;
 	text-transform: uppercase; 
 	position: relative;
 	font-size: 16pt;
 	box-shadow: 2px 2px 5px #999;
 	color: #FFF;
+	background-color: #600;
+}
+
+.fancytitle:first-child {
+	margin-top: 3px;
 }
 
 .fancytitle a {
@@ -189,14 +199,6 @@ div.fancybox {
 	float: right;
 }
 
-#content_left_left h2 {
-	background-color: #993333;
-}
-
-#content_left_right h2 {
-	background-color: #000000;
-}
-
 #content_left_left span {
 	display: block;
 	width: 230px;
@@ -218,13 +220,14 @@ div.fancybox {
 
 #sidebar .button_link {
 	display: block;
-	width: 170px;
 	background-color: #660000;
 	text-decoration: none;
 	color: #ffffff;
 	padding: 5px;
 	margin: 0;
-	height: 25px;
+	height: 35px;
+	
+	text-transform: uppercase;
 }
 
 #clear_float {
@@ -278,3 +281,64 @@ td {
 
 .centerTable {
 	text-align: center;
+}
+
+/* .dateindicator styles begin */
+.dateindicator {
+	background-color: #600;
+	color: #FFF;
+	text-transform: uppercase;
+	width: 45px;
+	height: 45px;
+	position: relative;
+}
+.dateindicator span {
+	display: block;
+	text-align: center;
+	position: absolute;
+	width: 45px;
+}
+.dateindicator .dateindicator_month {
+	top: 0px;
+	font-size: 12px;
+}
+.dateindicator .dateindicator_day {
+	top: 11px;
+	font-size: 22px;
+}
+.dateindicator .dateindicator_year {
+	bottom: 0px;
+	font-size: 10px;
+}
+/* .dateindicator styles end */
+
+.newsitem {
+	overflow: auto;
+	border-top: 1px solid #CCC;
+	padding: 5px; 
+	display: block; 
+	margin-bottom: -1px;
+}
+
+.newsitem:last-child {
+	border-bottom: 1px solid #CCC;
+}
+
+.newsitem .dateindicator {
+	float: left;
+}
+
+.newsitem .newsitem_title {
+	float: left; 
+	width: 220px;
+	margin-left: 5px;
+	font-weight: bold;
+	padding: 2px;
+}
+
+.newsitem .newsitem_arrow {
+	float: right;
+	width: 10px;
+	padding-top: 17px;
+	padding-right: 2px;
+}

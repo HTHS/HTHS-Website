@@ -10,7 +10,7 @@
 				<div id="content_left_below">
                     <div id="content_left_left">
 						<div id="feed" class="fancybox">
-							<h2 class="fancytitle">Facebook + Twitter</h2>
+							<h2 class="fancytitle">Social Feed</h2>
 							<p>insert integrated feed here</p>
 							<h2 class="fancytitle">Stay Connected</h2>
 							<table>
@@ -43,9 +43,13 @@
 							<h2 class="fancytitle"><a href="<?=site_url('home/archive')?>">News</a></h2>
 							<? foreach($news->result() as $newsItem): ?>
 								<? ($newsItem->urgent == 1) ? $style = 'style="color:red;"' : $style = ''; ?>
-								<h3 <?=$style?>><?=$newsItem->title?></h3>
-								<p><font size="-5">Posted on <?=date('F j, Y',$newsItem->start)?></font></p>
-								<br /><br />
+								<a class="newsitem" href="<?=site_url("home/archive")?>">
+								<div class="dateindicator">
+								<span class="dateindicator_month"><?=date('M',$newsItem->start)?></span>&nbsp;<span class="dateindicator_day"><?=date('j',$newsItem->start)?></span>&nbsp;<span class="dateindicator_year"><?=date('Y',$newsItem->start)?></span>
+								</div>
+								<div class="newsitem_title" <?=$style?>><?=$newsItem->title?></div>
+								<div class="newsitem_arrow">&gt;</div>
+								</a>
 							<? endforeach; ?>
 						</div>
                     </div>  
