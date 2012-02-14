@@ -31,7 +31,6 @@ class News extends CI_Controller {
     {
         if ($id == null) {
             redirect('news');
-            die();
         }
         
         $data['item'] = $this->newsmod->getNewsItem($id);
