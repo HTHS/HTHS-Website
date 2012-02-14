@@ -11,7 +11,7 @@ class News extends CI_Controller {
 	public function index($entryNum = 0)
 	{
 		$this->load->library('pagination');
-		$config['base_url'] = $this->config->item('base_url').'home/archive/';
+		$config['base_url'] = $this->config->item('base_url').'news/';
 		$config['total_rows'] =  $this->newsmod->countNewsItems();
 		$config['per_page'] = 5;
 		$config['next_link'] = 'Next';
@@ -31,7 +31,6 @@ class News extends CI_Controller {
     {
         if ($id == null) {
             redirect('news');
-            die();
         }
         
         $data['item'] = $this->newsmod->getNewsItem($id);
