@@ -42,7 +42,6 @@ $route['default_controller'] = "home";
 $route['404_override'] = '';
 $route['pages/(:any)'] = 'pages/index/$1';
 $route['mentorship/(:num)'] = 'mentorship/index/$1';
-$route['news/(:num)'] = 'news/index/$1';
 
 
 /* End of file routes.php */

@@ -8,18 +8,24 @@ class News extends CI_Controller {
         $this->load->model('newsmod');
     }
     
-	public function index($entryNum = 0)
+    public function index($entryNum = 0)
+    {
+        $this->page($entryNum);
+    }
+    
+	public function page($entryNum = 0)
 	{
 		$this->load->library('pagination');
-		$config['base_url'] = $this->config->item('base_url').'news/';
+		$config['base_url'] = $this->config->item('base_url').'news/page/';
 		$config['total_rows'] =  $this->newsmod->countNewsItems();
 		$config['per_page'] = 5;
 		$config['next_link'] = 'Next';
 		$config['prev_link'] = 'Previous';
 		$config['full_tag_open'] = '<p style="text-align:center;">';
+        $config['use_page_numbers'] = true;
 		$this->pagination->initialize($config);
 		
-		$data['posts'] = $this->newsmod->getNews(5, $entryNum);
+		$data['posts'] = $this->newsmod->getNews(5, $entryNum * $config['per_page']);
 		$data['pageLinks'] = $this->pagination->create_links();
 		
 		$this->load->view('wrapper/header');
