@@ -7,7 +7,7 @@ class Home extends CI_Controller {
         // Call the Controller constructor
         parent::__construct();
 		
-		$this->load->model('news');
+		$this->load->model('newsmod');
 		$this->load->model('teachermod');
 		$this->load->model('emailmod');
 		$this->load->model('pagesmod');
@@ -15,29 +15,10 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
-		$data['news'] = $this->news->getNews();
+		$data['news'] = $this->newsmod->getNews();
 		
 		$this->load->view('wrapper/header');
 		$this->load->view('home/index',$data);
-		$this->load->view('wrapper/footer');
-	}
-	
-	public function archive($entryNum = 0)
-	{
-		$this->load->library('pagination');
-		$config['base_url'] = $this->config->item('base_url').'home/archive/';
-		$config['total_rows'] =  $this->news->countNewsItems();
-		$config['per_page'] = 5;
-		$config['next_link'] = 'Next';
-		$config['prev_link'] = 'Previous';
-		$config['full_tag_open'] = '<p style="text-align:center;">';
-		$this->pagination->initialize($config);
-		
-		$data['posts'] = $this->news->getNews(5, $entryNum);
-		$data['pageLinks'] = $this->pagination->create_links();
-		
-		$this->load->view('wrapper/header');
-		$this->load->view('home/archive',$data);
 		$this->load->view('wrapper/footer');
 	}
 	

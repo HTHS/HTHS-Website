@@ -9,7 +9,7 @@ class Admin extends CI_Controller {
 		
 		$this->load->model('adminmod');
 		$this->load->model('loginmod');
-		$this->load->model('news');
+		$this->load->model('newsmod');
 		$this->load->model('pagesmod');
     }
 	
@@ -18,7 +18,7 @@ class Admin extends CI_Controller {
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 			
-		$data['news'] = $this->news->getNews();
+		$data['news'] = $this->newsmod->getNews();
 		$settings = $this->adminmod->getSettings()->result_array();
 		$data['settings'] = array();
 		foreach($settings as $setting)
@@ -334,7 +334,7 @@ The HTHS Web Team');
 			$this->form_validation->set_rules('expires', 'Ends On', 'trim');
 			
 			if($this->form_validation->run()) {
-				$this->news->addNews();
+				$this->newsmod->addNews();
 				
 				if($this->input->post('email') == 1) {
 				
@@ -378,7 +378,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 			redirect('admin/login');
 			
 		$this->load->helper('date');
-		$data['news'] = $this->news->getNews(true, 0, true);
+		$data['news'] = $this->newsmod->getNews(true, 0, true);
 		
 		$this->load->view('wrapper/admin/header');
 		$this->load->view('admin/manage_news',$data);
@@ -401,7 +401,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 			$this->form_validation->set_rules('expires', 'Ends On', 'trim');
 			if($this->form_validation->run())
 			{
-				$this->news->editNews($id);
+				$this->newsmod->editNews($id);
 				redirect('admin/news');
 			}
 			else
@@ -418,7 +418,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		if(!$this->loginmod->checkLogin('admin'))
 			redirect('admin/login');
 		
-		$this->news->deleteNews($id);	
+		$this->newsmod->deleteNews($id);	
 		redirect('admin/news');
 	}
 	

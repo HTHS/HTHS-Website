@@ -40,10 +40,10 @@
                     
                     <div id="content_left_right">
 						<div id="news" class="fancybox">
-							<h2 class="fancytitle"><a href="<?=site_url('home/archive')?>">News</a></h2>
+							<h2 class="fancytitle">News</h2>
 							<? foreach($news->result() as $newsItem): ?>
 								<? ($newsItem->urgent == 1) ? $style = 'style="color:red;"' : $style = ''; ?>
-								<a class="newsitem" href="<?=site_url("home/archive")?>">
+								<a class="newsitem" href="<?=site_url("news/view/" . $newsItem->id)?>">
 								<div class="dateindicator">
 								<span class="dateindicator_month"><?=date('M',$newsItem->start)?></span>&nbsp;<span class="dateindicator_day"><?=date('j',$newsItem->start)?></span>&nbsp;<span class="dateindicator_year"><?=date('Y',$newsItem->start)?></span>
 								</div>
@@ -51,6 +51,7 @@
 								<div class="newsitem_arrow">&gt;</div>
 								</a>
 							<? endforeach; ?>
+                            <div id="news_archivelink"><a href="<?=site_url("news")?>">News Archives</a></div>
 						</div>
                     </div>  
 				</div>

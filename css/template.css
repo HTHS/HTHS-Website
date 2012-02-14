@@ -258,6 +258,13 @@ div.fancybox {
 	margin-left: 10px;
 }
 
+#news_archivelink {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 10pt;
+}
+
 #sidebar {
 	width: 200px;
 	margin: 0;
