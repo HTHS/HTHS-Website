@@ -15,8 +15,8 @@
 					<? foreach($forms[$type->type]->result() as $form): 
 						$ext = explode('.', $form->filename); ?>
 						<tr>
-							<td><?=date('d/y', $form->time)?></td>
-							<td><a href="<?=site_url('downloads/').$form->filename?>"><?=$form->name?></a></td>
+							<td><?=date('m/y', $form->time)?></td>
+							<td><a href="<?=site_url('downloads/'.$form->filename)?>"><?=$form->name?></a></td>
 							<td>.<?=$ext[1]?></td>
 						</tr>
 					<? endforeach; ?>
