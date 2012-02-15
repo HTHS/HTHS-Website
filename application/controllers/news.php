@@ -8,12 +8,12 @@ class News extends CI_Controller {
         $this->load->model('newsmod');
     }
     
-    public function index($entryNum = 0)
+    public function index($page = 1)
     {
-        $this->page($entryNum);
+        $this->page($page);
     }
     
-	public function page($entryNum = 0)
+	public function page($page = 1)
 	{
 		$this->load->library('pagination');
 		$config['base_url'] = $this->config->item('base_url').'news/page/';
@@ -25,7 +25,7 @@ class News extends CI_Controller {
         $config['use_page_numbers'] = true;
 		$this->pagination->initialize($config);
 		
-		$data['posts'] = $this->newsmod->getNews(5, $entryNum * $config['per_page']);
+		$data['posts'] = $this->newsmod->getNews(5, (($page - 1) * $config['per_page']));
 		$data['pageLinks'] = $this->pagination->create_links();
 		
 		$this->load->view('wrapper/header');
