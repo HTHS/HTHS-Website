@@ -21,11 +21,15 @@ class Pagesmod extends CI_Model {
 	
 	function listFormTypes($includeUnused = false, $includeUnusedOnly = false)
 	{
+		$doFormsExist = $this->db->get('forms')->num_rows();
+		
 		$this->db->select('form_types.*');
-		if(!$includeUnused)
-			$this->db->join('forms', 'forms.type = form_types.id', 'inner');
-		if($includeUnusedOnly)
-			$this->db->join('forms', 'forms.type != form_types.id', 'inner');
+		if($doFormsExist != 0) {
+			if(!$includeUnused)
+				$this->db->join('forms', 'forms.type = form_types.id', 'inner');
+			if($includeUnusedOnly)
+				$this->db->join('forms', 'forms.type != form_types.id', 'inner');
+		}
 		$this->db->order_by('type', 'asc');
 		return $this->db->get('form_types');
 	}
