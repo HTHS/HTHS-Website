@@ -11,6 +11,7 @@ class Admin extends CI_Controller {
 		$this->load->model('loginmod');
 		$this->load->model('newsmod');
 		$this->load->model('pagesmod');
+        $this->load->model('settingsmod');
     }
 	
 	public function index()
