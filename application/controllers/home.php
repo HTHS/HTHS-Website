@@ -17,9 +17,7 @@ class Home extends CI_Controller {
 	{
 		$data['news'] = $this->newsmod->getNews();
 		
-		$this->load->view('wrapper/header');
-		$this->load->view('home/index',$data);
-		$this->load->view('wrapper/footer');
+		display_output('home/index', $data);
 	}
 	
 	public function subscribe()
@@ -72,9 +70,7 @@ class Home extends CI_Controller {
 		$data['cap'] = create_captcha($vals);
 		$this->captcha->addCaptcha($data['cap']);
 		
-		$this->load->view('wrapper/header');
-		$this->load->view('home/faculty',$data);
-		$this->load->view('wrapper/footer');
+		display_output('home/faculty',$data);
 	}
 	
 	public function teacher_pages($id = 0)
@@ -85,9 +81,7 @@ class Home extends CI_Controller {
 		$data['page'] = $this->teachermod->getPage($id);
 		$data['teacher'] = $this->teachermod->getTeacherInfo($id);
 		
-		$this->load->view('wrapper/header');
-		$this->load->view('home/teacher_pages',$data);
-		$this->load->view('wrapper/footer');
+		display_output('home/teacher_pages',$data);
 	}
 	
 	public function blogs($id = 0, $entryNum = 0)
@@ -108,9 +102,7 @@ class Home extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['page_links'] = $this->pagination->create_links();
 		
-		$this->load->view('wrapper/header');
-		$this->load->view('home/blogs',$data);
-		$this->load->view('wrapper/footer');
+		display_output('home/blogs',$data);
 	}
 	
 	public function downloads()
@@ -119,16 +111,12 @@ class Home extends CI_Controller {
 		foreach($data['types']->result() as $type)
 			$data['forms'][$type->type] = $this->pagesmod->getFormList($type->id);
 	
-		$this->load->view('wrapper/header');
-		$this->load->view('home/downloads',$data);
-		$this->load->view('wrapper/footer');
+		display_output('home/downloads',$data);
 	}
 	
 	public function search()
 	{
-		$this->load->view('wrapper/header');
-		$this->load->view('home/search');
-		$this->load->view('wrapper/footer');
+		display_output('home/search');
 	}
 
 }
