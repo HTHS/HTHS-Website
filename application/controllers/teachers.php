@@ -26,5 +26,13 @@ class Teachers extends CI_Controller {
 		display_output('teachers/index',$data);
 	}
 	
+    public function about($username) {
+        // Run by default when the user goes to /teachers/SomeTeacher, displays some biographical info and a photo, links to pages and blog
+        
+        $id = $this->teachermod->getTeacherId($username);
+        $data['teacher'] = $this->teachermod->getTeacherInfo($id);
+        
+        display_output('teachers/about', $data);
+    }
 
 }

@@ -13,6 +13,10 @@ class Teachermod extends CI_Model {
 		$this->db->where('id', $id);
 		return $this->db->get('teacher')->row();
 	}
+    
+    function getTeacherId($teacher_username) {
+        
+    }
 	
 	function getTeacherList()
 	{
