@@ -8,6 +8,7 @@ class Mentorship extends CI_Controller {
 		
 		$this->load->model('mentorshipmod');
 		$this->load->model('loginmod');
+		$this->load->helper('date');
 	}
 	
 	public function index($offset = 0)
@@ -19,6 +20,18 @@ class Mentorship extends CI_Controller {
 		
 		$data['log'] = $this->mentorshipmod->getEntries($id, 10, $offset);
 		$data['user'] = $this->mentorshipmod->getUserInfo($id);
+		
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('date', 'Date', 'trim|required');
+		$this->form_validation->set_rules('activities', 'Activities', 'trim|required');
+		$this->form_validation->set_rules('comments', 'Comments', 'trim|required');
+		
+		if(count($_POST) > 0) {
+			if($this->form_validation->run()) {
+				$this->mentorshipmod->logEntry();
+				redirect('mentorship');
+			}
+		}
 			
 		$this->load->library('pagination');
 		$config['base_url'] = $this->config->item('base_url').'mentorship/';
@@ -33,6 +46,37 @@ class Mentorship extends CI_Controller {
 		$this->load->view('wrapper/header');
 		$this->load->view('mentorship/index',$data);
 		$this->load->view('wrapper/footer');
+	}
+	
+	public function edit($id)
+	{
+		if(!$this->loginmod->checkLogin('mentorship_users'))
+			redirect('mentorship/login');
+			
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('activities', 'Activities', 'trim|required');
+		$this->form_validation->set_rules('comments', 'Comments', 'trim|required');
+		if(count($_POST) > 0) {
+			if($this->form_validation->run()) {
+				$this->mentorshipmod->editLog($id);
+				redirect('mentorship');
+			}
+		}
+		
+		$data['entry'] = $this->mentorshipmod->getEntryById($id);
+		
+		$this->load->view('wrapper/header');
+		$this->load->view('mentorship/edit',$data);
+		$this->load->view('wrapper/footer');
+	}
+	
+	public function delete($id)
+	{
+		if(!$this->loginmod->checkLogin('mentorship_users'))
+			redirect('mentorship/login');
+		
+		$this->mentorshipmod->deleteLog($id);
+		redirect('mentorship');
 	}
 	
 	public function login()

@@ -19,13 +19,66 @@ class Pagesmod extends CI_Model {
 		return $this->db->get('forms');
 	}
 	
-	function listFormTypes($includeUnused = false)
+	function listFormTypes($includeUnused = false, $includeUnusedOnly = false)
 	{
+		$doFormsExist = $this->db->get('forms')->num_rows();
+		
 		$this->db->select('form_types.*');
-		if(!$includeUnused)
-			$this->db->join('forms', 'forms.type = form_types.id', 'inner');
+		if($doFormsExist != 0) {
+			if(!$includeUnused)
+				$this->db->join('forms', 'forms.type = form_types.id', 'inner');
+			if($includeUnusedOnly)
+				$this->db->join('forms', 'forms.type != form_types.id', 'inner');
+		}
 		$this->db->order_by('type', 'asc');
 		return $this->db->get('form_types');
+	}
+	
+	function addCategory()
+	{
+		$data = array( 
+			'type' => $this->input->post('category')
+		);
+		
+		$this->db->insert('form_types',$data);
+	}
+	
+	function deleteCategory($id)
+	{
+		$this->db->where('id',$id);
+		$this->db->delete('form_types');
+	}
+	
+	function addForm($filename)
+	{	
+		$data = array( 
+			'name' => $this->input->post('name'),
+			'filename' => $filename,
+			'time' => time(),
+			'archived' => 0,
+			'type' => $this->input->post('type')
+		);
+		
+		$this->db->insert('forms', $data);
+	}
+	
+	function archive($add, $id)
+	{
+		if($add) $data = array ('archived' => 1);
+		if(!$add) $data = array ('archived' => 0);
+		
+		$this->db->where('id',$id);
+		$this->db->update('forms', $data);
+	}
+	
+	function deleteForm($id)
+	{
+		$this->db->where('id',$id);
+		$data = $this->db->get('forms')->row();
+		
+		unlink('downloads/'.$data->filename);
+		$this->db->where('id',$id);
+		$this->db->delete('forms');
 	}
 	
 	function getPageFilename($title)

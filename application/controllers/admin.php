@@ -187,7 +187,7 @@ Username: '.$username.'
 Password: '.$newPass.'
 
 Please use the link below to access the administrator panel, one you login you can change your password within the panel.
-'.site_url('admin').'
+'.site_url('teacher').'
 
 Thank You,
 The HTHS Web Team');
@@ -239,6 +239,33 @@ The HTHS Web Team');
 		}
 		
 		redirect('admin/teachers?error');
+	}
+	
+	public function reset_teacher_password($id)
+	{
+		if(!$this->loginmod->checkLogin('admin'))
+			redirect('admin/logout');
+		
+		$newPass = $this->loginmod->changePassword('teacher',$id);
+		$teacher = $this->adminmod->getTeacher($id);
+		
+		$this->load->library('email');
+		$this->email->subject('HTHS Website Account Password Reset');
+		$this->email->to($teacher->email);
+		$this->email->from('noreply@hths.mcvsd.org', 'HTHS Security Robot');
+		$this->email->message('Your High Technology High School website teacher account password has been successfully reset.
+
+Username: '.$teacher->username.'
+Password: '.$newPass.'
+
+Please use the link below to access the administrator panel, one you login you can change your password within the panel.
+'.site_url('teacher').'
+
+Thank You,
+The HTHS Web Team');
+
+		$this->email->send();
+		redirect('admin/teachers');
 	}
 	
 	public function delete_teacher($id)
@@ -443,4 +470,88 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		$this->load->view('wrapper/admin/footer');
 	}
 	
+	public function download_categories()
+	{
+		if(!$this->loginmod->checkLogin('admin'))
+			redirect('admin/login');
+		
+		if(count($_POST) > 0) {
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('category', 'Category', 'trim|required');
+			if($this->form_validation->run())
+				$this->pagesmod->addCategory();
+		}
+		
+		$data['unusedTypes'] = $this->pagesmod->listFormTypes(true,true);
+		$data['usedTypes'] = $this->pagesmod->listFormTypes();
+		
+		$this->load->view('wrapper/admin/header');
+		$this->load->view('admin/download_categories',$data);
+		$this->load->view('wrapper/admin/footer');
+	}
+	
+	public function delete_category($id)
+	{
+		if(!$this->loginmod->checkLogin('admin'))
+			redirect('admin/login');
+		
+		$this->pagesmod->deleteCategory($id);
+		redirect('admin/download_categories');
+	}
+	
+	public function downloads()
+	{
+		if(!$this->loginmod->checkLogin('admin'))
+			redirect('admin/login');
+			
+		$this->load->library('form_validation');
+		
+		if(count($_POST) > 0) {
+			$config['upload_path'] = 'downloads/';
+			$config['allowed_types'] = 'doc|docx|xls|xlsx|ppt|pptx|pdf';
+			$this->load->library('upload',$config);
+			$this->form_validation->set_rules('name', 'Name', 'trim|required');
+			if($this->form_validation->run()){
+				$this->upload->do_upload('form');
+				$data['errors'] = $this->upload->display_errors();
+				$uploadData = $this->upload->data();
+				if($data['errors'] == '')
+					$this->pagesmod->addForm($uploadData['file_name']);
+			}
+		}
+		$data['types'] = $this->pagesmod->listFormTypes(true);
+		foreach($data['types']->result() as $type)
+			$data['forms'][$type->type] = $this->pagesmod->getFormList($type->id, true);
+			
+		$this->load->view('wrapper/admin/header');
+		$this->load->view('admin/downloads',$data);
+		$this->load->view('wrapper/admin/footer');
+	}
+	
+	public function archive($id)
+	{	
+		if(!$this->loginmod->checkLogin('admin'))
+			redirect('admin/login');
+		
+		$this->pagesmod->archive(true, $id);
+		redirect('admin/downloads');
+	}
+	
+	public function unarchive($id)
+	{	
+		if(!$this->loginmod->checkLogin('admin'))
+			redirect('admin/login');
+		
+		$this->pagesmod->archive(false, $id);
+		redirect('admin/downloads');
+	}
+	
+	public function delete_form($id)
+	{	
+		if(!$this->loginmod->checkLogin('admin'))
+			redirect('admin/login');
+		
+		$this->pagesmod->deleteForm($id);
+		redirect('admin/downloads');
+	}
 }

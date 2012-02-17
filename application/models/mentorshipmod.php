@@ -65,7 +65,7 @@ class Mentorshipmod extends CI_Model {
 	{
 		$data = array (
 				'user_id' => $this->session->userdata('id'),
-				'date' => $this->input->post('date'),
+				'date' => friendly_to_unix($this->input->post('date')),
 				'activities' => $this->input->post('activities'),
 				'comments' => $this->input->post('comments')
 			);
@@ -90,11 +90,18 @@ class Mentorshipmod extends CI_Model {
 		$this->db->delete('mentorship_logs');
 	}
 	
+	public function getEntryById($id)
+	{
+		$this->db->where('id',$id);
+		return $this->db->get('mentorship_logs')->row();
+	}
+	
 	public function getEntries($id, $number = 10, $offset = 0, $all = false)
 	{
 		$this->db->where('user_id', $id);
 		if(!$all)
 			$this->db->limit($number, $offset);
+		$this->db->order_by('date', 'desc');
 		return $this->db->get('mentorship_logs');
 	}
 	

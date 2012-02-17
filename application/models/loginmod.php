@@ -68,7 +68,12 @@ class Loginmod extends CI_Model {
 			$id = $this->session->userdata('id');
 			
 		$salt = random_string('alnum', 16);
-		$hash = md5($this->config->item('hardsalt') . $this->input->post('new_password') . $salt);
+		if(!$this->input->post('new_password'))
+			$newPass = random_string('alnum', 10);
+		else
+			$newPass = $this->input->post('new_password');
+			
+		$hash = md5($this->config->item('hardsalt') . $newPass . $salt);
 		
 		$data = array (
 			'hash' => $hash,
@@ -77,6 +82,7 @@ class Loginmod extends CI_Model {
 		
 		$this->db->where('id', $id);
 		$this->db->update($table, $data);
+		return $newPass;
 	}
 }
 
