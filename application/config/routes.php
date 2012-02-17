@@ -43,6 +43,13 @@ $route['404_override'] = '';
 $route['pages/(:any)'] = 'pages/index/$1';
 $route['mentorship/(:num)'] = 'mentorship/index/$1';
 
+// Teachers section routing
+$route['teachers'] = 'teachers';
+$route['teachers/dashboard/(:any)'] = 'teachers_dashboard/$1';
+$route['teachers/(:any)/pages/(:any)'] = 'teachers/pages/$1/$2';
+$route['teachers/(:any)/blog/(:num)'] = 'teachers/blog_entry/$1/$2';
+$route['teachers/(:any)/blog'] = 'teachers/blogs/$1';
+$route['teachers/(:any)'] = 'teachers/about/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
