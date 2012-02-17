@@ -1,6 +1,6 @@
 <?php
 
-class Teacher extends CI_Controller {
+class Teachers extends CI_Controller {
 
 	function __construct()
 	{
@@ -14,7 +14,7 @@ class Teacher extends CI_Controller {
 	public function index()
 	{
 		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teacher/login');
+			redirect('teachers/login');
 		
 		$data = array();
 		
@@ -28,14 +28,14 @@ class Teacher extends CI_Controller {
 		$data['loginFailed'] = false;
 		
 		if($this->loginmod->checkLogin('teacher'))
-			redirect('teacher');
+			redirect('teachers');
 			
 		if(count($_POST) > 0)
 		{
 			if($this->loginmod->checkPassword('teacher', $this->loginmod->getUserId('teacher'))) 
 			{
 				$this->loginmod->addSession('teacher');
-				redirect('teacher');
+				redirect('teachers');
 			}
 			else
 				$data['loginFailed'] = true;
@@ -49,7 +49,7 @@ class Teacher extends CI_Controller {
 	public function logout()
 	{
 		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teacher/login');
+			redirect('teachers/login');
 		
 		$this->session->sess_destroy();
 		$this->load->view('wrapper/teacher/header');
@@ -60,7 +60,7 @@ class Teacher extends CI_Controller {
 	public function change_password()
 	{
 		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teacher/login');
+			redirect('teachers/login');
 		
 		if(count($_POST) > 0)
 			if($this->loginmod->changePassword('teacher'))
@@ -74,7 +74,7 @@ class Teacher extends CI_Controller {
 	public function edit_page()
 	{
 		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teacher');
+			redirect('teachers');
 
 		if(count($_POST) > 0)
 			$this->teachermod->editPage();
@@ -89,7 +89,7 @@ class Teacher extends CI_Controller {
 	public function add_blog_entry()
 	{
 		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teacher');
+			redirect('teachers');
 			
 		if(count($_POST) > 0)
 			$this->teachermod->addBlogEntry();
@@ -102,7 +102,7 @@ class Teacher extends CI_Controller {
 	public function manage_blog()
 	{
 		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teacher');
+			redirect('teachers');
 			
 		$data['entries'] = $this->teachermod->getBlogEntries($this->session->userdata('id'),0,0,true);
 		
@@ -114,7 +114,7 @@ class Teacher extends CI_Controller {
 	public function edit_blog($id)
 	{
 		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teacher');
+			redirect('teachers');
 		
 		if(count($_POST) > 0)
 			$this->teachermod->editBlogEntry($id);
@@ -130,7 +130,7 @@ class Teacher extends CI_Controller {
 	public function delete_blog($id)
 	{
 		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teacher');
+			redirect('teachers');
 		
 		if(count($_POST) > 0)
 			$this->teachermod->deleteBlogEntry($id);
