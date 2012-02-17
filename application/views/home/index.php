@@ -16,7 +16,7 @@
 							<table>
                             	<tr>
                                 	<td><img src="<?=site_url('images/icons/news_archive.gif')?>" /></td>
-                                    <td><a href="<?=site_url('home/archive')?>">News Archive</a></td>
+                                    <td><a href="<?=site_url('news/archive')?>">News Archive</a></td>
                                 </tr>
 								<tr>
 									<td><img height="16" width="20" src="<?=site_url('images/icons/plus.gif')?>" /></td>
