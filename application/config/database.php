@@ -48,9 +48,9 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
+$db['default']['hostname'] = 'jmooneyham.serveftp.net';
+$db['default']['username'] = 'hths';
+$db['default']['password'] = 'hthsmysql';
 $db['default']['database'] = 'hths';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
