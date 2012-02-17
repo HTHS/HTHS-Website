@@ -14,8 +14,15 @@ class Teachermod extends CI_Model {
 		return $this->db->get('teacher')->row();
 	}
     
-    function getTeacherId($teacher_username) {
-        
+    function getTeacherId($username) {
+        $this->db->from('teacher');
+        $this->db->where('username', $username);
+        $query = $this->db->get();
+        if ($query->num_rows() = 0) {
+            return false;
+        }
+        $teacher = $query->row();
+        return $teacher->id;
     }
 	
 	function getTeacherList()
@@ -86,6 +93,19 @@ class Teachermod extends CI_Model {
 		return $this->db->get('teacher_blogs')->num_rows();
 	}
 	
+    function getPageId($teacher_id, $page_url) {
+        $this->db->from('teacher_pages');
+        $this->db->where('teacher_id', $teacher_id);
+        $this->db->where('page_url' = $page_url);
+        $query = $this->db->get();
+        if ($query->num_rows() = 1) {
+            $row = $query->row();
+            return $row->id;
+        } else {
+            return false;
+        }
+    }
+    
 	function getPage($id = 0)
 	{
 		if($id == 0)
