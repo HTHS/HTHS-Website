@@ -37,9 +37,7 @@ class Teachers_dashboard extends CI_Controller {
 				$data['loginFailed'] = true;
 		}
 		
-		$this->load->view('wrapper/teacher/header');
-		$this->load->view('teacher/login', $data);
-		$this->load->view('wrapper/teacher/footer');
+        display_output('teacher/login', $data, ['section' => 'teacher']);
 	}
 	
 	public function logout()
@@ -48,9 +46,8 @@ class Teachers_dashboard extends CI_Controller {
 			redirect('teachers/login');
 		
 		$this->session->sess_destroy();
-		$this->load->view('wrapper/teacher/header');
-		$this->load->view('teacher/logout');
-		$this->load->view('wrapper/teacher/footer');
+        
+        display_output('teacher/logout', null, ['section' => 'teacher']);
 	}
 	
 	public function change_password()
@@ -61,9 +58,7 @@ class Teachers_dashboard extends CI_Controller {
 		if(count($_POST) > 0)
 			if($this->loginmod->changePassword('teacher'))
 		
-		$this->load->view('wrapper/teacher/header');
-		$this->load->view('teacher/change_password');
-		$this->load->view('wrapper/teacher/footer');
+        display_output('teacher/change_password', null, ['section' => 'teacher']);
 	}
 	
 	
@@ -77,9 +72,7 @@ class Teachers_dashboard extends CI_Controller {
 		
 		$data['contents'] = $this->teachermod->getPage();
 		
-		$this->load->view('wrapper/teacher/header');
-		$this->load->view('teacher/editPage');
-		$this->load->view('wrapper/teacher/footer');
+        display_output('teacher/editPage', null, ['section' => 'teacher']);
 	}
 	
 	public function add_blog_entry()
@@ -90,9 +83,7 @@ class Teachers_dashboard extends CI_Controller {
 		if(count($_POST) > 0)
 			$this->teachermod->addBlogEntry();
 
-		$this->load->view('wrapper/teacher/header');
-		$this->load->view('teacher/add_blog');
-		$this->load->view('wrapper/teacher/footer');
+        display_output('teacher/add_blog', null, ['section' => 'teacher']);
 	}
 	
 	public function manage_blog()
@@ -102,9 +93,7 @@ class Teachers_dashboard extends CI_Controller {
 			
 		$data['entries'] = $this->teachermod->getBlogEntries($this->session->userdata('id'),0,0,true);
 		
-		$this->load->view('wrapper/teacher/header');
-		$this->load->view('teacher/manage_blog',$data);
-		$this->load->view('wrapper/teacher/footer');
+        display_output('teacher/manage_blog', $data, ['section' => 'teacher']);
 	}
 	
 	public function edit_blog($id)
@@ -117,9 +106,7 @@ class Teachers_dashboard extends CI_Controller {
 
 		$data['entry'] = $this->teachermod->getBlogById($id);
 		
-		$this->load->view('wrapper/teacher/header');
-		$this->load->view('teacher/edit_blog',$data);
-		$this->load->view('wrapper/teacher/footer');
+        display_output('teacher/edit_blog', $data, ['section' => 'teacher']);
 	}
 		
 
@@ -130,10 +117,8 @@ class Teachers_dashboard extends CI_Controller {
 		
 		if(count($_POST) > 0)
 			$this->teachermod->deleteBlogEntry($id);
-
-		$this->load->view('wrapper/teacher/header');
-		$this->load->view('teacher/delete_blog');
-		$this->load->view('wrapper/teacher/footer');
+        
+        display_output('teacher/delete_blog', null, ['section' => 'teacher']);
 	}
     
 }
