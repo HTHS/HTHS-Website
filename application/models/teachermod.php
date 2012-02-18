@@ -49,7 +49,7 @@ class Teachermod extends CI_Model {
 		
 		$entries = $this->db->get();
 		
-		return $entries;
+		return $entries->result();
 	}
 	
 	function getBlogById($id)
@@ -93,6 +93,13 @@ class Teachermod extends CI_Model {
 		return $this->db->get('teacher_blogs')->num_rows();
 	}
 	
+    function getPageList($teacher_id) {
+        $this->db->from('teacher_pages');
+        $this->db->where('teacher_id', $teacher_id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
     function getPageId($teacher_id, $page_url) {
         $this->db->from('teacher_pages');
         $this->db->where('teacher_id', $teacher_id);

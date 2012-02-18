@@ -47,7 +47,8 @@ $route['mentorship/(:num)'] = 'mentorship/index/$1';
 $route['teachers'] = 'teachers';
 $route['teachers/dashboard/(:any)'] = 'teachers_dashboard/$1';
 $route['teachers/(:any)/pages/(:any)'] = 'teachers/page/$1/$2';
-$route['teachers/(:any)/blog/(:num)'] = 'teachers/blog_entry/$1/$2';
+$route['teachers/(:any)/blog/view/(:num)'] = 'teachers/blog_entry/$1/$2';
+$route['teachers/(:any)/blog/page/(:num)'] = 'teachers/blog_home/$1/$2';
 $route['teachers/(:any)/blog'] = 'teachers/blog_home/$1';
 $route['teachers/(:any)'] = 'teachers/about/$1';
 
