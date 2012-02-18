@@ -93,15 +93,14 @@ class Pagesmod extends CI_Model {
 	{
 		$filename = str_replace(' ','_',$this->input->post('title')).'.htm';
 		
-		$data = array ( 
-			'filename' => $filename,
+		$data = array( 
 			'last_updated' => time(),
-			'title' => $this->input->post('title')
+			'url' => $this->input->post('url'),
+			'title' => $this->input->post('title'),
+			'content' => $this->input->post('contents'),
 		);
 		
 		$this->db->insert('pages', $data);
-		$this->createPageFile($filename);
-		
 		return true;
 	}
 	
@@ -112,25 +111,19 @@ class Pagesmod extends CI_Model {
 	
 	function updatePage($id)
 	{
-		$filename = str_replace(' ','_',$this->input->post('title')).'.htm';
-		
-		$data = array ( 
-			'filename' => $filename,
+		$data = array(
 			'last_updated' => time(),
-			'title' => $this->input->post('title')
+			'url' => $this->input->post('url'),
+			'title' => $this->input->post('title'),
+			'content' => $this->input->post('contents'),
 		);
 		
 		$this->db->where('id', $id);
 		$this->db->update('pages', $data);
-		$this->createPageFile($filename);
 	}
 	
 	function deletePage($id)
 	{
-		$this->db->where('id', $id);
-		$filename = $this->db->get('pages')->row()->filename;
-		unlink('html/'.$filename);
-		
 		$this->db->where('id', $id);
 		$this->db->delete('pages');
 	}
@@ -144,6 +137,16 @@ class Pagesmod extends CI_Model {
 	{
 		$this->db->where('id', $id);
 		return $this->db->get('pages')->row();
+	}
+	
+	function getPageByUrl($url) {
+		$this->db->where('url', $url);
+		$this->db->from('pages');
+		$query = $this->db->get();
+		if ($query->num_rows() == 0) {
+			return false;
+		}
+		return $query->row();
 	}
 }
 
