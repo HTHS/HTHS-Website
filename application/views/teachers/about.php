@@ -27,7 +27,7 @@ foreach ($entries as $entry) {
 <?php
 foreach ($pages as $page) {
 ?>
-<li><a href="<?=site_url('teachers/' . $teacher->username . '/page/' . $page->page_url)?>"><?=$page->title?></a></li>
+<li><a href="<?=site_url('teachers/' . $teacher->username . '/page/' . $page->page_url)?>"><?=$page->page_title?></a></li>
 <?php
 }
 ?>

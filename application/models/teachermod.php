@@ -119,7 +119,7 @@ class Teachermod extends CI_Model {
 			$id = $this->session->userdata('id');
 			
 		$this->db->where('teacher_id', $id);
-		return $this->db->get('teacher_pages')->row()->page_contents;
+		return $this->db->get('teacher_pages')->row();
 	}
 	
 	function editPage()
