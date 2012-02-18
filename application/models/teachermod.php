@@ -18,7 +18,7 @@ class Teachermod extends CI_Model {
         $this->db->from('teacher');
         $this->db->where('username', $username);
         $query = $this->db->get();
-        if ($query->num_rows() = 0) {
+        if ($query->num_rows() == 0) {
             return false;
         }
         $teacher = $query->row();
@@ -103,9 +103,9 @@ class Teachermod extends CI_Model {
     function getPageId($teacher_id, $page_url) {
         $this->db->from('teacher_pages');
         $this->db->where('teacher_id', $teacher_id);
-        $this->db->where('page_url' = $page_url);
+        $this->db->where('page_url', $page_url);
         $query = $this->db->get();
-        if ($query->num_rows() = 1) {
+        if ($query->num_rows() == 1) {
             $row = $query->row();
             return $row->id;
         } else {

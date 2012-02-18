@@ -45,7 +45,7 @@
                             $this->load->helper('news_formatter');
                             foreach($news->result() as $newsItem) {
                                 $newsItem->date = $newsItem->start;
-                                generate_news_item($item, 'news/view/');
+                                generate_news_item($newsItem, 'news/view/');
                             }
                             ?>
                             <div id="news_archivelink"><a href="<?=site_url("news")?>">News Archives</a></div>

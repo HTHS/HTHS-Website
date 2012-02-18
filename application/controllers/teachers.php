@@ -46,7 +46,7 @@ class Teachers extends CI_Controller {
             show_404();
         }
         
-        $page_id = $this->teachermod->getPageId($teacher_id, $page_url)
+        $page_id = $this->teachermod->getPageId($teacher_id, $page_url);
         if ($page_id == false) {
             show_404();
         }
