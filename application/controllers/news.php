@@ -46,4 +46,36 @@ class News extends CI_Controller {
         $this->load->view('wrapper/footer');
     }
     
+    public function subscribe()
+	{
+		$this->load->model('emailmod');
+        $this->load->library('form_validation');
+		
+		if(count($_POST) > 0)
+		{
+			if($this->input->post('submit') == 'Subscribe') { 
+				$this->form_validation->set_rules('email_address', 'Email Address', 'trim|valid_email|required|is_unique[parent_emails.email_address]');
+				$this->form_validation->set_message('is_unique','The email address you entered is already subscribed.');
+				if($this->form_validation->run()) {
+					$this->emailmod->registerEmail();
+					$this->load->view('news/subscribe_add_success');
+				}
+				else
+					display_output('news/subscribe');
+			}
+			else if($this->input->post('submit') == 'Unsubscribe') {
+				$this->form_validation->set_rules('email_address', 'Email Address', 'trim|valid_email|required|is_not_unique[parent_emails.email_address]');
+				$this->form_validation->set_message('is_not_unique','The email address you entered is not currently subscribed.');
+				if($this->form_validation->run()) {
+					$this->emailmod->removeEmail();
+					display_output('news/subscribe_remove_success');
+				}
+				else
+					display_output('news/subscribe');
+			}
+		}
+		else
+			display_output('news/subscribe');
+	}
+    
 }
