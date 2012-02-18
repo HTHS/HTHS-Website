@@ -32,6 +32,7 @@
 						<li><a href="<?=site_url()?>">Home</a></li>
 						<li><a href="">About</a>
                         	<ul>
+                            	<li><a href="">Overview</a></li>
                             	<li><a href="">Mission Statement</a></li>
                                 <li><a href="">History</a></li>
                                 <li><a href="">Facility</a></li>
@@ -52,7 +53,7 @@
                         </li>
 						<li><a href="">Guidance</a>
                         	<ul>
-                            	<li><a href="">Naviance</a></li>
+                            	<li><a href="https://connection.naviance.com/fc/signin.php?hsid=hightechhs">Naviance</a></li>
                                 <li><a href="">Career Information</a></li>
                                 <li><a href="">College Information/Applications</a></li>
                                 <li><a href="">Personality/Interest Tests</a></li>
