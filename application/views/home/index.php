@@ -14,18 +14,10 @@
 							<p>insert integrated feed here</p>
 							<h2 class="fancytitle">Stay Connected</h2>
 							<table>
-                            	<tr>
-                                	<td><img src="<?=site_url('images/icons/news_archive.gif')?>" /></td>
-                                    <td><a href="<?=site_url('news/archive')?>">News Archive</a></td>
-                                </tr>
 								<tr>
 									<td><img height="16" width="20" src="<?=site_url('images/icons/plus.gif')?>" /></td>
 									<td><a href="<?=site_url('home/subscribe')?>" />Subscribe to News Feed</a></td>
 								</tr>
-                                <tr>
-                                	<td><img src="<?=site_url('images/icons/rss.gif')?>" /></td>
-                                    <td><a href="">RSS Feed</a></td>
-                                </tr>
                                 <tr>
                                 	<td><img src="<?=site_url('images/icons/facebook.gif')?>" /></td>
                                     <td><a href="https://www.facebook.com/HighTechHS">Like Us on Facebook</a></td>
