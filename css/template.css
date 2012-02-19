@@ -276,9 +276,10 @@ div.fancybox {
 	background-color: #660000;
 	text-decoration: none;
 	color: #ffffff;
-	padding: 8px;
+	padding: 10px 8px 0px;
 	margin: 0;
 	height: 35px;
+	font-size: 10pt;
 	
 		background: #7c0000; /* Old browsers */
 background: -moz-linear-gradient(top,  #7c0000 0%, #750000 18%, #4e0000 100%); /* FF3.6+ */
@@ -295,9 +296,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c0000', end
 	background-color: #660000;
 	text-decoration: underline;
 	color: #ffffff;
-	padding: 8px;
+	padding: 10px 8px 0px;
 	margin: 0;
 	height: 35px;
+	font-size: 10pt;
 	
 		background: #660000; /* Old browsers */
 background: -moz-linear-gradient(top,  #4e0000 0%, #750000 18%, #660000 100%); /* FF3.6+ */
@@ -357,6 +359,7 @@ td {
 	font-weight: bold;
 	text-align: center;
 }
+
 
 .centerTable {
 	text-align: center;

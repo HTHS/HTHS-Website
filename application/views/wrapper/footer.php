@@ -19,11 +19,12 @@
                 </a>
 			</div> 
 			<div class="fancybox">
+            	<h2 class="fancytitle">Calendar</h2>
 				<p>insert pretty google calendar here</p>
 			</div>
 			<div class="fancybox">
 				<img src="<?=site_url('images/icons/one-call-now-banner-logo.gif')?>" /><br />
-				<iframe width="178" height="78" frameborder="0" scrolling="no" marginheight="0" src="https://www.onecallnow.com/Access/Banner/BannerWrapper.aspx?BT=LHB&EGI=0%2fXbzuia0a5jnWFIqn9mcw%3d%3d&S=09,10,11,12,20&L=Click+here+to+replay+the+latest+message+from+High+Technology+High+School.&F=1&Y=s"></iframe>
+				<iframe width="178" height="125" frameborder="0" scrolling="no" marginheight="0" src="https://www.onecallnow.com/Access/Banner/BannerWrapper.aspx?BT=LHB&EGI=0%2fXbzuia0a5jnWFIqn9mcw%3d%3d&S=09,10,11,12,20&L=Click+the+call+button+to+replay+the+latest+message+from+High+Technology+High+School.&F=1&Y=s"></iframe>
 			</div>
 			
 			<div class="fancybox">

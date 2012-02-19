@@ -53,7 +53,7 @@
                         </li>
 						<li><a href="">Guidance</a>
                         	<ul>
-                            	<li><a href="https://connection.naviance.com/fc/signin.php?hsid=hightechhs">Naviance</a></li>
+                            	
                                 <li><a href="">Career Information</a></li>
                                 <li><a href="">College Information/Applications</a></li>
                                 <li><a href="">Personality/Interest Tests</a></li>
@@ -74,7 +74,12 @@
                             </ul>
                         </li>
 						<li><a href="<?=site_url('home/downloads')?>">Downloads</a></li>
-                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">Links</a>
+                        	<ul>
+                            	<li><a href="https://hths.mcvsd.org/">FirstClass</a></li>
+                                <li><a href="https://connection.naviance.com/fc/signin.php?hsid=hightechhs">Naviance</a></li>
+                            </ul>
+                        </li>
 					</ul>
 				</div>
 			</div>
