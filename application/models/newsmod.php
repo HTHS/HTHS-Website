@@ -18,8 +18,12 @@ class Newsmod extends CI_Model {
 		}
 		$this->db->order_by('id', 'desc');
 		
-		$entries = $this->db->get();
+		$entries = $this->db->get()->result();
 		
+        foreach ($entries as &$entry) {
+            $entry->date = $entry->start;
+        }
+        
 		return $entries;
 	}
 	
@@ -28,7 +32,10 @@ class Newsmod extends CI_Model {
 		$this->db->where('id', $id);
         $this->db->from('news');
 		$result = $this->db->get();
-        return $result->row();
+        $row = $result->row();
+        $row->date = $row->start;
+        
+        return $row;
 	}
 	
 	function addNews()
