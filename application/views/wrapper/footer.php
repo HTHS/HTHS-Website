@@ -1,8 +1,22 @@
 	<? if(!isset($nosidebar)): ?>	
 		<div id="sidebar">
 			<div class="fancybox">
-				<a href="" class="button_link">>> Prospective Students</a>             
-				<a href="" class="button_link">>> Alumni</a>
+				<a href="" class="button_link">
+                	<table>
+                    	<tr>
+                        	<td>>></td>
+                            <td>Prospective Students</td>
+                        </tr>
+                    </table>
+                </a>             
+				<a href="http://hthsalumni.org/" class="button_link">
+                	<table>
+                    	<tr>
+                        	<td>>></td>
+                            <td>Alumni</td>
+                		</tr>
+                    </table>
+                </a>
 			</div> 
 			<div class="fancybox">
 				<p>insert pretty google calendar here</p>
