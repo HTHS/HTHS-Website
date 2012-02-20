@@ -7,7 +7,7 @@ function display_output($view, $data = null, $options = array()) {
     if (!isset($options['section'])) {
         $templatedir = 'wrapper';
     } else {
-        $templatedir = 'wrapper/' . $options->section;
+        $templatedir = 'wrapper/' . $options['section'];
     }
     
     $CI->load->view($templatedir  . '/header');

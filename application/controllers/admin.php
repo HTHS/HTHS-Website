@@ -2,6 +2,8 @@
 
 class Admin extends CI_Controller {
 
+	protected $isLoggedIn = false;
+	
 	function __construct()
     {
         // Call the Controller constructor
@@ -11,11 +13,14 @@ class Admin extends CI_Controller {
 		$this->load->model('loginmod');
 		$this->load->model('newsmod');
 		$this->load->model('pagesmod');
+		
+		if($this->loginmod->checkLogin('admin'))
+			$this->isLoggedIn = true;
     }
 	
 	public function index()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
 		$data['news'] = $this->newsmod->getNews();
@@ -24,17 +29,14 @@ class Admin extends CI_Controller {
 		foreach($settings as $setting)
 			$data['settings'][$setting['setting_name']] = $setting['setting_value'];
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/index',$data);
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/index', $data, array('section' => 'admin'));
 	}
 	
 	public function login()
 	{
-		if($this->loginmod->checkLogin('admin'))
+		if($this->isLoggedIn)
 			redirect('admin');
 			
-		$this->load->view('wrapper/header');
 		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0)
@@ -47,13 +49,9 @@ class Admin extends CI_Controller {
 				$this->loginmod->addSession('admin');
 				redirect('admin');
 			}
-			else
-				$this->load->view('admin/login');
 		}
-		else
-			$this->load->view('admin/login');
-			
-		$this->load->view('wrapper/footer');
+		
+		display_output('admin/login');
 	}
 	
 	public function check_password()
@@ -63,7 +61,7 @@ class Admin extends CI_Controller {
 	
 	public function logout()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
 		$this->session->sess_destroy();
@@ -72,10 +70,9 @@ class Admin extends CI_Controller {
 	
 	public function change_password()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 
-		$this->load->view('wrapper/admin/header');
 		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0)
@@ -88,21 +85,16 @@ class Admin extends CI_Controller {
 				$this->loginmod->changePassword('admin');
 				redirect('admin');
 			}
-			else
-				$this->load->view('admin/change_password');
 		}
-		else
-			$this->load->view('admin/change_password');
 		
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/change_password', array(), array('section' => 'admin'));
 	}
 	
 	public function add_admin()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
-		$this->load->view('wrapper/admin/header');
 		$this->load->library('form_validation');
 
 		if(count($_POST) > 0) {
@@ -130,30 +122,24 @@ The HTHS Web Team');
 				
 				redirect('admin/admins');
 			}
-			else
-				$this->load->view('admin/add_admin');
 		}
-		else
-			$this->load->view('admin/add_admin');
 		
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/add_admin', array(), array('section' => 'admin'));
 	}
 	
 	public function admins()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
 		$data['admins'] = $this->adminmod->getAdminList();
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/manage_admins',$data);
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/manage_admins', $data, array('section' => 'admin'));
 	}
 
 	public function delete_admin($id)
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		$this->adminmod->deleteAdmin($id);
@@ -162,10 +148,9 @@ The HTHS Web Team');
 	
 	public function add_teacher()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
-		$this->load->view('wrapper/admin/header');
 		$this->load->library('form_validation');
 
 		if(count($_POST) > 0) {
@@ -195,30 +180,24 @@ The HTHS Web Team');
 				
 				redirect('admin/teachers');
 			}
-			else
-				$this->load->view('admin/add_teacher');
 		}
-		else
-			$this->load->view('admin/add_teacher');
 		
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/add_teacher', array(), array('section' => 'admin'));
 	}
 	
 	public function teachers()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
 		$data['teachers'] = $this->adminmod->getTeacherList();
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/manage_teachers',$data);
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/manage_teachers', $data, array('section' => 'admin'));
 	}
 	
 	public function edit_teacher($id)
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/logout');
 			
 		$this->load->library('form_validation');
@@ -242,7 +221,7 @@ The HTHS Web Team');
 	
 	public function reset_teacher_password($id)
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/logout');
 		
 		$newPass = $this->loginmod->changePassword('teacher',$id);
@@ -269,7 +248,7 @@ The HTHS Web Team');
 	
 	public function delete_teacher($id)
 	{		
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
 		$this->adminmod->deleteTeacher($id);
@@ -278,13 +257,14 @@ The HTHS Web Team');
 	
 	public function add_page()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
 		$this->load->library('form_validation');
 		
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[5]|is_unique[pages.title]');
-		$this->form_validation->set_message('is_unique','A page with that title already exists.');
+		$this->form_validation->set_rules('url', 'URL', 'trim|required|min_length[4]|is_unique[pages.url]');
+		$this->form_validation->set_message('is_unique','A page with that title or URL already exists.');
 		$this->form_validation->set_rules('contents', 'Page Contents', 'trim|required');
 		
 		if(count($_POST) > 0) {
@@ -295,31 +275,28 @@ The HTHS Web Team');
 		}
 				
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/add_page');
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/add_page', array(), array('section' => 'admin'));
 	}
 	
 	public function pages()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		$data['pages'] = $this->pagesmod->getPageList();
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/manage_pages',$data);
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/manage_pages', $data, array('section' => 'admin'));
 	}
 	
 	public function edit_page($id)
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		$this->load->library('form_validation');
 		
 		$this->form_validation->set_rules('title', 'Title', 'trim|required|min_length[5]');
+		$this->form_validation->set_rules('url', 'URL', 'trim|required|min_length[4]');
 		$this->form_validation->set_rules('contents', 'Page Contents', 'trim|required');
 		
 		if(count($_POST) > 0) {
@@ -330,16 +307,13 @@ The HTHS Web Team');
 		}
 
 		$data['page'] = $this->pagesmod->getPageById($id);
-		$data['contents'] = read_file('html/'.$data['page']->filename);
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/edit_page',$data);
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/edit_page', $data, array('section' => 'admin'));
 	}
 	
 	public function delete_page($id)
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		$this->pagesmod->deletePage($id);
@@ -348,7 +322,7 @@ The HTHS Web Team');
 	
 	public function add_news()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 
 		$this->load->library('form_validation');
@@ -394,30 +368,25 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 			}
 		}
 	
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/add_news');
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/add_news', array(), array('section' => 'admin'));
 	}
 	
 	public function news()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
 		$this->load->helper('date');
 		$data['news'] = $this->newsmod->getNews(true, 0, true);
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/manage_news',$data);
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/manage_news', $data, array('section' => 'admin'));
 	}
 	
 	public function edit_news($id)
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
-		$this->load->view('wrapper/admin/header');
 		$this->load->library('form_validation');
 			
 		if(count($_POST) > 0)
@@ -431,18 +400,14 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 				$this->newsmod->editNews($id);
 				redirect('admin/news');
 			}
-			else
-				$this->load->view('admin/edit_news');
 		}
-		else
-			$this->load->view('admin/edit_news');
-			
-		$this->load->view('wrapper/admin/footer');
+		
+		display_output('admin/edit_news', array(), array('section' => 'admin'));
 	}
 	
 	public function delete_news($id)
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		$this->newsmod->deleteNews($id);	
@@ -451,7 +416,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 	
 	public function settings()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
 		$this->load->library('form_validation');
@@ -464,14 +429,12 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		foreach($settings as $setting)
 			$data['settings'][$setting['setting_name']] = $setting['setting_value'];
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/settings',$data);
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/settings', $data, array('section' => 'admin'));
 	}
 	
 	public function download_categories()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		if(count($_POST) > 0) {
@@ -484,14 +447,12 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		$data['unusedTypes'] = $this->pagesmod->listFormTypes(true,true);
 		$data['usedTypes'] = $this->pagesmod->listFormTypes();
 		
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/download_categories',$data);
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/download_categories', $data, array('section' => 'admin'));
 	}
 	
 	public function delete_category($id)
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		$this->pagesmod->deleteCategory($id);
@@ -500,7 +461,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 	
 	public function downloads()
 	{
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 			
 		$this->load->library('form_validation');
@@ -522,14 +483,12 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		foreach($data['types']->result() as $type)
 			$data['forms'][$type->type] = $this->pagesmod->getFormList($type->id, true);
 			
-		$this->load->view('wrapper/admin/header');
-		$this->load->view('admin/downloads',$data);
-		$this->load->view('wrapper/admin/footer');
+		display_output('admin/downloads', $data, array('section' => 'admin'));
 	}
 	
 	public function archive($id)
 	{	
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		$this->pagesmod->archive(true, $id);
@@ -538,7 +497,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 	
 	public function unarchive($id)
 	{	
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		$this->pagesmod->archive(false, $id);
@@ -547,7 +506,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 	
 	public function delete_form($id)
 	{	
-		if(!$this->loginmod->checkLogin('admin'))
+		if(!$this->isLoggedIn)
 			redirect('admin/login');
 		
 		$this->pagesmod->deleteForm($id);

@@ -97,16 +97,11 @@ class Pagesmod extends CI_Model {
 			'last_updated' => time(),
 			'url' => $this->input->post('url'),
 			'title' => $this->input->post('title'),
-			'content' => $this->input->post('contents'),
+			'contents' => $this->input->post('contents'),
 		);
 		
 		$this->db->insert('pages', $data);
 		return true;
-	}
-	
-	function createPageFile($filename)
-	{
-		write_file('html/'.$filename, $this->input->post('contents'));
 	}
 	
 	function updatePage($id)
@@ -115,7 +110,7 @@ class Pagesmod extends CI_Model {
 			'last_updated' => time(),
 			'url' => $this->input->post('url'),
 			'title' => $this->input->post('title'),
-			'content' => $this->input->post('contents'),
+			'contents' => $this->input->post('contents'),
 		);
 		
 		$this->db->where('id', $id);
