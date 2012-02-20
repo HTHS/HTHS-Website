@@ -50,7 +50,7 @@
             
             <div class="right">
             	(c) <?=date('Y',time())?> High Technology High School <br  />
-                Non-Discrimination Clause
+                <a href="">Non-Discrimination Clause</a>
             </div>
         </div>
 
