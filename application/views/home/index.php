@@ -35,7 +35,7 @@
 							<h2 class="fancytitle">News</h2>
 							<?php
                             $this->load->helper('news_formatter');
-                            foreach($news->result() as $newsItem) {
+                            foreach($news as $newsItem) {
                                 $newsItem->date = $newsItem->start;
                                 generate_news_item($newsItem, 'news/view/');
                             }
@@ -45,7 +45,7 @@
                     </div>  
 				</div>
             </div>
-			<? foreach($news->result() as $newsItem): ?>
+			<? foreach($news as $newsItem): ?>
 				<? if($newsItem->urgent == 1 && $this->input->cookie('un') != $newsItem->id):
 					$cookie = array(
 						'name'   => 'un',

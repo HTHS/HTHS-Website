@@ -42,6 +42,7 @@ $route['default_controller'] = "home";
 $route['404_override'] = '';
 $route['pages/(:any)'] = 'pages/index/$1';
 $route['mentorship/(:num)'] = 'mentorship/index/$1';
+$route['rss/(:any).xml'] = 'rss/feed/$1';
 
 // Teachers section routing
 $route['teachers'] = 'teachers';

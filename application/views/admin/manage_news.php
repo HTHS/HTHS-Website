@@ -2,7 +2,7 @@
 	<div id="content_left_above">
 		<div class="fancybox">
 			<h2 class="fancytitle black">Manage News</h2>
-			<? foreach($news->result() as $row): ?>
+			<? foreach($news as $row): ?>
 				<h3><a href="" id="show<?=$row->id?>"><?=$row->title?></a> <? if($row->urgent == 1): ?>(Urgent)<? endif; ?></h3>
 				<div style="display:none;" id="contentsDiv<?=$row->id?>">
 					<form action="<?=site_url('admin/edit_news/'.$row->id)?>" method="post">
