@@ -32,8 +32,8 @@
 						<li><a href="<?=site_url()?>">Home</a></li>
 						<li><a href="">About</a>
                         	<ul>
-                            	<li><a href="">Overview</a></li>
-                            	<li><a href="">Mission Statement</a></li>
+                            	<li><a href="">HTHS Overview</a></li>
+                            	<li><a href="">HTHS Mission Statement</a></li>
                                 <li><a href="">History</a></li>
                                 <li><a href="">Facility</a></li>
                                 <li><a href="">Accreditation</a></li>
@@ -44,6 +44,8 @@
                         	<ul>
                             	<li><a href="">Curriculum</a></li>
                                 <li><a href="">Faculty Directory</a></li>
+                                <li><a href="">Teachers' Blogs</a></li>
+                                <li><a href="">Mentorship</a></li>
                             </ul>
                         </li>
 						<li><a href="">Clubs</a>
@@ -64,13 +66,13 @@
                         </li>
 						<li><a href="">PFA</a>
                         	<ul>
-                            	<li><a href="">Mission Statement</a></li>
-                                <li><a href="">Member List</a></li>
-                                <li><a href="">Calendar of Events</a></li>
-                                <li><a href="">History</a></li>
+                            	<li><a href="">PFA Mission Statement</a></li>
+                                <li><a href="">PFA Member List</a></li>
+                                <li><a href="">Calendar of PFA Events</a></li>
+                                <li><a href="">PFA History</a></li>
                                 <li><a href="">PFA Committees</a></li>
-                                <li><a href="">Scholarship Awards</a></li>
-                                <li><a href="">Newsletters</a></li>
+                                <li><a href="">PFA Scholarship Awards</a></li>
+                                <li><a href="">PFA Newsletters</a></li>
                             </ul>
                         </li>
 						<li><a href="<?=site_url('home/downloads')?>">Downloads</a></li>
