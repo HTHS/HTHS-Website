@@ -48,7 +48,7 @@
 </div>
 
 <script type="text/javascript">
-	<? foreach($news->result() as $row): ?>
+	<? foreach($news as $row): ?>
 		$('#show'+<?=$row->id?>).click(function(event) {
 			event.preventDefault();
 			$('#contentsDiv'+<?=$row->id?>).show('slow');
