@@ -32,18 +32,18 @@
 						<li><a href="<?=site_url()?>">Home</a></li>
 						<li><a href="">About</a>
                         	<ul>
-                            	<li><a href="">HTHS Overview</a></li>
-                            	<li><a href="">HTHS Mission Statement</a></li>
-                                <li><a href="">History</a></li>
-                                <li><a href="">Facility</a></li>
-                                <li><a href="">Accreditation</a></li>
-                                <li><a href="">Awards</a></li>
+                            	<li><a href="<?=site_url('pages/overview')?>">Overview</a></li>
+                            	<li><a href="<?=site_url('pages/hths_mission_statement')?>">HTHS Mission Statement</a></li>
+                                <li><a href="<?=site_url('pages/hths_history')?>">HTHS History</a></li>
+                                <li><a href="<?=site_url('pages/facility')?>">Facility</a></li>
+                                <li><a href="<?=site_url('pages/accreditation')?>">Accreditation</a></li>
+                                <li><a href="<?=site_url('pages/awards')?>">Awards</a></li>
                             </ul>
                         </li>
 						<li><a href="">Academics</a>
                         	<ul>
-                            	<li><a href="">Curriculum</a></li>
-                                <li><a href="">Faculty Directory</a></li>
+                            	<li><a href="<?=site_url('pages/curriculum')?>">Curriculum</a></li>
+                                <li><a href="<?=site_url('pages/faculty_directory')?>">Faculty Directory</a></li>
                                 <li><a href="">Teachers' Blogs</a></li>
                                 <li><a href="">Mentorship</a></li>
                             </ul>
@@ -55,28 +55,27 @@
                         </li>
 						<li><a href="">Guidance</a>
                         	<ul>
-                            	
+                            	<li><a href="http://www.mcvsd.org/weblog/lgueren/">Guidance Blog</a></li>
+                                <li><a href="">Guidance Forms</a></li>
                                 <li><a href="">Career Information</a></li>
                                 <li><a href="">College Information/Applications</a></li>
                                 <li><a href="">Personality/Interest Tests</a></li>
-                                <li><a href="">Financial Aid/Scholarships</a></li>
                                 <li><a href="">SAT/ACT Prep Information</a></li>
-                                <li><a href="">Guidance Forms</a></li>
                             </ul>
                         </li>
 						<li><a href="">PFA</a>
                         	<ul>
-                            	<li><a href="">PFA Mission Statement</a></li>
+                            	<li><a href="<?=site_url('pages/pfa_mission_statement')?>">PFA Mission Statement</a></li>
                                 <li><a href="">PFA Member List</a></li>
                                 <li><a href="">Calendar of PFA Events</a></li>
-                                <li><a href="">PFA History</a></li>
-                                <li><a href="">PFA Committees</a></li>
-                                <li><a href="">PFA Scholarship Awards</a></li>
+                                <li><a href="<?=site_url('pages/pfa_history')?>">PFA History</a></li>
+                                <li><a href="<?=site_url('pages/pfa_committees')?>">PFA Committees</a></li>
+                                <li><a href="<?=site_url('pages/pfa_scholarship_awards')?>">PFA Scholarship Awards</a></li>
                                 <li><a href="">PFA Newsletters</a></li>
                             </ul>
                         </li>
 						<li><a href="<?=site_url('home/downloads')?>">Downloads</a></li>
-                        <li><a href="">Links</a>
+                        <li><a href="">Resources</a>
                         	<ul>
                             	<li><a href="https://hths.mcvsd.org/">FirstClass</a></li>
                                 <li><a href="https://connection.naviance.com/fc/signin.php?hsid=hightechhs">Naviance</a></li>

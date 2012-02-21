@@ -1,11 +1,11 @@
-body, h1, h2, h3, p{
+body, h1, h2, h3{
 	margin: 0;
 	padding: 0;
 }
 
 body {
 	font-family: helvetica, arial, sans-serif;
-	font-size: 11pt;
+	font-size: 10pt;
 }
 
 h1, h2, h3 {
