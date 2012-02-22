@@ -41,7 +41,7 @@ class Admin extends CI_Controller {
 		
 		if(count($_POST) > 0)
 		{
-			$this->form_validation->set_rules('username', 'Username', 'trim|required|is_not_unique[mentorship_users.username]');
+			$this->form_validation->set_rules('username', 'Username', 'trim|required|is_not_unique[admin.username]');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_password');
 			$this->form_validation->set_message('is_not_unique','Your username was not found.');
 			$this->form_validation->set_message('check_password','Your password was incorrect.');

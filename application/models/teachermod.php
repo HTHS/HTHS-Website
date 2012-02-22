@@ -112,26 +112,55 @@ class Teachermod extends CI_Model {
             return false;
         }
     }
-    
-	function getPage($id = 0)
+	
+	function getPageById($id)
 	{
-		if($id == 0)
-			$id = $this->session->userdata('id');
-			
-		$this->db->where('teacher_id', $id);
+		$this->db->where('id',$id);
 		return $this->db->get('teacher_pages')->row();
 	}
 	
-	function editPage()
+	function addPage()
 	{
-		$id = $this->session->userdata('id');
-		
-		$data = array (
+		$data = array( 
+			'teacher_id' => $this->session->userdata('id'),
+			'page_url' => $this->input->post('url'),
+			'page_title' => $this->input->post('title'),
 			'page_contents' => $this->input->post('contents')
 		);
 		
-		$this->db->where('teacher_id', $id);
-		$this->db->update('teacher');
+		$this->db->insert('teacher_pages', $data);
+		return true;
+	}
+	
+	function editPage($id)
+	{
+		$data = array( 
+			'teacher_id' => $this->session->userdata('id'),
+			'page_url' => $this->input->post('url'),
+			'page_title' => $this->input->post('title'),
+			'page_contents' => $this->input->post('contents')
+		);
+		
+		$this->db->where('id',$id);
+		$owner = $this->db->get('teacher_pages')->row()->teacher_id;
+		
+		if($owner == $this->session->userdata('id'))
+		{
+			$this->db->where('id', $id);
+			$this->db->update('teacher_pages', $data);
+		}
+	}
+	
+	function deletePage($id)
+	{
+		$this->db->where('id',$id);
+		$owner = $this->db->get('teacher_pages')->row()->teacher_id;
+		
+		if($owner == $this->session->userdata('id'))
+		{
+			$this->db->where('id',$id);
+			$this->db->delete('teacher_pages');
+		}
 	}
 }
 

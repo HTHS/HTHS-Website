@@ -46,7 +46,6 @@ $route['rss/(:any).xml'] = 'rss/feed/$1';
 
 // Teachers section routing
 $route['teachers'] = 'teachers';
-$route['teachers/dashboard/(:any)'] = 'teachers_dashboard/$1';
 $route['teachers/(:any)/page/(:any)'] = 'teachers/page/$1/$2';
 $route['teachers/(:any)/blog/view/(:num)'] = 'teachers/blog_entry/$1/$2';
 $route['teachers/(:any)/blog/page/(:num)'] = 'teachers/blog_home/$1/$2';

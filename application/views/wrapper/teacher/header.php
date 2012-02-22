@@ -28,7 +28,11 @@
 						<li><a href="<?=site_url()?>">Site Home</a></li>
 						<li><a href="">Dashboard</a></li>
 						<li><a href="<?=site_url('teacher_dashboard/about')?>">My Info</a></li>
-						<li><a href="<?=site_url('teacher_dashboard/page')?>">My Page</a>
+						<li><a href="<?=site_url('teacher_dashboard/pages')?>">My Pages</a>
+							<ul>
+								<li><a href="<?=site_url('teacher_dashboard/add_page')?>">Add Page</a></li>
+								<li><a href="<?=site_url('teacher_dashboard/pages')?>">Manage Pages</a></li>
+							</ul>
 						</li>
 						<li><a href="<?=site_url('teacher_dashboard/blog')?>">My Blog</a>
                         	<ul>

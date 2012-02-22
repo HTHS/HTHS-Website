@@ -91,13 +91,11 @@ class Pagesmod extends CI_Model {
 	
 	function addPage()
 	{
-		$filename = str_replace(' ','_',$this->input->post('title')).'.htm';
-		
 		$data = array( 
 			'last_updated' => time(),
 			'url' => $this->input->post('url'),
 			'title' => $this->input->post('title'),
-			'contents' => $this->input->post('contents'),
+			'contents' => $this->input->post('contents')
 		);
 		
 		$this->db->insert('pages', $data);
