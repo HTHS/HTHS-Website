@@ -27,7 +27,14 @@
 					<ul>
 						<li><a href="<?=site_url()?>">Site Home</a></li>
 						<li><a href="">Dashboard</a></li>
-						<li><a href="<?=site_url('teacher_dashboard/about')?>">My Info</a></li>
+						<li><a href="<?=site_url('teacher_dashboard/about')?>">My Info</a>
+							<? if($this->session->userdata('mentorship_admin')): ?>
+								<ul>
+									<li><a href="<?=site_url('teacher_dashboard/about')?>">Edit Info</a></li>
+									<li><a href="<?=site_url('teacher_dashboard/mentorship')?>">Mentorship</a></li>
+								</ul>
+							<? endif; ?>
+						</li>
 						<li><a href="<?=site_url('teacher_dashboard/pages')?>">My Pages</a>
 							<ul>
 								<li><a href="<?=site_url('teacher_dashboard/add_page')?>">Add Page</a></li>

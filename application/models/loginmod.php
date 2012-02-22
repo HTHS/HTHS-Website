@@ -48,7 +48,15 @@ class Loginmod extends CI_Model {
 	function addSession($table)
 	{
 		$user_id = $this->getUserId($table);
-		$this->session->set_userdata(array('login' => true, 'id' => $user_id, 'area' => $table, 'username' => $this->input->post('username')));
+		
+		if($table == 'teacher') {
+			$this->db->where('id', $user_id);
+			$mentorshipAdmin = $this->db->get($table)->row()->mentorship_admin == 1;
+		}
+		else
+			$mentorshipAdmin = false;
+			
+		$this->session->set_userdata(array('login' => true, 'id' => $user_id, 'area' => $table, 'username' => $this->input->post('username'), 'mentorship_admin' => $mentorshipAdmin));
 	}
 	
 	function checkLogin($table)
