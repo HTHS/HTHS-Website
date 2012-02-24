@@ -45,7 +45,7 @@
 								<td><input type="checkbox" name="mentorship" value="1" <?=set_checkbox('mentorship', '1', $teacher->mentorship_admin == 1)?> /></td>
 							</tr>
 							<tr>
-								<td colspan="2"><input type="submit" value="Edit Teacher" /> <input type="button" value="Reset Password" onclick="window.location.href = '<?=site_url('admin/reset_teacher_password/'.$teacher->id)?>'" /> <input type="button" value="Delete Teacher" onclick="window.location.href = '<?=site_url('admin/delete_teacher/'.$teacher->id)?>'" /> <input type="button" value="Cancel" id="cancel<?=$teacher->id?>" /></td>
+								<td colspan="2"><input type="submit" value="Save Changes" /> <input type="button" value="Reset Password" onclick="window.location.href = '<?=site_url('admin/reset_teacher_password/'.$teacher->id)?>'" /> <input type="button" value="Delete Teacher" onclick="window.location.href = '<?=site_url('admin/delete_teacher/'.$teacher->id)?>'" /> <input type="button" value="Cancel" id="cancel<?=$teacher->id?>" /></td>
 							</tr>
 						</table>
 					</form>

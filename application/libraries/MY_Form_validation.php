@@ -26,7 +26,7 @@
 		$this->CI =& get_instance();
 		
 		$this->_error_prefix = '<div class="error"><p>';
-		$this->_error_suffix = '</p></div><br />';
+		$this->_error_suffix = '</p></div>';
 	}
 	
 	/**

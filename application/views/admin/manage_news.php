@@ -35,7 +35,7 @@
 							<td><input type="checkbox" name="urgent" value="1" <?=set_checkbox('urgent', '1', $row->urgent)?> /></td>
 						</tr>
 						<tr>
-							<td colspan="2"><input type="submit" value="Edit News" /> <input type="button" value="Delete News" onclick="window.location.href = '<?=site_url('admin/delete_news/'.$row->id)?>'" /> <input type="button" id="cancel<?=$row->id?>" value="Cancel" /></td>
+							<td colspan="2"><input type="submit" value="Save Changes" /> <input type="button" value="Delete News" onclick="window.location.href = '<?=site_url('admin/delete_news/'.$row->id)?>'" /> <input type="button" id="cancel<?=$row->id?>" value="Cancel" /></td>
 						</tr>
 					</table>
 					</form>

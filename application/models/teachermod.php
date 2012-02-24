@@ -97,7 +97,7 @@ class Teachermod extends CI_Model {
         $this->db->from('teacher_pages');
         $this->db->where('teacher_id', $teacher_id);
         $query = $this->db->get();
-        return $query->result();
+        return $query;
     }
     
     function getPageId($teacher_id, $page_url) {

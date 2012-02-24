@@ -45,7 +45,7 @@ class Teacher_dashboard extends CI_Controller {
 			}
 		}
 		
-        display_output('teacher_dashboard/login', array(), array('section' => 'teacher'));
+        display_output('teacher_dashboard/login', array());
 	}
 	
 	public function check_password()
