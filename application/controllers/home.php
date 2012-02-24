@@ -17,41 +17,7 @@ class Home extends CI_Controller {
 	{
 		$data['news'] = $this->newsmod->getNews();
 		
-		display_output('home/index', $data);
-	}
-	
-	public function subscribe()
-	{
-		$this->load->view('wrapper/header');
-		$this->load->library('form_validation');
-				
-		if(count($_POST) > 0)
-		{
-			if($this->input->post('submit') == 'Subscribe') { 
-				$this->form_validation->set_rules('email_address', 'Email Address', 'trim|valid_email|required|is_unique[parent_emails.email_address]');
-				$this->form_validation->set_message('is_unique','The email address you entered is already subscribed.');
-				if($this->form_validation->run()) {
-					$this->emailmod->registerEmail();
-					$this->load->view('home/register_success');
-				}
-				else
-					$this->load->view('home/subscribe');
-			}
-			else if($this->input->post('submit') == 'Unsubscribe') {
-				$this->form_validation->set_rules('email_address', 'Email Address', 'trim|valid_email|required|is_not_unique[parent_emails.email_address]');
-				$this->form_validation->set_message('is_not_unique','The email address you entered is not currently subscribed.');
-				if($this->form_validation->run()) {
-					$this->emailmod->removeEmail();
-					$this->load->view('home/unregister_success');
-				}
-				else
-					$this->load->view('home/subscribe');
-			}
-		}
-		else
-			$this->load->view('home/subscribe');
-	
-		$this->load->view('wrapper/footer');
+		$this->output->display_output('home/index', $data);
 	}
 	
 	public function faculty()
@@ -70,7 +36,7 @@ class Home extends CI_Controller {
 		$data['cap'] = create_captcha($vals);
 		$this->captcha->addCaptcha($data['cap']);
 		
-		display_output('home/faculty',$data);
+		$this->output->display_output('home/faculty',$data);
 	}
 	
 	public function teacher_pages($id = 0)
@@ -81,7 +47,7 @@ class Home extends CI_Controller {
 		$data['page'] = $this->teachermod->getPage($id);
 		$data['teacher'] = $this->teachermod->getTeacherInfo($id);
 		
-		display_output('home/teacher_pages',$data);
+		$this->output->display_output('home/teacher_pages',$data);
 	}
 	
 	public function blogs($id = 0, $entryNum = 0)
@@ -102,7 +68,7 @@ class Home extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['page_links'] = $this->pagination->create_links();
 		
-		display_output('home/blogs',$data);
+		$this->output->display_output('home/blogs',$data);
 	}
 	
 	public function downloads()
@@ -111,12 +77,12 @@ class Home extends CI_Controller {
 		foreach($data['types']->result() as $type)
 			$data['forms'][$type->type] = $this->pagesmod->getFormList($type->id);
 	
-		display_output('home/downloads',$data);
+		$this->output->display_output('home/downloads',$data);
 	}
 	
 	public function search()
 	{
-		display_output('home/search');
+		$this->output->display_output('home/search');
 	}
 
 }

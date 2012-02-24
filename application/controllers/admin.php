@@ -29,7 +29,7 @@ class Admin extends CI_Controller {
 		foreach($settings as $setting)
 			$data['settings'][$setting['setting_name']] = $setting['setting_value'];
 		
-		display_output('admin/index', $data, array('section' => 'admin'));
+		$this->output->display_output('admin/index', $data, array('section' => 'admin'));
 	}
 	
 	public function login()
@@ -51,7 +51,7 @@ class Admin extends CI_Controller {
 			}
 		}
 		
-		display_output('admin/login');
+		$this->output->display_output('admin/login');
 	}
 	
 	public function check_password()
@@ -87,7 +87,7 @@ class Admin extends CI_Controller {
 			}
 		}
 		
-		display_output('admin/change_password', array(), array('section' => 'admin'));
+		$this->output->display_output('admin/change_password', array(), array('section' => 'admin'));
 	}
 	
 	public function add_admin()
@@ -124,7 +124,7 @@ The HTHS Web Team');
 			}
 		}
 		
-		display_output('admin/add_admin', array(), array('section' => 'admin'));
+		$this->output->display_output('admin/add_admin', array(), array('section' => 'admin'));
 	}
 	
 	public function admins()
@@ -134,7 +134,7 @@ The HTHS Web Team');
 			
 		$data['admins'] = $this->adminmod->getAdminList();
 		
-		display_output('admin/manage_admins', $data, array('section' => 'admin'));
+		$this->output->display_output('admin/manage_admins', $data, array('section' => 'admin'));
 	}
 
 	public function delete_admin($id)
@@ -182,7 +182,7 @@ The HTHS Web Team');
 			}
 		}
 		
-		display_output('admin/add_teacher', array(), array('section' => 'admin'));
+		$this->output->display_output('admin/add_teacher', array(), array('section' => 'admin'));
 	}
 	
 	public function teachers()
@@ -192,7 +192,7 @@ The HTHS Web Team');
 			
 		$data['teachers'] = $this->adminmod->getTeacherList();
 		
-		display_output('admin/manage_teachers', $data, array('section' => 'admin'));
+		$this->output->display_output('admin/manage_teachers', $data, array('section' => 'admin'));
 	}
 	
 	public function edit_teacher($id)
@@ -275,7 +275,7 @@ The HTHS Web Team');
 		}
 				
 		
-		display_output('admin/add_page', array(), array('section' => 'admin'));
+		$this->output->display_output('admin/add_page', array(), array('section' => 'admin'));
 	}
 	
 	public function pages()
@@ -285,7 +285,7 @@ The HTHS Web Team');
 		
 		$data['pages'] = $this->pagesmod->getPageList();
 		
-		display_output('admin/manage_pages', $data, array('section' => 'admin'));
+		$this->output->display_output('admin/manage_pages', $data, array('section' => 'admin'));
 	}
 	
 	public function edit_page($id)
@@ -308,7 +308,7 @@ The HTHS Web Team');
 
 		$data['page'] = $this->pagesmod->getPageById($id);
 		
-		display_output('admin/edit_page', $data, array('section' => 'admin'));
+		$this->output->display_output('admin/edit_page', $data, array('section' => 'admin'));
 	}
 	
 	public function delete_page($id)
@@ -368,7 +368,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 			}
 		}
 	
-		display_output('admin/add_news', array(), array('section' => 'admin'));
+		$this->output->display_output('admin/add_news', array(), array('section' => 'admin'));
 	}
 	
 	public function news()
@@ -379,7 +379,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		$this->load->helper('date');
 		$data['news'] = $this->newsmod->getNews(true, 0, true);
 		
-		display_output('admin/manage_news', $data, array('section' => 'admin'));
+		$this->output->display_output('admin/manage_news', $data, array('section' => 'admin'));
 	}
 	
 	public function edit_news($id)
@@ -402,7 +402,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 			}
 		}
 		
-		display_output('admin/edit_news', array(), array('section' => 'admin'));
+		$this->output->display_output('admin/edit_news', array(), array('section' => 'admin'));
 	}
 	
 	public function delete_news($id)
@@ -429,7 +429,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		foreach($settings as $setting)
 			$data['settings'][$setting['setting_name']] = $setting['setting_value'];
 		
-		display_output('admin/settings', $data, array('section' => 'admin'));
+		$this->output->display_output('admin/settings', $data, array('section' => 'admin'));
 	}
 	
 	public function download_categories()
@@ -447,7 +447,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		$data['unusedTypes'] = $this->pagesmod->listFormTypes(true,true);
 		$data['usedTypes'] = $this->pagesmod->listFormTypes();
 		
-		display_output('admin/download_categories', $data, array('section' => 'admin'));
+		$this->output->display_output('admin/download_categories', $data, array('section' => 'admin'));
 	}
 	
 	public function delete_category($id)
@@ -483,7 +483,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		foreach($data['types']->result() as $type)
 			$data['forms'][$type->type] = $this->pagesmod->getFormList($type->id, true);
 			
-		display_output('admin/downloads', $data, array('section' => 'admin'));
+		$this->output->display_output('admin/downloads', $data, array('section' => 'admin'));
 	}
 	
 	public function archive($id)

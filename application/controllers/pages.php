@@ -19,7 +19,7 @@ class Pages extends CI_Controller {
 			show_404();
 		}
 		
-		display_output('pages/index', $data);
+		$this->output->display_output('pages/index', $data);
 	}
 }
 

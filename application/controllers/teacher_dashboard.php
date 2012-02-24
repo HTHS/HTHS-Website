@@ -22,7 +22,7 @@ class Teacher_dashboard extends CI_Controller {
 		if(!$this->isLoggedIn)
 			redirect('teacher_dashboard/login');
 		
-		display_output('teacher_dashboard/index', array(), array('section' => 'teacher'));
+		$this->output->display_output('teacher_dashboard/index', array(), array('section' => 'teacher'));
 	}
     
 	public function login()
@@ -45,7 +45,7 @@ class Teacher_dashboard extends CI_Controller {
 			}
 		}
 		
-        display_output('teacher_dashboard/login', array());
+        $this->output->display_output('teacher_dashboard/login', array());
 	}
 	
 	public function check_password()
@@ -81,7 +81,7 @@ class Teacher_dashboard extends CI_Controller {
 			}
 		}
 		
-		display_output('teacher_dashboard/change_password', array(), array('section' => 'teacher'));
+		$this->output->display_output('teacher_dashboard/change_password', array(), array('section' => 'teacher'));
 	}
 	
 	public function add_page()
@@ -104,7 +104,7 @@ class Teacher_dashboard extends CI_Controller {
 		}
 				
 		
-		display_output('teacher_dashboard/add_page', array(), array('section' => 'teacher'));
+		$this->output->display_output('teacher_dashboard/add_page', array(), array('section' => 'teacher'));
 	}
 	
 	
@@ -115,7 +115,7 @@ class Teacher_dashboard extends CI_Controller {
 			
 		$data['pages'] = $this->teachermod->getPageList($this->session->userdata('id'));
 		
-		display_output('teacher_dashboard/manage_pages', $data, array('section' => 'teacher'));
+		$this->output->display_output('teacher_dashboard/manage_pages', $data, array('section' => 'teacher'));
 	}
 	
 	public function edit_page($id)
@@ -138,7 +138,7 @@ class Teacher_dashboard extends CI_Controller {
 
 		$data['page'] = $this->teachermod->getPageById($id);
 		
-		display_output('teacher_dashboard/edit_page', $data, array('section' => 'teacher'));
+		$this->output->display_output('teacher_dashboard/edit_page', $data, array('section' => 'teacher'));
 	}
 	
 	public function delete_page($id)
@@ -158,7 +158,7 @@ class Teacher_dashboard extends CI_Controller {
 		if(count($_POST) > 0)
 			$this->teachermod->addBlogEntry();
 
-        display_output('teacher/add_blog', null, array('section' => 'teacher'));
+        $this->output->display_output('teacher/add_blog', null, array('section' => 'teacher'));
 	}
 	
 	public function manage_blog()
@@ -168,7 +168,7 @@ class Teacher_dashboard extends CI_Controller {
 			
 		$data['entries'] = $this->teachermod->getBlogEntries($this->session->userdata('id'),0,0,true);
 		
-        display_output('teacher/manage_blog', $data, array('section' => 'teacher'));
+        $this->output->display_output('teacher/manage_blog', $data, array('section' => 'teacher'));
 	}
 	
 	public function edit_blog($id)
@@ -181,7 +181,7 @@ class Teacher_dashboard extends CI_Controller {
 
 		$data['entry'] = $this->teachermod->getBlogById($id);
 		
-        display_output('teacher/edit_blog', $data, array('section' => 'teacher'));
+        $this->output->display_output('teacher/edit_blog', $data, array('section' => 'teacher'));
 	}
 		
 
@@ -193,7 +193,7 @@ class Teacher_dashboard extends CI_Controller {
 		if(count($_POST) > 0)
 			$this->teachermod->deleteBlogEntry($id);
         
-        display_output('teacher/delete_blog', null, array('section' => 'teacher'));
+        $this->output->display_output('teacher/delete_blog', null, array('section' => 'teacher'));
 	}*/
     
 }

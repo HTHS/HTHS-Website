@@ -23,7 +23,7 @@ class Teachers extends CI_Controller {
         
 		$data['teachers'] = $this->teachermod->getTeacherList();
 		
-		display_output('teachers/index',$data);
+		$this->output->display_output('teachers/index',$data);
 	}
 	
     public function about($username) {
@@ -34,7 +34,7 @@ class Teachers extends CI_Controller {
         $data['entries'] = $this->teachermod->getBlogEntries($teacher_id, 5);
         $data['pages'] = $this->teachermod->getPageList($teacher_id);
         
-        display_output('teachers/about', $data);
+        $this->output->display_output('teachers/about', $data);
     }
     
     public function page($username, $page_url) {
@@ -54,7 +54,7 @@ class Teachers extends CI_Controller {
         $data['page'] = $this->teachermod->getPage($page_id);
         $data['teacher'] = $this->teachermod->getTeacherInfo($teacher_id);
         
-        display_output('teachers/pages', $data);
+        $this->output->display_output('teachers/pages', $data);
     }
     
     public function blog_home($username, $page = 1) {
@@ -80,7 +80,7 @@ class Teachers extends CI_Controller {
         $data['entries'] = $this->teachermod->getBlogEntries($teacher_id, $config['per_page'], (($page - 1) * $config['per_page']));
 		$data['teacher'] = $this->teachermod->getTeacherInfo($teacher_id);
 		
-		display_output('teachers/blog_home', $data);
+		$this->output->display_output('teachers/blog_home', $data);
     }
     
     public function blog_entry($username, $post_id) {
@@ -99,7 +99,7 @@ class Teachers extends CI_Controller {
             show_404();
         }
         
-        display_output('teachers/blog_entry', $data);
+        $this->output->display_output('teachers/blog_entry', $data);
     }
 
 }

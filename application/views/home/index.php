@@ -16,7 +16,7 @@
 							<table>
 								<tr>
 									<td><img height="16" width="20" src="<?=site_url('images/icons/plus.gif')?>" /></td>
-									<td><a href="<?=site_url('home/subscribe')?>" />Subscribe to News Feed</a></td>
+									<td><a href="<?=site_url('news/subscribe')?>" />Subscribe to News Feed</a></td>
 								</tr>
                                 <tr>
                                 	<td><img src="<?=site_url('images/icons/facebook.gif')?>" /></td>

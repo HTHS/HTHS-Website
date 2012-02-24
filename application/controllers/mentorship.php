@@ -48,9 +48,7 @@ class Mentorship extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['pageLinks'] = $this->pagination->create_links();
 		
-		$this->load->view('wrapper/header');
-		$this->load->view('mentorship/index',$data);
-		$this->load->view('wrapper/footer');
+		$this->output->display_output('mentorship/index', $data);
 	}
 	
 	public function edit($id)
@@ -70,9 +68,7 @@ class Mentorship extends CI_Controller {
 		
 		$data['entry'] = $this->mentorshipmod->getEntryById($id);
 		
-		$this->load->view('wrapper/header');
-		$this->load->view('mentorship/edit',$data);
-		$this->load->view('wrapper/footer');
+		$this->output->display_output('mentorship/edit', $data);
 	}
 	
 	public function delete($id)
@@ -89,7 +85,6 @@ class Mentorship extends CI_Controller {
 		if($this->isLoggedIn)
 			redirect('mentorship');
 			
-		$this->load->view('wrapper/header');
 		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0)
@@ -102,13 +97,9 @@ class Mentorship extends CI_Controller {
 				$this->loginmod->addSession('mentorship_users');
 				redirect('mentorship');
 			}
-			else
-				$this->load->view('mentorship/login');
 		}
-		else
-			$this->load->view('mentorship/login');
-			
-		$this->load->view('wrapper/footer');
+		
+		$this->output->display_output('mentorship/login', $data);
 	}
 	
 	public function logout()
@@ -125,7 +116,6 @@ class Mentorship extends CI_Controller {
 		if(!$this->isLoggedIn)
 			redirect('mentorship/login');
 		
-		$this->load->view('wrapper/header');
 		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0)
@@ -138,13 +128,9 @@ class Mentorship extends CI_Controller {
 				$this->loginmod->changePassword('mentorship_users');
 				redirect('mentorship');
 			}
-			else
-				$this->load->view('mentorship/change_password');
 		}
-		else
-			$this->load->view('mentorship/change_password');
 		
-		$this->load->view('wrapper/footer');
+		$this->output->display_output('mentorship/change_password');
 	}
 	
 	public function view($id = 0, $key = 0, $offset = 0)
@@ -168,9 +154,7 @@ class Mentorship extends CI_Controller {
 		$this->pagination->initialize($config);
 		$data['pageLinks'] = $this->pagination->create_links();
 		
-		$this->load->view('wrapper/header');
-		$this->load->view('mentorship/view',$data);
-		$this->load->view('wrapper/footer');
+		$this->output->display_output('mentorship/view', $data);
 	}
 	
 	public function check_password()
