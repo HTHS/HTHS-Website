@@ -3,7 +3,7 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
 
 class Rss extends CI_Controller {
     
-    public function feed($category, $num_of_items = 10) {
+    public function feed($category = 'news', $num_of_items = 10) {
         if ($category == 'news') {
             $this->load->model('newsmod');
             
@@ -33,6 +33,8 @@ class Rss extends CI_Controller {
         
         header('Content-Type: application/rss+xml');
         $this->load->view('rss/feed', $data);
+		
+		$this->output->enable_profiler(false);
     }
     
 }

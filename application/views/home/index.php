@@ -32,7 +32,7 @@
                     
                     <div id="content_left_right">
 						<div id="news" class="fancybox">
-							<h2 class="fancytitle">News</h2>
+							<h2 class="fancytitle">News <a href="<?=site_url('rss/feed/news')?>"><img src="<?=site_url('images/icons/rss.png')?>" alt="RSS Feed" /></a></h2>
 							<?php
                             $this->load->helper('news_formatter');
                             foreach($news as $newsItem) {
