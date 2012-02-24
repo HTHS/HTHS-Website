@@ -19,7 +19,7 @@
 						<td>Confirm New Password:</td>
 						<td><input type="password" name="confirm" /></td>
 					<tr>
-						<td colspan="2"><input type="submit" value="Change Password" /> <input type="button" value="Cancel" onclick="window.location.href = '<?=site_url('teacher_dashboard')?>'" /></td>
+						<td colspan="2"><input type="submit" value="Change Password" /> <input type="button" value="Cancel" onclick="window.location.href = '<?=site_url('teachers/dashboard')?>'" /></td>
 					</tr>
 				</table>
 	        </form>

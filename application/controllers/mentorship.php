@@ -99,7 +99,7 @@ class Mentorship extends CI_Controller {
 			}
 		}
 		
-		$this->output->display_output('mentorship/login', $data);
+		$this->output->display_output('mentorship/login');
 	}
 	
 	public function logout()

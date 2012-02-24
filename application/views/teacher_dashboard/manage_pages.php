@@ -8,7 +8,7 @@
 				<li><a href="" id="page<?=$page->id?>"><?=$page->page_title?></a></li>
 				<div id="pageOptions<?=$page->id?>" style="display:none;">
 					Link: <input type="text" size="50" value="<?=site_url('teachers/'.$this->session->userdata('username').'/page/'.$page->page_url)?>" /><br />
-					<input type="button" value="Edit Page" onclick="window.location.href = '<?=site_url('teacher_dashboard/edit_page/'.$page->id)?>'" /> <input type="button" value="Delete Page" onclick="confirm<?=$page->id?>();" />
+					<input type="button" value="Edit Page" onclick="window.location.href = '<?=site_url('teachers/dashboard/edit_page/'.$page->id)?>'" /> <input type="button" value="Delete Page" onclick="confirm<?=$page->id?>();" />
 				</div>
 			<? endforeach; ?>
 			</ul>
@@ -26,7 +26,7 @@
 		function confirm<?=$page->id?>() {
 			var c = confirm("Are you sure that you want to delete this page? All data on the page will be lost!");
 			if(c)
-				window.location.href = '<?=site_url("teacher_dashboard/delete_page/".$page->id)?>';
+				window.location.href = '<?=site_url("teachers/dashboard/delete_page/".$page->id)?>';
 		}
 	<? endforeach; ?>
 </script>

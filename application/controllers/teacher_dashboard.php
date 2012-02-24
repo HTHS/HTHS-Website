@@ -20,7 +20,7 @@ class Teacher_dashboard extends CI_Controller {
 	public function index()
 	{
 		if(!$this->isLoggedIn)
-			redirect('teacher_dashboard/login');
+			redirect('teachers/dashboard/login');
 		
 		$this->output->display_output('teacher_dashboard/index', array(), array('section' => 'teacher'));
 	}
@@ -28,7 +28,7 @@ class Teacher_dashboard extends CI_Controller {
 	public function login()
 	{
 		if ($this->isLoggedIn) {
-            redirect('teacher_dashboard');
+            redirect('teachers/dashboard');
         }
 		
 		$this->load->library('form_validation');
@@ -41,7 +41,7 @@ class Teacher_dashboard extends CI_Controller {
 			$this->form_validation->set_message('check_password','Your password was incorrect.');
 			if($this->form_validation->run()) {
 				$this->loginmod->addSession('teacher');
-				redirect('teacher_dashboard');
+				redirect('teachers/dashboard');
 			}
 		}
 		
@@ -56,7 +56,7 @@ class Teacher_dashboard extends CI_Controller {
 	public function logout()
 	{
 		if(!$this->isLoggedIn)
-			redirect('teacher_dashboard/login');
+			redirect('teachers/dashboard/login');
 		
 		$this->session->sess_destroy();       
 		redirect();
@@ -65,7 +65,7 @@ class Teacher_dashboard extends CI_Controller {
 	public function change_password()
 	{
 		if(!$this->isLoggedIn)
-			redirect('teacher_dashboard/login');
+			redirect('teachers/dashboard/login');
 
 		$this->load->library('form_validation');
 		
@@ -87,7 +87,7 @@ class Teacher_dashboard extends CI_Controller {
 	public function add_page()
 	{
 		if(!$this->isLoggedIn)
-			redirect('teacher_dashboard/login');
+			redirect('teachers/dashboard/login');
 			
 		$this->load->library('form_validation');
 		
@@ -99,7 +99,7 @@ class Teacher_dashboard extends CI_Controller {
 		if(count($_POST) > 0) {
 			if($this->form_validation->run()) {
 				$this->teachermod->addPage();
-				redirect('teacher_dashboard/pages');
+				redirect('teachers/dashboard/pages');
 			}
 		}
 				
@@ -111,7 +111,7 @@ class Teacher_dashboard extends CI_Controller {
 	public function pages()
 	{
 		if(!$this->isLoggedIn)
-			redirect('teacher_dashboard/login');
+			redirect('teachers/dashboard/login');
 			
 		$data['pages'] = $this->teachermod->getPageList($this->session->userdata('id'));
 		
@@ -121,7 +121,7 @@ class Teacher_dashboard extends CI_Controller {
 	public function edit_page($id)
 	{
 		if(!$this->isLoggedIn)
-			redirect('teacher_dashboard/login');
+			redirect('teachers/dashboard/login');
 		
 		$this->load->library('form_validation');
 		
@@ -132,7 +132,7 @@ class Teacher_dashboard extends CI_Controller {
 		if(count($_POST) > 0) {
 			if($this->form_validation->run()) {
 				$this->teachermod->editPage($id);
-				redirect('teacher_dashboard/pages');
+				redirect('teachers/dashboard/pages');
 			}
 		}
 
@@ -144,10 +144,10 @@ class Teacher_dashboard extends CI_Controller {
 	public function delete_page($id)
 	{
 		if(!$this->isLoggedIn)
-			redirect('teacher_dashboard/login');
+			redirect('teachers/dashboard/login');
 			
 		$this->teachermod->deletePage($id);
-		redirect('teacher_dashboard/pages');
+		redirect('teachers/dashboard/pages');
 	}
 	
 	/*public function add_blog_entry()

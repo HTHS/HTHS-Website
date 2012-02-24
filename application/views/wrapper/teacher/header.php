@@ -27,30 +27,30 @@
 				<div id="navbar">
 					<ul>
 						<li><a href="<?=site_url()?>">Site Home</a></li>
-						<li><a href="<?=site_url('teacher_dashboard')?>">Dashboard</a></li>
-						<li><a href="<?=site_url('teacher_dashboard/about')?>">My Info</a>
+						<li><a href="<?=site_url('teachers/dashboard')?>">Dashboard</a></li>
+						<li><a href="<?=site_url('teachers/dashboard/about')?>">My Info</a>
 							<? if($this->session->userdata('mentorship_admin')): ?>
 								<ul>
-									<li><a href="<?=site_url('teacher_dashboard/about')?>">Edit Info</a></li>
-									<li><a href="<?=site_url('teacher_dashboard/mentorship')?>">Mentorship</a></li>
+									<li><a href="<?=site_url('teachers/dashboard/about')?>">Edit Info</a></li>
+									<li><a href="<?=site_url('teachers/dashboard/mentorship')?>">Mentorship</a></li>
 								</ul>
 							<? endif; ?>
 						</li>
-						<li><a href="<?=site_url('teacher_dashboard/pages')?>">My Pages</a>
+						<li><a href="<?=site_url('teachers/dashboard/pages')?>">My Pages</a>
 							<ul>
-								<li><a href="<?=site_url('teacher_dashboard/add_page')?>">Add Page</a></li>
-								<li><a href="<?=site_url('teacher_dashboard/pages')?>">Manage Pages</a></li>
+								<li><a href="<?=site_url('teachers/dashboard/add_page')?>">Add Page</a></li>
+								<li><a href="<?=site_url('teachers/dashboard/pages')?>">Manage Pages</a></li>
 							</ul>
 						</li>
-						<li><a href="<?=site_url('teacher_dashboard/blog')?>">My Blog</a>
+						<li><a href="<?=site_url('teachers/dashboard/blog')?>">My Blog</a>
                         	<ul>
-                                <li><a href="<?=site_url('teacher_dashboard/add_blog')?>">Add Blog Entry</a></li>
-                                <li><a href="<?=site_url('teacher_dashboard/blog')?>">Manage Blog</a></li>
+                                <li><a href="<?=site_url('teachers/dashboard/add_blog')?>">Add Blog Entry</a></li>
+                                <li><a href="<?=site_url('teachers/dashboard/blog')?>">Manage Blog</a></li>
                             </ul>
                         </li>
 						<li><a href="">Placeholder</a></li>
-						<li><a href="<?=site_url('teacher_dashboard/change_password')?>">Password</a></li>
-                        <li><a href="<?=site_url('teacher_dashboard/logout')?>">Logout</a></li>
+						<li><a href="<?=site_url('teachers/dashboard/change_password')?>">Password</a></li>
+                        <li><a href="<?=site_url('teachers/dashboard/logout')?>">Logout</a></li>
 					</ul>
 				</div>
 			</div>
