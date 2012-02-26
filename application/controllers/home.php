@@ -71,15 +71,6 @@ class Home extends CI_Controller {
 		$this->output->display_output('home/blogs',$data);
 	}
 	
-	public function downloads()
-	{
-		$data['types'] = $this->pagesmod->listFormTypes();
-		foreach($data['types'] as $type)
-			$data['forms'][$type->type] = $this->pagesmod->getFormList($type->id);
-	
-		$this->output->display_output('home/downloads',$data);
-	}
-	
 	public function search()
 	{
 		$this->output->display_output('home/search');
