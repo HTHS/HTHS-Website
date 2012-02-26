@@ -57,12 +57,34 @@ class Pagesmod extends CI_Model {
 			'filename' => $filename,
 			'time' => time(),
 			'archived' => 0,
-			'type' => $this->input->post('type')
+			'type' => $this->input->post('type'),
+			'download_count' => 0,
+			'filesize' => get_file_info('./' . $this->config->item('downloads_directory') . '/' . $filename, 'size')
 		);
 		
 		$this->db->insert('forms', $data);
 	}
 	
+	function incrementFormDownloadCount($filename) {
+		$this->db->from('forms');
+		$this->db->where('filename', $filename);
+		
+		$query = $this->db->get();
+		if ($query->num_rows() != 1) {
+			return false;
+		}
+		
+		$download_count = $query->row()->download_count;
+		
+		$download_count = $download_count + 1;
+		
+		$data = array('download_count' => $download_count);
+		$this->db->where('filename', $filename);
+		$this->db->update('forms', $data);
+		
+		return true;
+	}
+		
 	function archive($add, $id)
 	{
 		if($add) $data = array ('archived' => 1);

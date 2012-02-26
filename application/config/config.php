@@ -378,6 +378,8 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/* Custom configuration settings */
+$config['downloads_directory'] = 'downloads_files';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

@@ -467,7 +467,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0) {
-			$config['upload_path'] = 'downloads/';
+			$config['upload_path'] = $this->config->item('downloads_directory') . '/';
 			$config['allowed_types'] = 'doc|docx|xls|xlsx|ppt|pptx|pdf';
 			$this->load->library('upload',$config);
 			$this->form_validation->set_rules('name', 'Name', 'trim|required');
