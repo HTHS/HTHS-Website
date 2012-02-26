@@ -22,24 +22,26 @@ var menueditor = {
 	},
 	load_data: function(data) {
 		var this_class = this;
-		for item in data {
+		for (var i=0; i<data.length; i++) {
+			var item = data[i];
 			var item_element = this_class.add_item();
-			for link in item {
+			for (var j=0; j<item.length; j++) {
+				var link = item[j];
 				var link_element = this_class.add_link(item_element);
-				$(link_element).find('menueditor_item_link_title').value(link.title);
-				$(link_element).find('menueditor_item_link_url').value(link.url);
+				$(link_element).find('.menueditor_item_link_title').first().val(link.title);
+				$(link_element).find('.menueditor_item_link_url').first().val(link.url);
 			}
 		}
 	},
 	save_data: function() {
 		var this_class = this;
 		var data = new Array();
-		$('.menueditor_item').each(function() {
+		$('#menueditor .menueditor_item').each(function() {
 			var data_item = new Array();
 			$(this).find('.menueditor_item_link').each(function() {
 				var data_link = new Object();
-				data_link.title = $(this).find('menueditor_item_link_title').value();
-				data_link.url = $(this).find('menueditor_item_link_url').value();
+				data_link.title = $(this).find('.menueditor_item_link_title').val();
+				data_link.url = $(this).find('.menueditor_item_link_url').val();
 				data_item.push(data_link);
 			});
 			data.push(data_item);
@@ -49,7 +51,42 @@ var menueditor = {
 }
 
 $(function() {
-	//var menu = <?=$menu?>;
+	// Populate the menu upon page load. 
+	$.getJSON('<?=site_url('admin/edit_menu/get')?>', function(data) {
+		menueditor.load_data(data);
+		$('#menueditor_loading').hide();
+	});
+	
+	// Register click handlers for the add/remove buttons. 
+	$('#menueditor_additem > .menueditor_button').click(function() {
+		menueditor.add_item();
+		return false;
+	});
+	$('#menueditor').on('click', '.menueditor_item_remove > .menueditor_button', function() {
+		var item = $(this).parents('.menueditor_item');
+		menueditor.remove_item(item);
+		return false;
+	});
+	$('#menueditor').on('click', '.menueditor_item_addlink > .menueditor_button', function() {
+		var item = $(this).parents('.menueditor_item');
+		menueditor.add_link(item);
+		return false;
+	});
+	$('#menueditor').on('click', '.menueditor_item_link_remove > .menueditor_button', function() {
+		var link = $(this).parents('.menueditor_item_link');
+		menueditor.remove_link(link);
+		return false;
+	});
+	
+	// Register click handler for the submit button. 
+	// Save the menu when the submit button is clicked. 
+	$('#menueditor_submit > .menueditor_button').click(function() {
+		var data = {'menu': menueditor.save_data()};
+		$.post('<?=site_url('admin/edit_menu/save')?>', data, function(info) {
+			alert(info);
+		});
+		return false;
+	});
 });
 </script>
 
@@ -152,6 +189,7 @@ $(function() {
 			<input class="menueditor_item_link_title"></input>&nbsp;-&gt;&nbsp;<input class="menueditor_item_link_url"></input>
 		</div>
 	</div>
+	<div id="menueditor_loading">Loading menu data...</div>
 	<div id="menueditor">
 		<div id="menueditor_additem">
 			<a class="menueditor_button" href="#">+</a> Add Menu Item

@@ -513,14 +513,19 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		redirect('admin/downloads');
 	}
 	
-	public function edit_menu() {
+	public function edit_menu($command = 'editor') {
 		$this->load->library('menu');
-		if (!defined($_POST['menu'])) {
-			$data['menu'] = $this->menu->get_menu_data(true);
-			$this->output->display_output('admin/edit_menu', $data, array('section' => 'admin'));
-		} else {
+		if ($command == 'get') {
+			$data['text'] = $this->menu->get_menu_data(true);
+			$this->output->enable_profiler(false);
+			$this->load->view('raw_text', $data);
+		} else if ($command == 'save') {
 			$this->menu->save_menu_data($_POST['menu'], true);
-			redirect('admin/edit_menu');
+			$data['text'] = 'Saved successfuly.';
+			$this->output->enable_profiler(false);
+			$this->load->view('raw_text', $data);
+		} else {
+			$this->output->display_output('admin/edit_menu', null, array('section' => 'admin'));
 		}
 	} 
 }
