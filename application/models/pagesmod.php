@@ -31,6 +31,7 @@ class Pagesmod extends CI_Model {
 				$this->db->join('forms', 'forms.type != form_types.id', 'inner');
 		}
 		$this->db->order_by('type', 'asc');
+		$this->db->group_by('form_types.id');
 		return $this->db->get('form_types')->result();
 	}
 	
