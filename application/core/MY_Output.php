@@ -37,7 +37,7 @@
 	 * @param	headers
 	 * @return	none
 	 */
-	public function display_output($view, $data = null, $options = array()) 
+	public function display_output($view, $data = array(), $options = array()) 
 	{
 		$CI =& get_instance();
 		
@@ -59,7 +59,10 @@
 				$templatedir = 'wrapper/' . $options['section'];
 			}
 			
-			$CI->load->view($templatedir  . '/header');
+			$CI->load->library('menu');
+			$headerdata['menu'] = $CI->menu->render();
+			
+			$CI->load->view($templatedir  . '/header', $headerdata);
 			$CI->load->view($view, $data);
 			$CI->load->view($templatedir  . '/footer');
 		}

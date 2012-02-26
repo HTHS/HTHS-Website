@@ -27,19 +27,27 @@ class Menu {
         $CI->db->where('setting_name', 'menu');
         $CI->db->update('site_settings', $data);
     }
+	
+	private function generate_url($url) {
+		if (substr($url, 0, 4) == "http") {
+			return $url;
+		} else {
+			return site_url($url);
+		}
+	}
     
     public function render() {		
-        $menu = get_menu_data();
+        $menu = $this->get_menu_data();
         $output = '<ul>';
         
         foreach ($menu as $column) { // Loop through all the columns in the $menu array
-            $output .= '<li><a href="' . $column[0]['url'] . '">' . $column[0]['title'] . '</a>'; // Make the first item in the column a button on the navbar
+            $output .= '<li><a href="' . $this->generate_url($column[0]->url) . '">' . $column[0]->title . '</a>'; // Make the first item in the column a button on the navbar
             
             if (count($column) > 1) { // If there's more than one item in the column, then add the rest as a dropdown menu
                 $output .= '<ul>';
                 
-                for ($i=1; $i<count(column); $i++) {
-                    $output .= '<li><a href="' . $column[$i]['url'] . '">' . $column[$i]['title'] . '</a></li>';
+                for ($i=1; $i<count($column); $i++) {
+                    $output .= '<li><a href="' . $this->generate_url($column[$i]->url) . '">' . $column[$i]->title . '</a></li>';
                 }
                 
                 $output .= '</ul>';
