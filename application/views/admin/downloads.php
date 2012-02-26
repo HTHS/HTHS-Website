@@ -11,10 +11,10 @@
 			<? endif; ?>
 			<p>Click the name of a form below to see the options for that form. To upload a form, use the tool at the bottom of the page.</p>
 			<br />
-			<? foreach($types->result() as $type): ?>
+			<? foreach($types as $type): ?>
 				<h3><?=$type->type?></h3>
 				<ul>
-					<? foreach($forms[$type->type]->result() as $form): 
+					<? foreach($forms[$type->type] as $form): 
 						($form->archived == 1) ? $archived = '<input type="button" value="Unarchive Form" onclick="window.location.href = \''.site_url('admin/unarchive/'.$form->id).'\'" />' : $archived = '<input type="button" value="Archive Form" onclick="window.location.href = \''.site_url('admin/archive/'.$form->id).'\'" />'; 
 						($form->archived == 1) ? $style = '<del>' : $style = '';
 						($form->archived == 1) ? $style2 = '</del>' : $style2 = ''; ?>
@@ -47,7 +47,7 @@
 				<tr>
 					<td>Category :</td>
 					<td><select name="type">
-						<? foreach($types->result() as $type): ?>
+						<? foreach($types as $type): ?>
 							<option value="<?=$type->id?>" <?=set_select('type', $type->id)?>><?=$type->type?></option>
 						<? endforeach; ?>
 					</select></td>

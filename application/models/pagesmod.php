@@ -16,7 +16,7 @@ class Pagesmod extends CI_Model {
 		if(!$includeArchived)
 			$this->db->where('archived', '0');
 		$this->db->order_by('name', 'asc');
-		return $this->db->get('forms');
+		return $this->db->get('forms')->result();
 	}
 	
 	function listFormTypes($includeUnused = false, $includeUnusedOnly = false)
@@ -31,7 +31,7 @@ class Pagesmod extends CI_Model {
 				$this->db->join('forms', 'forms.type != form_types.id', 'inner');
 		}
 		$this->db->order_by('type', 'asc');
-		return $this->db->get('form_types');
+		return $this->db->get('form_types')->result();
 	}
 	
 	function addCategory()

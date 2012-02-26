@@ -7,14 +7,14 @@
 			<br />
 			<p><b>Categories Not in Use</b></p>
 			<ul>
-				<? foreach($unusedTypes->result() as $type): ?>
+				<? foreach($unusedTypes as $type): ?>
 					<li><a href="<?=site_url('admin/delete_category/'.$type->id)?>"><?=$type->type?></a></li>
 				<? endforeach; ?>
 			</ul>
 	        <br />
 			<p><b>Categories in Use</b></p>
 			<ul>
-				<? foreach($usedTypes->result() as $type): ?>
+				<? foreach($usedTypes as $type): ?>
 					<li><?=$type->type?></li>
 				<? endforeach; ?>
 			</ul>

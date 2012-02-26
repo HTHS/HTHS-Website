@@ -74,7 +74,7 @@ class Home extends CI_Controller {
 	public function downloads()
 	{
 		$data['types'] = $this->pagesmod->listFormTypes();
-		foreach($data['types']->result() as $type)
+		foreach($data['types'] as $type)
 			$data['forms'][$type->type] = $this->pagesmod->getFormList($type->id);
 	
 		$this->output->display_output('home/downloads',$data);

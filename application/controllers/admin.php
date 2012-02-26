@@ -480,7 +480,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 			}
 		}
 		$data['types'] = $this->pagesmod->listFormTypes(true);
-		foreach($data['types']->result() as $type)
+		foreach($data['types'] as $type)
 			$data['forms'][$type->type] = $this->pagesmod->getFormList($type->id, true);
 			
 		$this->output->display_output('admin/downloads', $data, array('section' => 'admin'));
