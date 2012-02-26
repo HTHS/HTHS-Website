@@ -514,6 +514,9 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 	}
 	
 	public function edit_menu($command = 'editor') {
+		if(!$this->isLoggedIn)
+			redirect('admin/login');
+		
 		$this->load->library('menu');
 		if ($command == 'get') {
 			$data['text'] = $this->menu->get_menu_data(true);
