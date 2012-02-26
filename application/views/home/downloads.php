@@ -90,6 +90,11 @@
 				$search = array(' ', "'", '"');
 				return 'category_' . strtolower(str_replace($search, '_', $type));
 			}
+			function format_filesize($filesize) {
+				$units = array('bytes', 'KB', 'MB', 'GB');
+				$power = floor(log($filesize, 1024));
+				return round($filesize / pow(1024, $power)) . ' ' . $units[$power];
+			}
 			?>
 			<div id="downloads_wrapper">
 				<div id="downloads_sorter" class="downloads_sorter_floating">
@@ -111,8 +116,8 @@
 								</div>
 								<div class="downloads_type_item_info">
 									<span class="downloads_type_item_title"><?=$form->name?></span>
-									<span class="downloads_type_item_size">10 MB</span>
-									<span class="downloads_type_item_downloadcount">1,234 downloads</span>
+									<span class="downloads_type_item_size"><?=format_filesize($form->filesize)?></span>
+									<span class="downloads_type_item_downloadcount"><?=number_format($form->download_count)?> downloads</span>
 									<span class="downloads_type_item_date"><?=date('M n, Y', $form->time)?></span>
 								</div>
 							</a>
