@@ -173,6 +173,8 @@ $(function() {
 }
 </style>
 
+<div id="content_left">
+<div id="content_left_above">
 <div class="fancybox">
 	<h2 class="fancytitle">Menu Editor</h2>
 	<div id="menueditor_primitives">
@@ -196,4 +198,6 @@ $(function() {
 		</div>
 	</div>
 	<div id="menueditor_submit"><a class="menueditor_button" href="#">Save Menu</a></div>
+</div>
+</div>
 </div>

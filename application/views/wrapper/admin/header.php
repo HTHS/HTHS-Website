@@ -57,6 +57,7 @@
 								<li><a href="<?=site_url('admin/settings')?>">Manage Settings</a></li>
 								<li><a href="<?=site_url('admin/download_categories')?>">Manage Download Categories</a></li>
 								<li><a href="<?=site_url('admin/downloads')?>">Manage Downloads</a></li>
+								<li><a href="<?=site_url('admin/edit_menu')?>">Edit Site Menu</a></li>
 							</ul>
 						</li>
                         <li><a href="<?=site_url('admin/logout')?>">Logout</a></li>
