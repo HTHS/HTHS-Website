@@ -51,7 +51,8 @@
 				padding-left: 0; 
 			}
 			ul.downloads_type_itemwrapper li {
-				margin: 15px 0 15px 15px;
+				margin: 15px 25px 15px 15px;
+				overflow: auto;
 			}
 			.downloads_type_item_icon {
 				float: left;
@@ -60,7 +61,6 @@
 				font-size: 11pt;
 				margin-left: 35px;
 				padding-top: 3px;
-				overflow: auto;
 			}
 			.downloads_type_item_title {
 				float: left;
