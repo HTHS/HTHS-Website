@@ -95,6 +95,19 @@
 				$power = floor(log($filesize, 1024));
 				return round($filesize / pow(1024, $power)) . ' ' . $units[$power];
 			}
+			
+			$this->load->helper('file');
+			$CI = $this;
+			function get_icon($filename) {
+				global $CI;
+				$mime_type = get_mime_by_extension($filename);
+				$mime_type = str_replace('/', '-', $mime_type);
+				if (file_exists(FCPATH . 'images/icons/faenza/mimetypes/24/' . $mime_type . '.png')) {
+					return site_url('images/icons/faenza/mimetypes/24/' . $mime_type . '.png');
+				} else {
+					return site_url('images/icons/faenza/mimetypes/24/empty.png');
+				}
+			}
 			?>
 			<div id="downloads_wrapper">
 				<div id="downloads_sorter" class="downloads_sorter_floating">
@@ -112,7 +125,7 @@
 						<li>
 							<a class="downloads_type_item" href="<?=site_url('downloads/' . $form->filename)?>">
 								<div class="downloads_type_item_icon">
-									<img src="" width="24" height="24"></img>
+									<img src="<?=get_icon($form->filename)?>" width="24" height="24"></img>
 								</div>
 								<div class="downloads_type_item_info">
 									<span class="downloads_type_item_title"><?=$form->name?></span>
