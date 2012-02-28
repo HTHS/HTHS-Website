@@ -84,7 +84,7 @@
 							<div class="teacherbox_links">
 								<a class="teacherbox_link" href="<?=site_url('teachers/' . $teacher->username . '/')?>">About</a>
 								<a class="teacherbox_link teacherbox_link_left" href="<?=site_url('teachers/' . $teacher->username . '/blog')?>">Blog</a>
-								<a class="teacherbox_link teacherbox_link_right" href="<?=site_url('teachers/' . $teacher->username . '/pages')?>">Pages</a>
+								<a class="teacherbox_link teacherbox_link_right" href="<?=site_url('teachers/' . $teacher->username . '/#pages')?>">Pages</a>
 								<a class="teacherbox_link" href="<?=site_url('teachers/' . $teacher->username . '/contact')?>">Contact</a>
 							</div>
 						</div>
