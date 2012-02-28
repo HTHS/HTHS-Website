@@ -28,9 +28,7 @@ class News extends CI_Controller {
 		$data['posts'] = $this->newsmod->getNews(5, (($page - 1) * $config['per_page']));
 		$data['pageLinks'] = $this->pagination->create_links();
 		
-		$this->load->view('wrapper/header');
-		$this->load->view('news/archive',$data);
-		$this->load->view('wrapper/footer');
+		$this->output->display_output('news/archive', $data);
 	}
     
     public function view($id = null)
@@ -41,9 +39,7 @@ class News extends CI_Controller {
         
         $data['item'] = $this->newsmod->getNewsItem($id);
         
-        $this->load->view('wrapper/header');
-        $this->load->view('news/view', $data);
-        $this->load->view('wrapper/footer');
+        $this->output->display_output('news/view', $data);
     }
     
     public function subscribe()
