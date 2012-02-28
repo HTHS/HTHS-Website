@@ -69,7 +69,7 @@ class Newsmod extends CI_Model {
 			'title' => $this->input->post('title'),
 			'contents' => $this->input->post('contents'),
 			'start' => friendly_to_unix($this->input->post('start')),
-			'expires' => $this->input->post('expires'),
+			'expires' => $expires,
 			'urgent' => $this->input->post('urgent')
 		);
 		
