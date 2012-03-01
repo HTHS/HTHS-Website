@@ -1,5 +1,10 @@
 <div id="content_left">
 	<div id="content_left_above">
+		<? if($user->site_visit > time()): ?>
+			<div class="fancybox">
+				<b>You have an upcoming site visit on <?=date('F j, Y', $user->site_visit)?>.</b>
+			</div>
+		<? endif; ?>
 		<div class="fancybox">
 			<h2 class="fancytitle black">Add a Log Entry</h2>
 			<?=validation_errors()?>

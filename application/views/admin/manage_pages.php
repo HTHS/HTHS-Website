@@ -6,7 +6,7 @@
 			<ul>
 			<? foreach($pages->result() as $page): ?>
 				<li><a href="" id="page<?=$page->id?>"><?=$page->title?></a></li>
-				<div id="pageOptions<?=$page->id?>" style="display:none;">
+				<div id="pageOptions<?=$page->id?>" style="display:none;" class="fancybox">
 					Link: <input type="text" size="50" value="<?=site_url('pages/'.$page->url)?>" /><br />
 					<input type="button" value="Edit Page" onclick="window.location.href = '<?=site_url('admin/edit_page/'.$page->id)?>'" /> <input type="button" value="Delete Page" onclick="confirm<?=$page->id?>();" />
 				</div>

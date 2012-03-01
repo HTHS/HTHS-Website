@@ -352,17 +352,17 @@ This email was sent automatically from the High Technology High School Website.
 
 To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 				
+					$emails = array();
 					foreach($emailList->result() as $email)
-					{
-						$this->email->clear();
+						$emails[] = $email->email_address;
 						
-						$this->email->to($email->email_address);
-						$this->email->from('noreply@hths.mcvsd.org','High Technology High School');
-						$this->email->subject($this->input->post('title'));
-						$this->email->message($this->input->post('contents').$emailSuffix);
-						
-						$this->email->send();
-					}
+					$this->email->clear();
+					$this->email->to($emails);
+					$this->email->from('noreply@hths.mcvsd.org','High Technology High School');
+					$this->email->subject($this->input->post('title'));
+					$this->email->message($this->input->post('contents').$emailSuffix);
+					
+					$this->email->send();
 				}
 				redirect('admin/news');
 			}

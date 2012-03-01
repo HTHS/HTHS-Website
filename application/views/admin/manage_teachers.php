@@ -13,7 +13,7 @@
 				<? foreach($teachers->result() as $teacher): 
 					$name = explode(" ", $teacher->name); ?>
 					<li><a href="" id="teacher<?=$teacher->id?>"><?=$teacher->name?></a></li>
-					<div id="teacherHide<?=$teacher->id?>" style="display:none;">
+					<div id="teacherHide<?=$teacher->id?>" style="display:none;" class="fancybox">
 					<form action="<?=site_url('admin/edit_teacher/'.$teacher->id)?>" method="post">
 						<table>
 							<tr>

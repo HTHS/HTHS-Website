@@ -28,14 +28,7 @@
 					<ul>
 						<li><a href="<?=site_url()?>">Site Home</a></li>
 						<li><a href="<?=site_url('teachers/dashboard')?>">Dashboard</a></li>
-						<li><a href="<?=site_url('teachers/dashboard/about')?>">My Info</a>
-							<? if($this->session->userdata('mentorship_admin')): ?>
-								<ul>
-									<li><a href="<?=site_url('teachers/dashboard/about')?>">Edit Info</a></li>
-									<li><a href="<?=site_url('teachers/dashboard/mentorship')?>">Mentorship</a></li>
-								</ul>
-							<? endif; ?>
-						</li>
+						<li><a href="<?=site_url('teachers/dashboard/about')?>">My Info</a></li>
 						<li><a href="<?=site_url('teachers/dashboard/pages')?>">My Pages</a>
 							<ul>
 								<li><a href="<?=site_url('teachers/dashboard/add_page')?>">Add Page</a></li>
@@ -48,7 +41,16 @@
                                 <li><a href="<?=site_url('teachers/dashboard/blog')?>">Manage Blog</a></li>
                             </ul>
                         </li>
-						<li><a href="">Placeholder</a></li>
+						<? if($this->session->userdata('mentorship_admin')): ?>
+							<li><a href="<?=site_url('teachers/dashboard/mentorship')?>">Mentorship</a>
+								<ul>
+									<li><a href="<?=site_url('teachers/dashboard/mentorship/add_student')?>">Add Student</a></li>
+									<li><a href="<?=site_url('teachers/dashboard/mentorship/students')?>">Manage Students</a></li>
+									<li><a href="<?=site_url('teachers/dashboard/mentorship/search')?>">Search Logs</a></li>
+									<li><a href="<?=site_url('teachers/dashboard/mentorship/site_visits')?>">Site Visit Schedule</a></li>
+								</ul>
+							</li>
+						<? endif; ?>
 						<li><a href="<?=site_url('teachers/dashboard/change_password')?>">Password</a></li>
                         <li><a href="<?=site_url('teachers/dashboard/logout')?>">Logout</a></li>
 					</ul>
