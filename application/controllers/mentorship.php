@@ -23,7 +23,7 @@ class Mentorship extends CI_Controller {
 		
 		$id = $this->session->userdata('id');
 		
-		$data['log'] = $this->mentorshipmod->getEntries($id, 10, $offset);
+		$data['log'] = $this->mentorshipmod->getEntries($id, 5, $offset);
 		$data['user'] = $this->mentorshipmod->getUserInfo($id);
 		
 		$this->load->library('form_validation');
@@ -41,7 +41,7 @@ class Mentorship extends CI_Controller {
 		$this->load->library('pagination');
 		$config['base_url'] = $this->config->item('base_url').'mentorship/';
 		$config['total_rows'] =  $data['log']->num_rows();
-		$config['per_page'] = 10;
+		$config['per_page'] = 5;
 		$config['next_link'] = 'Next';
 		$config['prev_link'] = 'Previous';
 		$config['full_tag_open'] = '<p style="text-align:center;">';
@@ -141,13 +141,13 @@ class Mentorship extends CI_Controller {
 		if(!$this->mentorshipmod->checkKey($key, $id))
 			redirect();
 			
-		$data['log'] = $this->mentorshipmod->getEntries($id, 10, $offset);
+		$data['log'] = $this->mentorshipmod->getEntries($id, 5, $offset);
 		$data['user'] = $this->mentorshipmod->getUserInfo($id);
 			
 		$this->load->library('pagination');
 		$config['base_url'] = $this->config->item('base_url').'mentorship/view/'.$id.'/'.$key.'/';
 		$config['total_rows'] =  $data['log']->num_rows();
-		$config['per_page'] = 10;
+		$config['per_page'] = 5;
 		$config['next_link'] = 'Next';
 		$config['prev_link'] = 'Previous';
 		$config['full_tag_open'] = '<p style="text-align:center;">';

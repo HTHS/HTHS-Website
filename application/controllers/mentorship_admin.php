@@ -156,13 +156,13 @@ The HTHS Web Team');
 	
 	public function view($id, $offset = 0)
 	{
-		$data['log'] = $this->mentorshipmod->getEntries($id, 10, $offset);
+		$data['log'] = $this->mentorshipmod->getEntries($id, 5, $offset);
 		$data['user'] = $this->mentorshipmod->getUserInfo($id);
 			
 		$this->load->library('pagination');
 		$config['base_url'] = $this->config->item('base_url').'teachers/dashboard/mentorship/view/'.$id.'/';
 		$config['total_rows'] =  $data['log']->num_rows();
-		$config['per_page'] = 10;
+		$config['per_page'] = 5;
 		$config['next_link'] = 'Next';
 		$config['prev_link'] = 'Previous';
 		$config['full_tag_open'] = '<p style="text-align:center;">';

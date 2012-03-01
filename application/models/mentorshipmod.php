@@ -151,7 +151,7 @@ class Mentorshipmod extends CI_Model {
 		return $this->db->get('mentorship_logs')->row();
 	}
 	
-	public function getEntries($id, $number = 10, $offset = 0, $all = false)
+	public function getEntries($id, $number = 5, $offset = 0, $all = false)
 	{
 		$this->db->where('user_id', $id);
 		if(!$all)
