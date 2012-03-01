@@ -93,7 +93,7 @@ The HTHS Web Team');
 		$data['year'] = $year;
 		$data['semester'] = $semester;
 		
-		$this->output->display_output('mentorship_admin/manage_Students', $data, array('section' => 'teacher'));
+		$this->output->display_output('mentorship_admin/manage_students', $data, array('section' => 'teacher'));
 	}
 	
 	public function edit_student($id)
