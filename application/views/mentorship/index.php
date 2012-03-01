@@ -1,6 +1,6 @@
 <div id="content_left">
 	<div id="content_left_above">
-		<? if($user->site_visit > time()): ?>
+		<? if($user->site_visit >= mktime(0,0,0,date('n',time()),date('j',time()),date('Y',time()))): ?>
 			<div class="fancybox">
 				<b>You have an upcoming site visit on <?=date('F j, Y', $user->site_visit)?>.</b>
 			</div>
