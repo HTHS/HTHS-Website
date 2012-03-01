@@ -61,7 +61,7 @@ class Mentorship_admin extends CI_Controller {
 Username: '.$username.'
 Password: '.$password.'
 
-Please use the link below to access and update your logs, one you login you can change your password there.
+Please use the link below to access and update your logs, once you login you can change your password there.
 '.site_url('mentorship').'
 
 Thank You,
@@ -127,6 +127,32 @@ The HTHS Web Team');
 		$this->mentorshipmod->deleteAccount($id);
 		redirect('teachers/dashboard/mentorship/students');
 	}
+	
+	public function reset_password($id)
+	{
+		$newPassword = $this->loginmod->changePass('mentorship_users', $id);
+		$user = $this->mentorshipmod->getUserInfo($id);
+		$this->load->library('email');
+		
+		$this->email->subject('HTHS Website Mentorship Login');
+		$this->email->to($user->email);
+		$this->email->from('noreply@hths.mcvsd.org', 'HTHS Security Robot');
+		$this->email->message('Your High Technology High School website mentorship logs account password has been reset. Your new login information is as follows.
+
+Username: '.$user->username.'
+Password: '.$newPassword.'
+
+Please use the link below to access and update your logs. Please change your password when you login.
+'.site_url('mentorship').'
+
+Thank You,
+The HTHS Web Team');
+
+		$this->email->send();
+		
+		redirect('teachers/dashboard/mentorship/students');
+	}
+		
 	
 	public function view($id, $offset = 0)
 	{
