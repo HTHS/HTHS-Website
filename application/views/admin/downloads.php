@@ -20,7 +20,7 @@
 						($form->archived == 1) ? $style2 = '</del>' : $style2 = ''; ?>
 						<li><a href="" id="show<?=$form->id?>"><?=$style?><?=$form->filename?><?=$style2?></a></li>
 						<div id="hidden<?=$form->id?>" style="display:none;">
-							Link: <input type="text" size="50" value="<?=site_url('downloads/'.$form->filename)?>" /><br />
+							Link: <input type="text" size="50" value="<?=site_url($this->config->item('downloads_directory').'/'.$form->filename)?>" /><br />
 							<?=$archived?> <input type="button" onclick="window.location.href = '<?=site_url('admin/delete_form/'.$form->id)?>'" value="Delete Form" />
 						</div>
 						<script type="text/javascript">

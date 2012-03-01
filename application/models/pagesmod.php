@@ -99,7 +99,7 @@ class Pagesmod extends CI_Model {
 		$this->db->where('id',$id);
 		$data = $this->db->get('forms')->row();
 		
-		unlink('downloads/'.$data->filename);
+		unlink($this->config->item('downloads_directory').'/'.$data->filename);
 		$this->db->where('id',$id);
 		$this->db->delete('forms');
 	}

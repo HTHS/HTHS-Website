@@ -123,7 +123,7 @@
 				<ul class="downloads_type_itemwrapper">
 					<? foreach ($forms[$type->type] as $form): ?>
 						<li>
-							<a class="downloads_type_item" href="<?=site_url('downloads/' . $form->filename)?>">
+							<a class="downloads_type_item" href="<?=site_url($this->config->item('downloads_directory').'/' . $form->filename)?>">
 								<div class="downloads_type_item_icon">
 									<img src="<?=get_icon($form->filename)?>" width="24" height="24"></img>
 								</div>
