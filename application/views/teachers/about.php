@@ -1,3 +1,5 @@
+<div id="content_left">
+<div id="content_left_above">
 <div class="fancybox">
 <div class="fancytitle"><?=$teacher->name?></div>
 <?php
@@ -22,7 +24,7 @@ foreach ($entries as $entry) {
 </div>
 
 <div class="fancybox">
-<div class="fancytitle black">Pages</div>
+<div id="pages" class="fancytitle black">Pages</div>
 <ul id="teacher_page_listing">
 <?php
 foreach ($pages as $page) {
@@ -32,4 +34,6 @@ foreach ($pages as $page) {
 }
 ?>
 </ul>
+</div>
+</div>
 </div>
