@@ -16,11 +16,11 @@
 				</tr>
 				<tr>
 					<td>Activities: </td>
-					<td><textarea name="activities" rows="5" cols="50"><?=set_value('activities')?></textarea></td>
+					<td><textarea name="activities" rows="5" cols="50"><?=nl2br(set_value('activities'))?></textarea></td>
 				</tr>
 				<tr>
 					<td>Comments: </td>
-					<td><textarea name="comments" rows="5" cols="50"><?=set_value('comments')?></textarea></td>
+					<td><textarea name="comments" rows="5" cols="50"><?=nl2br(set_value('comments'))?></textarea></td>
 				</tr>
 				<tr>
 					<td colspan="2"><input type="submit" value="Submit Log" /> <input type="button" value="Change Password" onclick="window.location.href = '<?=site_url('mentorship/change_password')?>'" /> <input type="button" value="Logout" onclick="window.location.href = '<?=site_url('mentorship/logout')?>'" /></td>
@@ -33,8 +33,8 @@
 			<h2 class="fancytitle">My Log Entries</h2>
 			<? foreach($log->result() as $entry): ?>
 				<h3><a href="<?=site_url('mentorship/edit/'.$entry->id)?>"><?=date('F j, Y',$entry->date)?></a></h3><br />
-				<p><b>Activities:</b> <?=$entry->activities?></p><br />
-				<p><b>Comments/Problems:</b> <?=$entry->comments?></p>
+				<p><b>Activities:</b> <?=nl2br($entry->activities)?></p><br />
+				<p><b>Comments/Problems:</b> <?=nl2br($entry->comments)?></p>
 				<br /><br />
 			<? endforeach; ?>
 		</div>
