@@ -65,8 +65,12 @@ class Mentorship extends CI_Controller {
 				redirect('mentorship');
 			}
 		}
-		
+			
 		$data['entry'] = $this->mentorshipmod->getEntryById($id);
+		
+		//Make sure the person is editing a log that they have access to
+		if($data['entry']->user_id != $this->session->userdata('id'))
+			redirect('mentorship');
 		
 		$this->output->display_output('mentorship/edit', $data);
 	}
@@ -76,6 +80,12 @@ class Mentorship extends CI_Controller {
 		if(!$this->isLoggedIn)
 			redirect('mentorship/login');
 		
+		$data['entry'] = $this->mentorshipmod->getEntryById($id);
+		
+		//Make sure the person is deleting a log that they have access to
+		if($data['entry']->user_id != $this->session->userdata('id'))
+			redirect('mentorship');
+			
 		$this->mentorshipmod->deleteLog($id);
 		redirect('mentorship');
 	}
