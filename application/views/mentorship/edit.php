@@ -10,6 +10,20 @@
 					<td><input type="text" size="15" value="<?=unix_to_friendly($entry->date)?>" disabled="disabled" /></td>
 				</tr>
 				<tr>
+					<td>Times: </td>
+					<td>
+						<table>
+							<tr>
+								<td>In: </td>
+								<td><input type="text" name="in" size="6" value="<?=set_value('in', $entry->in_time)?>" /></td>
+								<td>Out: </td>
+								<td><input type="text" name="out" size="6" value="<?=set_value('out', $entry->out_time)?>" /></td>
+								<td>(hour:minutes AM/PM)</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
 					<td>Activities: </td>
 					<td><textarea name="activities" rows="5" cols="50"><?=set_value('activities',$entry->activities)?></textarea></td>
 				</tr>

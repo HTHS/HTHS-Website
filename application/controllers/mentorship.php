@@ -28,6 +28,8 @@ class Mentorship extends CI_Controller {
 		
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('date', 'Date', 'trim|required');
+		$this->form_validation->set_rules('in', 'Time In', 'trim|required');
+		$this->form_validation->set_rules('out', 'Time Out', 'trim|required');
 		$this->form_validation->set_rules('activities', 'Activities', 'trim|required');
 		$this->form_validation->set_rules('comments', 'Comments', 'trim|required');
 		
@@ -57,6 +59,8 @@ class Mentorship extends CI_Controller {
 			redirect('mentorship/login');
 			
 		$this->load->library('form_validation');
+		$this->form_validation->set_rules('in', 'Time In', 'trim|required');
+		$this->form_validation->set_rules('out', 'Time Out', 'trim|required');
 		$this->form_validation->set_rules('activities', 'Activities', 'trim|required');
 		$this->form_validation->set_rules('comments', 'Comments', 'trim|required');
 		if(count($_POST) > 0) {

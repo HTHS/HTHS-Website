@@ -172,6 +172,14 @@ The HTHS Web Team');
 		$this->output->display_output('mentorship_admin/view', $data, array('section' => 'teacher'));
 	}
 	
+	public function view_times($id)
+	{
+		$data['log'] = $this->mentorshipmod->getTimes($id);
+		$data['user'] = $this->mentorshipmod->getUserInfo($id);
+		
+		$this->output->display_output('mentorship_admin/time_sheets', $data, array('section' => 'teacher'));
+	}
+	
 	public function search()
 	{
 		$field = intval($this->input->get('field',TRUE));

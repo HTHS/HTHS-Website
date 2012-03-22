@@ -121,6 +121,8 @@ class Mentorshipmod extends CI_Model {
 		$data = array (
 				'user_id' => $this->session->userdata('id'),
 				'date' => friendly_to_unix($this->input->post('date')),
+				'in_time' => $this->input->post('in', TRUE), //XSS clean this input
+				'out_time' => $this->input->post('out', TRUE), //XSS clean this input
 				'activities' => $this->input->post('activities', TRUE), //XSS clean this input
 				'comments' => $this->input->post('comments', TRUE) //XSS clean this input
 			);
@@ -131,8 +133,10 @@ class Mentorshipmod extends CI_Model {
 	public function editLog($id)
 	{
 		$data = array (
-				'activities' => $this->input->post('activities'), //XSS clean this input
-				'comments' => $this->input->post('comments') //XSS clean this input
+				'in_time' => $this->input->post('in', TRUE), //XSS clean this input
+				'out_time' => $this->input->post('out', TRUE), //XSS clean this input
+				'activities' => $this->input->post('activities', TRUE), //XSS clean this input
+				'comments' => $this->input->post('comments', TRUE) //XSS clean this input
 			);
 		
 		$this->db->where('id', $id);
@@ -158,6 +162,16 @@ class Mentorshipmod extends CI_Model {
 			$this->db->limit($number, $offset);
 		$this->db->order_by('date', 'desc');
 		return $this->db->get('mentorship_logs');
+	}
+	
+	public function getTimes($id)
+	{
+		$this->db->select('date, in_time, out_time');
+		$this->db->from('mentorship_logs');
+		$this->db->where('user_id', $id);
+		$this->db->order_by('date', 'desc');
+		
+		return $this->db->get();
 	}
 	
 	public function getUserInfo($id)

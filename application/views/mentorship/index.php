@@ -15,6 +15,20 @@
 					<td><input type="text" name="date" id="date" size="15" value="<?=set_value('date')?>" /></td>
 				</tr>
 				<tr>
+					<td>Times: </td>
+					<td>
+						<table>
+							<tr>
+								<td>In: </td>
+								<td><input type="text" name="in" size="6" value="<?=set_value('in')?>" /></td>
+								<td>Out: </td>
+								<td><input type="text" name="out" size="6" value="<?=set_value('out')?>" /></td>
+								<td>(hour:minutes AM/PM)</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
 					<td>Activities: </td>
 					<td><textarea name="activities" rows="5" cols="50"><?=nl2br(set_value('activities'))?></textarea></td>
 				</tr>
@@ -33,6 +47,7 @@
 			<h2 class="fancytitle">My Log Entries</h2>
 			<? foreach($log->result() as $entry): ?>
 				<h3><a href="<?=site_url('mentorship/edit/'.$entry->id)?>"><?=date('F j, Y',$entry->date)?></a></h3><br />
+				<p><b>Time In:</b> <?=$entry->in_time?> <b>Time Out:</b> <?=$entry->out_time?></p>
 				<p><b>Activities:</b> <?=nl2br($entry->activities)?></p><br />
 				<p><b>Comments/Problems:</b> <?=nl2br($entry->comments)?></p>
 				<br /><br />

@@ -27,7 +27,7 @@
 					<div id="hide<?=$user->id?>" style="display:none;" class="fancybox">
 						Public Link: <input type="text" value="<?=site_url('mentorship/view/'.$user->id.'/'.$user->private_key)?>" size="50" /><br />
 						<?=($user->site_visit > time()) ? 'Upcoming Site Visit On: '.date('F j, Y', $user->site_visit).'<br />' : ''?>
-						<input type="button" value="View Log" onclick="window.location.href = '<?=site_url('teachers/dashboard/mentorship/view/'.$user->id)?>'" /> <input type="button" value="Edit Student" onclick="window.location.href = '<?=site_url('teachers/dashboard/mentorship/edit_student/'.$user->id)?>'" /> <input type="button" value="Delete Student" onclick="var c = confirm('This will remove the student <?=$user->name?> and all their logs from the system permenantly! Are you absolutely sure you want to proceed?'); if(c) { window.location.href = '<?=site_url('teachers/dashboard/mentorship/delete_student/'.$user->id)?>' }" />
+						<input type="button" value="View Log" onclick="window.location.href = '<?=site_url('teachers/dashboard/mentorship/view/'.$user->id)?>'" /> <input type="button" value="View Timesheets" onclick="window.location.href = '<?=site_url('teachers/dashboard/mentorship/view_times/'.$user->id)?>'" /><br /><input type="button" value="Edit Student" onclick="window.location.href = '<?=site_url('teachers/dashboard/mentorship/edit_student/'.$user->id)?>'" /> <input type="button" value="Delete Student" onclick="var c = confirm('This will remove the student <?=$user->name?> and all their logs from the system permenantly! Are you absolutely sure you want to proceed?'); if(c) { window.location.href = '<?=site_url('teachers/dashboard/mentorship/delete_student/'.$user->id)?>' }" />
 					</div>
 				<? endforeach; ?>
 			</ul>
