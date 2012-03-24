@@ -57,13 +57,4 @@ class Teachers extends CI_Controller {
         
         $this->output->display_output('teachers/pages', $data);
     }
-    
-    public function blog_home($username, $page = 1) {
-       
-    }
-    
-    public function blog_entry($username, $post_id) {
-    
-    }
-
 }
