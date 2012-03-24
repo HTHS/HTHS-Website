@@ -149,51 +149,5 @@ class Teacher_dashboard extends CI_Controller {
 		$this->teachermod->deletePage($id);
 		redirect('teachers/dashboard/pages');
 	}
-	
-	/*public function add_blog_entry()
-	{
-		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teachers');
-			
-		if(count($_POST) > 0)
-			$this->teachermod->addBlogEntry();
-
-        $this->output->display_output('teacher/add_blog', null, array('section' => 'teacher'));
-	}
-	
-	public function manage_blog()
-	{
-		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teachers');
-			
-		$data['entries'] = $this->teachermod->getBlogEntries($this->session->userdata('id'),0,0,true);
-		
-        $this->output->display_output('teacher/manage_blog', $data, array('section' => 'teacher'));
-	}
-	
-	public function edit_blog($id)
-	{
-		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teachers');
-		
-		if(count($_POST) > 0)
-			$this->teachermod->editBlogEntry($id);
-
-		$data['entry'] = $this->teachermod->getBlogById($id);
-		
-        $this->output->display_output('teacher/edit_blog', $data, array('section' => 'teacher'));
-	}
-		
-
-	public function delete_blog($id)
-	{
-		if(!$this->loginmod->checkLogin('teacher'))
-			redirect('teachers');
-		
-		if(count($_POST) > 0)
-			$this->teachermod->deleteBlogEntry($id);
-        
-        $this->output->display_output('teacher/delete_blog', null, array('section' => 'teacher'));
-	}*/
     
 }

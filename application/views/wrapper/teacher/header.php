@@ -35,12 +35,6 @@
 								<li><a href="<?=site_url('teachers/dashboard/pages')?>">Manage Pages</a></li>
 							</ul>
 						</li>
-						<li><a href="<?=site_url('teachers/dashboard/blog')?>">My Blog</a>
-                        	<ul>
-                                <li><a href="<?=site_url('teachers/dashboard/add_blog')?>">Add Blog Entry</a></li>
-                                <li><a href="<?=site_url('teachers/dashboard/blog')?>">Manage Blog</a></li>
-                            </ul>
-                        </li>
 						<? if($this->session->userdata('mentorship_admin')): ?>
 							<li><a href="<?=site_url('teachers/dashboard/mentorship')?>">Mentorship</a>
 								<ul>
