@@ -14,11 +14,11 @@ if (defined($teacher->image) && $teacher->image != '') {
 </div>
 
 <div class="fancybox">
-<div class="fancytitle black">Latest Blog Posts</div>
+<div class="fancytitle black">Latest Blog Posts - <a href="<?=$teacher->blog?>">View Blog</a></div>
 <?php
 $this->load->helper('news_formatter');
 foreach ($entries as $entry) {
-    generate_news_item($entry, 'teachers/' . $teacher->username . '/blog/view/');
+    generate_news_item($entry, $entry->link, true);
 }
 ?>
 </div>

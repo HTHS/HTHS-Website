@@ -9,6 +9,7 @@ class Teachers extends CI_Controller {
         
 		$this->load->model('teachermod');
 		$this->load->model('loginmod');
+		$this->load->model('curlmod');
         
         if ($this->loginmod->checkLogin('teacher')) {
             $isAuthorized = true; 
@@ -28,11 +29,11 @@ class Teachers extends CI_Controller {
 	
     public function about($username) {
         // Run by default when the user goes to /teachers/SomeTeacher, displays some biographical info and a photo, links to pages and blog
-        
+		
         $teacher_id = $this->teachermod->getTeacherId($username);
         $data['teacher'] = $this->teachermod->getTeacherInfo($teacher_id);
-        $data['entries'] = array();
         $data['pages'] = $this->teachermod->getPageList($teacher_id)->result();
+		$data['entries'] = $this->curlmod->fetchBlogEntries($data['teacher']->blog);
         
         $this->output->display_output('teachers/about', $data);
     }

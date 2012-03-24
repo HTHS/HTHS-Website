@@ -27,10 +27,9 @@ class Teachermod extends CI_Model {
 	
 	function getTeacherList()
 	{
-		$this->db->select('teacher.*, teacher_pages.page_contents, CASE WHEN `teacher_blogs`.`id` IS NULL THEN 0 ELSE COUNT(*) END AS blog_count',false);
+		$this->db->select('teacher.*, teacher_pages.page_contents',false);
 		$this->db->from('teacher');
 		$this->db->join('teacher_pages', 'teacher_pages.teacher_id = teacher.id', 'left outer');
-		$this->db->join('teacher_blogs', 'teacher_blogs.teacher_id = teacher.id', 'left outer');
 		$entries = $this->db->get();
 		return $entries;
 	}
