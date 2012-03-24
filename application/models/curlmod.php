@@ -8,14 +8,21 @@ class Curlmod extends CI_Model {
 		parent::__construct();
 	}
 	
-	public function fetchBlogEntries($url)
-	{
-		$this->load->helper('date');
+	private function doCurl($url) {
 		$curl = curl_init();
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_URL, $url);
 		
 		$returnedData = curl_exec($curl);
+		
+		return $returnedData;
+	}
+	
+	public function fetchBlogEntries($url)
+	{
+		$this->load->helper('date');
+		
+		$returnedData = $this->doCurl($url);
 		
 		$blogPosts = explode('<div class="asset-header">', $returnedData);
 		
