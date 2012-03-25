@@ -16,7 +16,7 @@ class Curlmod extends CI_Model {
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($curl, CURLOPT_URL, $url);
 			$returnedData = curl_exec($curl);
-			$this->cache->save($cacheId, $returnedData, 7200);
+			$this->cache->save($cacheId, $returnedData, 3600);
 		} else {
 			$returnedData = $this->cache->get($cacheId);
 		}
