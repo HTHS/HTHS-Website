@@ -8,60 +8,45 @@ class Curlmod extends CI_Model {
 		parent::__construct();
 	}
 	
-	private function doCurl($url) {
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_URL, $url);
+	private function doCurl($url, $cacheId) {
+		$this->load->driver('cache', array('adapter' => 'file'));
 		
-		$returnedData = curl_exec($curl);
+		if(!$cata = $this->cache->get($cacheId)) {
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curl, CURLOPT_URL, $url);
+			$returnedData = curl_exec($curl);
+			$this->cache->save($cacheId, $returnedData, 7200);
+		} else {
+			$returnedData = $this->cache->get($cacheId);
+		}
 		
 		return $returnedData;
 	}
 	
-	public function fetchBlogEntries($url)
+	public function fetchBlogEntries($url, $limit, $teacher_id)
 	{
 		$this->load->helper('date');
-		
-		$returnedData = $this->doCurl($url);
-		
-		$blogPosts = explode('<div class="asset-header">', $returnedData);
-		
-		foreach($blogPosts as $key => $value) {
-			$blogPosts[$key] = explode('<div class="asset-footer">', $value);
-		}
-		
-		$data['links'] = array();
-		$data['titles'] = array();
-		$data['dates'] = array();
-		$count = 0;
-		
-		foreach($blogPosts as $key => $value) {
-			if($key != 0 && $key <= 6) {
-				$count++;
-				$value = $value[0];
-				$link = explode('<a href="', $value);
-				$link = explode('" rel="bookmark">', $link[1]);
-				$data['links'][] = $link[0];
-				$title = explode('" rel="bookmark">', $value);
-				$title = explode('</a></h2>', $title[1]);
-				$data['titles'][] = $title[0];
-				$date = explode('<abbr class="published" title="', $value);
-				$date = explode('">', $date[1]);
-				$data['dates'][] = blog_to_unix($date[0]);
-			}
-		}
+	
+		$returnedData = $this->doCurl($url, 'TeacherBlogsFeed-TeacherID-'.$teacher_id);
+		$xml = simplexml_load_string($returnedData);
 		
 		$return = array();
+		$i = 0;
 		
-		for($i = 0; $i < $count; $i++)
+		foreach($xml->entry as $entry)
 		{
-			$return[$i]->date = $data['dates'][$i];
-			$return[$i]->link = $data['links'][$i];
-			$return[$i]->title = $data['titles'][$i];
+			if($i > ($limit - 1))
+				break;
+				
+			$return[$i]->date = blog_to_unix($entry->published);
+			$return[$i]->link = $entry->link->attributes()->href;
+			$return[$i]->title = $entry->title;
 			$return[$i]->id = '';
 			$return[$i]->urgent = 0;
+			$i++;
 		}
-		
+	
 		return $return;
 	}
 }

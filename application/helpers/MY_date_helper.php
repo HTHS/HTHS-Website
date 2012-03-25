@@ -26,8 +26,7 @@ function unix_to_friendly($date)
 function blog_to_unix($date)
 {
 	$date = str_replace('T', ' ', $date);
-	$date = explode('-', $date);
-	$humanDate = $date[0].'-'.$date[1].'-'.$date[2];
-	$timestamp = human_to_unix($humanDate);
+	$date = str_replace('Z', '', $date);
+	$timestamp = human_to_unix($date);
 	return $timestamp;
 }

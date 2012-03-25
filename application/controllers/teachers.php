@@ -33,7 +33,7 @@ class Teachers extends CI_Controller {
         $teacher_id = $this->teachermod->getTeacherId($username);
         $data['teacher'] = $this->teachermod->getTeacherInfo($teacher_id);
         $data['pages'] = $this->teachermod->getPageList($teacher_id)->result();
-		$data['entries'] = $this->curlmod->fetchBlogEntries($data['teacher']->blog);
+		$data['entries'] = $this->curlmod->fetchBlogEntries($data['teacher']->blog.'/atom.xml', 6, $teacher_id);
         
         $this->output->display_output('teachers/about', $data);
     }
