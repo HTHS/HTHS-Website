@@ -13,6 +13,21 @@ class Teachermod extends CI_Model {
 		$this->db->where('id', $id);
 		return $this->db->get('teacher')->row();
 	}
+	
+	function updateInfo()
+	{
+		$data = array(
+			'description' => $this->input->post('description'),
+			'blog' => $this->input->post('blog')
+		);
+		
+		$this->db->where('id', $this->session->userdata('id'));
+		$this->db->update('teacher', $data);
+		
+		//Delete any cached blog entries
+		$this->load->driver('cache', array('adapter' => 'file'));
+		$this->cache->delete('TeacherBlogsFeed-TeacherID-'.$this->session->userdata('id'));
+	}
     
     function getTeacherId($username) {
         $this->db->from('teacher');

@@ -150,4 +150,23 @@ class Teacher_dashboard extends CI_Controller {
 		redirect('teachers/dashboard/pages');
 	}
     
+	public function about()
+	{
+		if(!$this->isLoggedIn)
+			redirect('teachers/dashboard/login');
+		
+		$this->load->library('form_validation');
+			
+		if(count($_POST) > 0) {
+			$this->form_validation->set_rules('description', 'About Me', 'trim|required');
+			if($this->form_validation->run()) {
+				$this->teachermod->updateInfo();
+				redirect('teachers/dashboard');
+			}
+		}
+		
+		$data['about'] = $this->teachermod->getTeacherInfo($this->session->userdata('id'));
+		
+		$this->output->display_output('teacher_dashboard/edit_about', $data, array('section' => 'teacher'));
+	}
 }

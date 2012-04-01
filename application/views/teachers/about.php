@@ -5,7 +5,7 @@
 <?php
 if (defined($teacher->image) && $teacher->image != '') {
 ?>
-<img src="<?=base_url('images/' . $teacher->image)?>" class="teacher_image"></img>
+<img src="<?=base_url('images/teachers/' . $teacher->image)?>" class="teacher_image"></img>
 <br /><br />
 <?php
 }
