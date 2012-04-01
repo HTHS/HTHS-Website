@@ -2,14 +2,10 @@
 <div id="content_left_above">
 <div class="fancybox">
 <div class="fancytitle"><?=$teacher->name?></div>
-<?php
-if (defined($teacher->image) && $teacher->image != '') {
-?>
-<img src="<?=base_url('images/teachers/' . $teacher->image)?>" class="teacher_image"></img>
+<? if(file_exists('images/teachers/' . $teacher->username.'.png')): ?>
+	<img src="<?=base_url('images/teachers/' . $teacher->username.'.png')?>" class="teacher_image" />
+<? endif; ?>
 <br /><br />
-<?php
-}
-?>
 <?=$teacher->description?>
 </div>
 

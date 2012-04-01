@@ -169,4 +169,31 @@ class Teacher_dashboard extends CI_Controller {
 		
 		$this->output->display_output('teacher_dashboard/edit_about', $data, array('section' => 'teacher'));
 	}
+	
+	public function photo()
+	{
+		if(!$this->isLoggedIn)
+			redirect('teachers/dashboard/login');
+			
+		$data['teacher'] = $this->teachermod->getTeacherInfo($this->session->userdata('id'));
+		
+		$config['upload_path'] = 'images/teachers/';
+		$config['overwrite'] = true;
+		$config['max_size'] = 2000;
+		$config['file_name'] = $data['teacher']->username;
+		$config['allowed_types'] = 'png';
+		$this->load->library('upload', $config);
+		
+		if(count($_POST) > 0) {
+			if($this->input->post('submit') == 'Upload') {
+				if($this->upload->do_upload('photo'))
+					redirect('teachers/dashboard');
+			} else if($this->input->post('submit') == 'Delete Photo') {
+				unlink('images/teachers/'.$data['teacher']->username.'.png');
+				redirect('teachers/dashboard');
+			}
+		}
+		
+		$this->output->display_output('teacher_dashboard/upload_photo', $data, array('section' => 'teacher'));
+	}
 }
