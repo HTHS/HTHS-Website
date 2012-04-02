@@ -15,7 +15,7 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
-		$data['news'] = $this->newsmod->getNews();
+		$data['news'] = $this->newsmod->getNews(4);
 		
 		$this->output->display_output('home/index', $data);
 	}
