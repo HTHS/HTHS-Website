@@ -11,7 +11,55 @@
                     <div id="content_left_left">
 						<div id="feed" class="fancybox">
 							<h2 class="fancytitle">Social Feed</h2>
-							<p>insert integrated feed here</p>
+							<script type="text/javascript">
+							var post_limit = 3;
+							var feed_url = "https://www.facebook.com/feeds/page.php?format=atom10&id=218788884843140";
+							var feed_json = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=' + encodeURIComponent(feed_url) + '&callback=?';
+							$.getJSON(feed_json, function(data) {
+								var posts = data.responseData.feed.entries;
+								for (var i=0; i<posts.length && i<post_limit; i++) {
+									var post = posts[i];
+									
+									var date_parse = new Date(post.publishedDate);
+									var date_string = date_parse.toDateString();
+									
+									var element = $('#socialwidget_primatives .socialwidget_post').clone();
+									
+									$(element).find('a').attr('href', post.link);
+									$(element).find('.socialwidget_post_content').html(post.contentSnippet);
+									$(element).find('.socialwidget_post_date').html(date_string);
+									
+									$(element).appendTo('#socialwidget');
+								}
+							});
+							</script>
+							<style type="text/css">
+							#socialwidget_primatives {
+								display: none;
+							}
+							
+							.socialwidget_post {
+								margin: 5px 0 5px 0;
+							}
+							.socialwidget_post_content {
+								font-size: 9pt;
+							}
+							.socialwidget_post_date {
+								font-size: 8pt;
+								color: #555;
+								font-style: italic;
+								text-align: right;
+							}
+							</style>
+							<div id="socialwidget"></div>
+							<div id="socialwidget_primatives">
+								<div class="socialwidget_post">
+									<a href="#">
+										<div class="socialwidget_post_content"></div>
+										<div class="socialwidget_post_date"></div>
+									</a>
+								</div>
+							</div>
 							<h2 class="fancytitle">Stay Connected</h2>
 							<table>
 								<tr>
