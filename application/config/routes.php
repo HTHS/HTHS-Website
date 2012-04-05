@@ -43,6 +43,7 @@ $route['404_override'] = '';
 $route['pages/(:any)'] = 'pages/index/$1';
 $route['downloads/(:any)'] = 'downloads/index/$1';
 $route['mentorship/(:num)'] = 'mentorship/index/$1';
+$route['mentorship/page/(:num)'] = 'mentorship/index/$1';
 $route['rss/(:any).xml'] = 'rss/feed/$1';
 $route['rss/(:any).rss'] = 'rss/feed/$1';
 

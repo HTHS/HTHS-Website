@@ -16,15 +16,12 @@ class Mentorship extends CI_Controller {
 			$this->isLoggedIn = true;
 	}
 	
-	public function index($offset = 0)
+	public function index($offset = 1)
 	{
 		if(!$this->isLoggedIn)
 			redirect('mentorship/login');
 		
 		$id = $this->session->userdata('id');
-		
-		$data['log'] = $this->mentorshipmod->getEntries($id, 5, $offset);
-		$data['user'] = $this->mentorshipmod->getUserInfo($id);
 		
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('date', 'Date', 'trim|required');
@@ -39,16 +36,20 @@ class Mentorship extends CI_Controller {
 				redirect('mentorship');
 			}
 		}
-			
+		
 		$this->load->library('pagination');
-		$config['base_url'] = $this->config->item('base_url').'mentorship/';
-		$config['total_rows'] =  $data['log']->num_rows();
+		$config['base_url'] = $this->config->item('base_url').'mentorship/page/';
+		$config['total_rows'] =  $this->mentorshipmod->countEntries($id);
 		$config['per_page'] = 5;
 		$config['next_link'] = 'Next';
 		$config['prev_link'] = 'Previous';
 		$config['full_tag_open'] = '<p style="text-align:center;">';
+		$config['use_page_numbers'] = true;
 		$this->pagination->initialize($config);
 		$data['pageLinks'] = $this->pagination->create_links();
+		
+		$data['log'] = $this->mentorshipmod->getEntries($id, 5, (($offset - 1) * $config['per_page']));
+		$data['user'] = $this->mentorshipmod->getUserInfo($id);
 		
 		$this->output->display_output('mentorship/index', $data);
 	}

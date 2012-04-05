@@ -164,6 +164,12 @@ class Mentorshipmod extends CI_Model {
 		return $this->db->get('mentorship_logs');
 	}
 	
+	public function countEntries($id)
+	{
+		$this->db->where('user_id', $id);
+		return $this->db->get('mentorship_logs')->num_rows();
+	}
+	
 	public function getTimes($id)
 	{
 		$this->db->select('date, in_time, out_time');
