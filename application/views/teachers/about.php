@@ -10,6 +10,7 @@
 </div>
 
 <div class="fancybox">
+<a name="blog"></a>
 <div class="fancytitle black">Latest Blog Posts - <a href="<?=$teacher->blog?>">View Blog</a></div>
 <?php
 $this->load->helper('news_formatter');
@@ -21,6 +22,7 @@ foreach ($entries as $entry) {
 
 <div class="fancybox">
 <div id="pages" class="fancytitle black">Pages</div>
+<a name="pages"></a>
 <ul id="teacher_page_listing">
 <?php
 foreach ($pages as $page) {
