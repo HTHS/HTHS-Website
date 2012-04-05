@@ -51,7 +51,6 @@
 								</ul>
 							</li>
 						<? endif; ?>
-						<li><a href="<?=site_url('teachers/dashboard/change_password')?>">Password</a></li>
                         <li><a href="<?=site_url('teachers/dashboard/logout')?>">Logout</a></li>
 					</ul>
 				</div>
