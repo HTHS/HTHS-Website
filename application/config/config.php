@@ -380,6 +380,7 @@ $config['proxy_ips'] = '';
 
 /* Custom configuration settings */
 $config['downloads_directory'] = 'downloads_files';
+$config['weatherbug_api_key'] = 'A5560078695';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */

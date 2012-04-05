@@ -252,7 +252,7 @@ div.fancybox {
 	float: right;
 }
 
-#content_left_left span {
+#content_left_left span:not(.wXstickerlink) {
 	display: block;
 	width: 230px;
 	color: #ffffff;
