@@ -5,7 +5,7 @@
 			<form action="<?=current_url()?>" method="post">
 				<?=validation_errors()?>
 				<input type="hidden" name="step" value="1" />
-				<p>Welcome to the random group generator. This tool will sort a list of student names into randomly assigned groups of a desired size. To begin, please enter the number of students you wish to create groups for and the group size.</p>
+				<p>Welcome to the random group generator. This tool will sort a list of student names into randomly assigned groups of a desired size. To begin, please enter the number of students you wish to create groups for and the number of groups.</p>
 				<table>
 					<tr>
 						<td>Number of Students: </td>
