@@ -101,19 +101,21 @@ class Mentorshipmod extends CI_Model {
 		foreach($query as $row)
 			$vals[$row->setting_name] = $row->setting_value;
 			
-		return $this->db->query('SELECT *
-			FROM `mentorship_users`
-			LEFT OUTER JOIN `mentorship_logs`
-			ON `mentorship_logs`.`user_id` = `mentorship_users`.`id`
-			WHERE 
-				( 
-					(`mentorship_logs`.`date` + '.( 604800 * $weeks ).') <= '.time().'
-					OR `mentorship_logs`.`date` IS NULL 
-				)
-				AND `mentorship_users`.`year` = '.$vals['year'].'
-				AND `mentorship_users`.`semester` = '.$vals['semester'].'
-			GROUP BY `mentorship_users`.`id`
-			ORDER BY `mentorship_users`.`name` ASC');
+		return $this->db->query("SELECT `name`, `date`
+			FROM (
+				SELECT `mentorship_users`.`name` AS name, `mentorship_logs`.`date` AS date
+				FROM `mentorship_users`
+				LEFT OUTER JOIN `mentorship_logs`
+				ON `mentorship_logs`.`user_id` = `mentorship_users`.`id` 
+				AND `mentorship_users`.`year` = '".$vals['year']."'
+				AND `mentorship_users`.`semester` = '".$vals['semester']."'
+				GROUP BY `mentorship_users`.`name`
+				HAVING `mentorship_logs`.`date` = MAX(`mentorship_logs`.`date`)
+				) AS SUBQUEREY
+			WHERE (
+				(`date` + ".( 604800 * $weeks ).") <= ".time()."
+				OR `date` IS NULL )
+			ORDER BY `name` ASC");
 	}
 		
 	public function logEntry()
