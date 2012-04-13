@@ -98,9 +98,6 @@ class Adminmod extends CI_Model {
 		$this->db->delete('teacher');
 		
 		$this->db->where('teacher_id', $id);
-		$this->db->delete('teacher_blogs');
-		
-		$this->db->where('teacher_id', $id);
 		$this->db->delete('teacher_pages');
 	}
 	
