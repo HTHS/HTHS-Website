@@ -42,10 +42,8 @@ class Teachermod extends CI_Model {
 	
 	function getTeacherList()
 	{
-		$this->db->select('teacher.*, teacher_pages.page_contents',false);
-		$this->db->from('teacher');
-		$this->db->join('teacher_pages', 'teacher_pages.teacher_id = teacher.id', 'left outer');
-		$entries = $this->db->get();
+		$this->db->order_by('name', 'ASC');
+		$entries = $this->db->get('teacher');
 		return $entries;
 	}
 	

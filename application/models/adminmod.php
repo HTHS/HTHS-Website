@@ -106,6 +106,7 @@ class Adminmod extends CI_Model {
 	
 	function getTeacherList()
 	{
+		$this->db->order_by('name', 'ASC');
 		return $this->db->get('teacher');
 	}
 	
