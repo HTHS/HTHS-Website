@@ -28,7 +28,7 @@ class Pagesmod extends CI_Model {
 			if(!$includeUnused)
 				$this->db->join('forms', 'forms.type = form_types.id', 'inner');
 			if($includeUnusedOnly)
-				$this->db->join('forms', 'forms.type != form_types.id', 'inner');
+				$this->db->where('`form_types`.`id` NOT IN (SELECT `type`FROM `forms`)');
 		}
 		$this->db->order_by('type', 'asc');
 		$this->db->group_by('form_types.id');
