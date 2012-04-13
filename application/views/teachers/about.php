@@ -9,6 +9,7 @@
 <?=$teacher->description?>
 </div>
 
+<? if($teacher->blog != ''): ?>
 <div class="fancybox">
 <a name="blog"></a>
 <div class="fancytitle black">Latest Blog Posts - <a href="<?=$teacher->blog?>">View Blog</a></div>
@@ -19,6 +20,7 @@ foreach ($entries as $entry) {
 }
 ?>
 </div>
+<? endif; ?>
 
 <div class="fancybox">
 <div id="pages" class="fancytitle black">Pages</div>
