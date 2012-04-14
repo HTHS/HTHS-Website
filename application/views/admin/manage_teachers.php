@@ -60,7 +60,7 @@
 	<? foreach($teachers->result() as $teacher): ?>
 		$('#teacher'+<?=$teacher->id?>).click(function(event) {
 			event.preventDefault();
-			$('#teacherHide'+<?=$teacher->id?>).show('slow');
+			$('#teacherHide'+<?=$teacher->id?>).toggle('slow');
 		});
 		$('#cancel'+<?=$teacher->id?>).click(function() {
 			$('#teacherHide'+<?=$teacher->id?>).hide('slow');

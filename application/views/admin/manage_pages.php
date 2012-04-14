@@ -20,7 +20,7 @@
 	<? foreach($pages->result() as $page): ?>
 		$('#page'+<?=$page->id?>).click(function(event) {
 			event.preventDefault();
-			$('#pageOptions'+<?=$page->id?>).show('slow');
+			$('#pageOptions'+<?=$page->id?>).toggle('slow');
 		});
 		
 		function confirm<?=$page->id?>() {

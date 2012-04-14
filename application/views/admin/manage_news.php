@@ -4,7 +4,7 @@
 			<h2 class="fancytitle black">Manage News</h2>
 			<? foreach($news as $row): ?>
 				<h3><? if($row->expires < time() && $row->expires != 0): ?><del><? endif; ?><a href="" id="show<?=$row->id?>"><?=$row->title?></a> <? if($row->urgent == 1): ?>(Urgent)<? endif; ?><? if($row->expires < time() && $row->expires != 0): ?></del><? endif; ?></h3>
-				<div style="display:none;" id="contentsDiv<?=$row->id?>">
+				<div style="display:none;" class="fancybox" id="contentsDiv<?=$row->id?>">
 					<form action="<?=site_url('admin/edit_news/'.$row->id)?>" method="post">
 					<input type="hidden" name="id" value="<?=$row->id?>" />
 					<table>
@@ -51,7 +51,7 @@
 	<? foreach($news as $row): ?>
 		$('#show'+<?=$row->id?>).click(function(event) {
 			event.preventDefault();
-			$('#contentsDiv'+<?=$row->id?>).show('slow');
+			$('#contentsDiv'+<?=$row->id?>).toggle('slow');
 		});
 		CKEDITOR.replace('contents'+<?=$row->id?>);
 		$('#contentsPopup'+<?=$row->id?>).dialog({ 
