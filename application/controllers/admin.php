@@ -320,6 +320,50 @@ The HTHS Web Team');
 		redirect('admin/pages');
 	}
 	
+	public function images()
+	{
+		if(!$this->isLoggedIn)
+			redirect('admin/login');
+			
+		$config['upload_path'] = 'images/upload/';
+		$config['overwrite'] = true;
+		$config['max_size'] = 10000;
+		$config['allowed_types'] = 'jpg|gif|png';
+		$this->load->library('upload', $config);
+			
+		if(count($_POST) > 0) {
+			if($this->upload->do_upload('image'))
+				redirect('admin/images');
+		}
+		
+		$data['images'] = array();
+		$i = 0;
+		$fh = opendir('images/upload');	
+		while($name = readdir($fh)) {
+			$chkName = explode('.', $name);
+			if($chkName[1] == 'png' || $chkName[1] == 'jpg' || $chkName[1] == 'gif') {
+				$data['images'][$i]['name'] = $name;
+				$data['images'][$i]['size'] = filesize('images/upload/'.$name);
+				$data['images'][$i]['time'] = filemtime('images/upload/'.$name);
+				$i++;
+			}
+		}
+		closedir($fh);
+		
+		$this->output->display_output('admin/images', $data, array('section' => 'admin'));
+	}
+	
+	public function delete_image($name)
+	{
+		if(!$this->isLoggedIn)
+			redirect('admin/login');
+			
+		if($name != '.' && $name != '..' && $name != '.htaccess' && file_exists('images/upload/'.$name))
+			unlink('images/upload/'.$name);
+		
+		redirect('admin/images');
+	}
+	
 	public function add_news()
 	{
 		if(!$this->isLoggedIn)
