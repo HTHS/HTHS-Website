@@ -175,14 +175,14 @@ div.fancybox {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 	box-shadow: 0 5px 10px #DDD;
 	border-radius: 2px;
-	padding: 5px; 
+	padding: 5px 5px 10px 5px;
 	margin: 5px;
 }
 
 .fancytitle {
 	display: block;
 	padding: 3px 10px 3px 15px;
-	margin: 15px 5px 8px -15px;
+	margin: 15px 5px 10px -15px;
 	text-transform: uppercase; 
 	position: relative;
 	font-size: 16pt;
@@ -280,7 +280,10 @@ div.fancybox {
 	float: right;
 }
 
-#sidebar a.button_link:link, #sidebar a.button_link:visited {
+#shortcuts tr {
+	color: white;
+}
+#shortcuts a.button_link:link, #sidebar a.button_link:visited {
 	display: block;
 	background-color: #660000;
 	text-decoration: none;
@@ -299,8 +302,7 @@ background: -ms-linear-gradient(top,  #7c0000 0%,#750000 18%,#4e0000 100%); /* I
 background: linear-gradient(top,  #7c0000 0%,#750000 18%,#4e0000 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c0000', endColorstr='#4e0000',GradientType=0 ); /* IE6-9 */
 }
-
-#sidebar a.button_link:hover, #sidebar a.button_link:active {
+#shortcuts a.button_link:hover, #sidebar a.button_link:active {
 	display: block;
 	background-color: #660000;
 	text-decoration: underline;
@@ -442,4 +444,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	width: 10px;
 	padding-top: 17px;
 	padding-right: 2px;
+}
+
+#onecallnow img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: -25px;
 }

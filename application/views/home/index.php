@@ -9,6 +9,24 @@
 
 				<div id="content_left_below">
                     <div id="content_left_left">
+                        <div id="shortcuts" class="fancybox">
+                            <a href="" class="button_link">
+                                <table>
+                                    <tr>
+                                        <td>>></td>
+                                        <td>Prospective Students</td>
+                                    </tr>
+                                </table>
+                            </a>             
+                            <a href="http://hthsalumni.org/" class="button_link">
+                                <table>
+                                    <tr>
+                                        <td>>></td>
+                                        <td>Alumni</td>
+                                    </tr>
+                                </table>
+                            </a>
+                        </div> 
 						<div id="feed" class="fancybox">
 							<h2 class="fancytitle">Social Feed</h2>
 							<script type="text/javascript">
@@ -75,30 +93,6 @@
                                     <td><a href="http://twitter.com/chiefsimonhths">Follow Us on Twitter</a></td>
                                 </tr>
                             </table>
-							<h2 class="fancytitle">HTHS Weather</h2>
-							<!--Begin Weatherbug Code-->
-							<div class="wXstickerbody" style="word-wrap:normal !important;width:180px;height:150px;border:1px #000 solid;background:url(http://img.weather.weatherbug.com/images/stickers/v2/180x150/bg.gif) no-repeat;">
-							<div class="wXstickerforecast" style="margin-top:7px !important; margin-left:7px !important;">
-							<object type="application/x-shockwave-flash" data="http://weather.weatherbug.com/corporate/products/stickers/v2/MySpace_Sticker_180x150.swf?zipcode=07738&ZCode=z5740&StationID=LNCRF&units=0&lang_id=en-us" height="100" width="166">
-							<param name="movie" value="http://weather.weatherbug.com/corporate/products/stickers/v2/MySpace_Sticker_180x150.swf?zipcode=07738&ZCode=z5740&StationID=LNCRF&units=0&lang_id=en-us">
-							<param name="allowScriptAccess" value="never">
-							<param name="enableJSURL" value="false">
-							<param name="enableHREF" value="false">
-							<param name="saveEmbedTags" value="true">
-							<param name="flashvars" value="zipcode=07738&ZCode=z5740&StationID=LNCRF&units=0">
-							<embed src="http://weather.weatherbug.com/corporate/products/stickers/v2/MySpace_Sticker_180x150.swf?zipcode=07738&ZCode=z5740&StationID=LNCRF&units=0&lang_id=en-us" width="166" height="100" FlashVars="zipcode=07738&ZCode=z5545&StationID=LNCRF&units=0"></embed>
-							</object>
-							</div>
-							<div class="wXstickerlinks" style="height:9px;line-height:9px;text-align:center !important;margin-top:0px !important;width:180px;">
-							<span class="wXstickerlink"><a href="http://weather.weatherbug.com/NJ/Lincroft-weather/local-forecast/7-day-forecast.html?zcode=z5740&units=0" target="_blank" style="font-family:Arial,Helvetica !important;padding-left:1px !important;text-decoration:none !important;color:#00f !important;font-size:9px !important;font-weight:bold !important;">Forecast</a></span>
-							<span class="wXstickerlink"><a href="http://weather.weatherbug.com/NJ/Lincroft-weather/local-radar/doppler-radar.html?zcode=z5740&units=0" target="_blank" style="font-family:Arial,Helvetica !important;padding-left:1px !important;text-decoration:none !important;color:#00f !important;font-size:9px !important;font-weight:bold !important;">Radar</a></span>
-							<span class="wXstickerlink"><a href="http://weather.weatherbug.com/NJ/Lincroft-weather/weather-cams/local-cams.html?zcode=z5740&units=0" target="_blank" style="font-family:Arial,Helvetica !important;padding-left:1px !important;text-decoration:none !important;color:#00f !important;font-size:9px !important;font-weight:bold !important;">Cameras</a></span>
-							<span class="wXstickerlink"><a href="http://weather.weatherbug.com/weather-photos/photo-gallery.html?zcode=z5740&units=0&zip=07738" target="_blank" style="font-family:Arial,Helvetica !important;padding-left:1px !important;text-decoration:none !important;color:#00f !important;font-size:9px !important;font-weight:bold !important;">Photos</a></span>
-							<div class="wXstickerfooter" style="margin-top:6px !important;">
-							<a href="http://weather.weatherbug.com/NJ/Lincroft-weather.html?zcode=z5740&units=0" target="_blank"><img src="http://img.weather.weatherbug.com/images/stickers/v2/180x150/wxbug-logo.jpg" style="border:0px;" border="0" alt="WeatherBug" /></a></div>
-							</div>
-							</div>
-							<!--End Weatherbug Code-->
 						</div>
                     </div>	
                     
@@ -114,7 +108,20 @@
                             ?>
                             <div id="news_archivelink"><a href="<?=site_url("news")?>">News Archives</a></div>
 						</div>
-                    </div>  
+						<div id="onecallnow" class="fancybox">
+                            <h2 class="fancytitle">Alerts</h2>
+                            <img src="<?=site_url('images/icons/one-call-now-banner-logo.gif')?>" /><br />
+                            <iframe width="298" height="70" frameborder="0" scrolling="no" marginheight="0" src="http://secure.onecallnow.com/access/banner/bannerwrapper.aspx?BT=LHB&EGI=0%2fXbzuia0a5jnWFIqn9mcw%3d%3d&S=09%2c10%2c11%2c12%2c20&L=&lt;-+Click+button+to+play+latest+message.+++++++++++++++++++++++++++++++++++++++++++++++++&F=1&Y=s"></iframe>
+                            <hr />
+                            <table>
+                                <tr>
+                                    <td width="32" align="right"><img src="<?=site_url('images/icons/plus.gif')?>" /></td>
+                                    <td><a href="https://secure.onecallnow.com/Access/FamilyProfile/FamilyProfile.aspx?G=DBWFgIxwNPowx%2bNPnanAWg%3d%3d">
+                                        Click here to add additional phone numbers or email addresses to One Call Now.</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
 				</div>
             </div>
 			<? foreach($news as $newsItem): ?>
