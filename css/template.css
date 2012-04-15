@@ -98,6 +98,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 
 #navbar a:hover, #navbar a:active, #navbar a.current {
 	background: #eeeeee;
+	filter: none;
 }
 
 #navbar > ul {
@@ -127,7 +128,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	border-bottom: 1px solid #ccc;
 }
 
-#navbar li ul li a:link, #navbar li ul li a:visited {
+#navbar li ul li a, #navbar li ul li a:link, #navbar li ul li a:visited {
 	display: block;
 	text-decoration: none;
 	background: #eeeeee;
@@ -138,6 +139,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 	font-size: 11pt;
 	width: 188px;
 	z-index: 1;
+	filter: none;
 }
 
 #navbar li ul li a:hover, #navbar li ul li a:active {
