@@ -1,3 +1,13 @@
+<?php
+function get_teacher_photo($username) {
+    if (file_exists('images/teachers/' . $username.'.png')) {
+        return base_url('images/teachers/' . $username.'.png');
+    } else {
+        return base_url('images/teachers/unknown.png');
+    }
+}
+?>
+
 <style type="text/css">
 #teacherbox_container {
 	overflow: auto;
@@ -34,6 +44,9 @@
 	width: 80px;
 	height: 100%;
 	overflow: hidden;
+}
+.teacherbox_photo img {
+    width: 80px;
 }
 .teacherbox_links {
 	margin-left: 90px;
@@ -91,7 +104,7 @@
 				<div class="teacherbox_outer">
 					<div class="teacherbox">
 						<div class="teacherbox_info">
-							<div class="teacherbox_photo"></div>
+							<div class="teacherbox_photo"><img src="<?=get_teacher_photo($teacher->username);?>"></img></div>
 							<div class="teacherbox_links">
 								<a class="teacherbox_link" href="<?=site_url('teachers/' . $teacher->username . '/')?>">About</a>
 								<a class="teacherbox_link teacherbox_link_left" href="<?=site_url('teachers/' . $teacher->username . '#blog')?>">Blog</a>

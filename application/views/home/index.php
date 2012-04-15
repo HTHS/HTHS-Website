@@ -10,6 +10,7 @@
 				<div id="content_left_below">
                     <div id="content_left_left">
                         <div id="shortcuts" class="fancybox">
+                            <h2 class="fancytitle">Portals</h2>
                             <a href="" class="button_link">
                                 <table>
                                     <tr>

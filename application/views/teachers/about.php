@@ -1,3 +1,15 @@
+<style type="text/css">
+.teacher_image {
+    float: left;
+    margin: 2px 10px 10px 2px;
+    border: 1px solid #CCC;
+    padding: 10px;
+    background-color: white;
+    width: 160px;
+    height: 200px;
+}
+</style>
+
 <div id="content_left">
 <div id="content_left_above">
 <div class="fancybox">
