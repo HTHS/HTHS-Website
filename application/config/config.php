@@ -101,7 +101,7 @@ $config['enable_hooks'] = TRUE;
 | Enables or disables the profiler feature displayed at the bottom of pages.
 |
 */
-$config['enable_profiler'] = TRUE;
+$config['enable_profiler'] = FALSE;
 
 
 /*
