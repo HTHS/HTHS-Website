@@ -21,6 +21,7 @@
 						<li><a href="" id="show<?=$form->id?>"><?=$style?><?=$form->filename?><?=$style2?></a></li>
 						<div id="hidden<?=$form->id?>" class="fancybox" style="display:none;">
 							Link: <input type="text" size="50" value="<?=site_url($this->config->item('downloads_directory').'/'.$form->filename)?>" /><br />
+							Downloaded: <?=$form->download_count?> times.<br />
 							<?=$archived?> <input type="button" onclick="window.location.href = '<?=site_url('admin/delete_form/'.$form->id)?>'" value="Delete Form" />
 						</div>
 						<script type="text/javascript">
