@@ -187,7 +187,7 @@ class Teacher_dashboard extends CI_Controller {
 		if(count($_POST) > 0) {
 			if($this->input->post('submit') == 'Upload') {
 				if($this->upload->do_upload('photo'))
-					redirect('teachers/dashboard');
+					redirect('teachers/dashboard/photo');
 			} else if($this->input->post('submit') == 'Delete Photo') {
 				unlink('images/teachers/'.$data['teacher']->username.'.png');
 				redirect('teachers/dashboard');

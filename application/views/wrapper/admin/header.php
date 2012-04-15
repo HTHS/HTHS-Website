@@ -38,6 +38,7 @@
 							<ul>
 								<li><a href="<?=site_url('admin/add_page')?>">Add Page</a></li>
 								<li><a href="<?=site_url('admin/pages')?>">Manage Pages</a></li>
+								<li><a href="<?=site_url('admin/images')?>">Image Manager</a></li>
 							</ul>
 						</li>
 						<li><a href="<?=site_url('admin/teachers')?>">Teachers</a>
