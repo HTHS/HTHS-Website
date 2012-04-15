@@ -290,7 +290,7 @@ div.fancybox {
 	font-size: 10.5pt;
 	font-weight: bold;
 }
-#shortcuts a.button_link:link, #sidebar a.button_link:visited {
+#shortcuts a.button_link:link, #shortcuts a.button_link:visited, #sidebar a.button_link:link, #sidebar a.button_link:visited {
 	display: block;
 	background-color: #660000;
 	text-decoration: none;
@@ -308,7 +308,7 @@ div.fancybox {
 	background: linear-gradient(top,  #7c0000 0%,#750000 18%,#4e0000 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7c0000', endColorstr='#4e0000',GradientType=0 ); /* IE6-9 */
 }
-#shortcuts a.button_link:hover, #sidebar a.button_link:active {
+#shortcuts a.button_link:hover, #shortcuts a.button_link:active, #sidebar a.button_link:hover, #sidebar a.button_link:active {
 	display: block;
 	background-color: #660000;
 	text-decoration: underline;
