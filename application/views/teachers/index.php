@@ -1,18 +1,29 @@
 <style type="text/css">
 #teacherbox_container {
-	margin-right: 20px;
+	overflow: auto;
 }
 .teacherbox_outer {
 	width: 50%;
+	float: left;
 }
-.teacherbox_outer:nth-child(even) {
-	margin-right: -20px;
+.teacherbox_outer:nth-child(odd) {
+	clear: left;
 }
 .teacherbox {
 	margin: 10px;
-	padding: 10px;
-	box-shadow: 0px 2px 15px #AAA;
-	border: 0;
+	padding: 10px 10px 17px 10px;
+	box-shadow: 0px 2px 15px #DDD;
+	border-left: 1px solid #CCC;
+	border-top: 1px solid #CCC;
+	border-right: 1px solid #CCC;
+	position: relative;
+}
+.teacherbox:after {
+	content: "";
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
 	border-bottom: 7px solid #A70000;
 }
 .teacherbox_info {
@@ -61,7 +72,7 @@
 	margin-top: 10px;
 }
 .teacherbox_name {
-	font-size: 16pt;
+	font-size: 15pt;
 	font-weight: bold;
 }
 .teacherbox_subject {
@@ -89,8 +100,8 @@
 							</div>
 						</div>
 						<div class="teacherbox_title">
-							<div class="teacherbox_name"><?=$teacher->name?></div>
-							<div class="teacherbox_subject"><?=$teacher->subject?></div>
+							<div class="teacherbox_name" title="Teacher's Name"><?=$teacher->name?></div>
+							<div class="teacherbox_subject" title="Teacher's Subject"><?=$teacher->subject?></div>
 						</div>
 					</div>
 				</div>
