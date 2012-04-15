@@ -1,0 +1,6 @@
+img {
+	border: 0;
+}
+#gallery img {
+	z-index: 0;
+}

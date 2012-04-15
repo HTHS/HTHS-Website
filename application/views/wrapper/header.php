@@ -9,12 +9,6 @@
 		<link type="text/css" href="<?=site_url('css/jquery-ui-1.8.17.custom.css')?>" rel="stylesheet" />
 		<script src="<?=site_url('js/jquery-1.7.1.min.js')?>" type="text/javascript"></script>
 		<script src="<?=site_url('js/jquery-ui-1.8.17.custom.min.js')?>" type="text/javascript"></script>
-		
-		<!-- IE version specific stylesheets/scripts -->
-		<!--[if IE 7]>
-            <link type="text/css" rel="stylesheet" href="<?=site_url('css/ie7.css')?>">
-            <script src="<?=site_url('js/ie7.js')?>" type="text/javascript"></script>
-        <![endif]-->
 	</head>
 
 	<body>
