@@ -18,7 +18,7 @@ class Initial_setup extends CI_Controller {
 		
 		$output .= '<br />Reading teacher list... ';
 		
-		$teachers = $this->db->query('SELECT * FROM `teacher`')->result_array();
+		$teachers = $this->db->query('SELECT * FROM `teacher`')->result();
 		
 		$output .= 'Done!<br />Creating new passwords... ';
 		
