@@ -112,7 +112,7 @@ class Teachers extends CI_Controller {
 		
 		$this->form_validation->set_rules('email_address', 'Email Address', 'trim|required|valid_email');
 		$this->form_validation->set_rules('subject', 'Subject', 'trim|required|min_length[10]');
-		$this->form_validation->set_rules('message', 'Messsage', 'trim|required');
+		$this->form_validation->set_rules('contents', 'Messsage', 'trim|required');
 		$this->form_validation->set_rules('verify', 'Security Code', 'required|callback_check_captcha|callback_check_flood');
 		$this->form_validation->set_message('check_captcha', 'You must enter the security code correctly.');
 		$this->form_validation->set_message('check_flood', 'You may only send one email every 5 minutes. Please wait and try again.');
@@ -140,9 +140,9 @@ All use of this form is logged, to report abuse please contact the webmaster.';
 			$this->emailmod->logEmail();
 			$this->emailmod->addFlood();
 		
-			print "TRUE";
+			$this->output->display_output('raw_text', array('text' => '<div class="fancybox"><div class="success">Email Sent!</div></div>'));
 		} else {
-			$this->output->display_output('raw_text', array('text' => '<div class="fancybox">' . validation_errors() . '</div>'));
+			$this->output->display_output('raw_text', array('text' => '<div class="fancybox">' . validation_errors() . '<br /><hr /><br /><p>Your message was: '.$this->input->post('contents', TRUE).'</p></div>'));
 		}
 	}
 	
