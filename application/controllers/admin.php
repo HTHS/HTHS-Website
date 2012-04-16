@@ -171,7 +171,7 @@ Username: '.$username.'
 Password: '.$newPass.'
 
 Please use the link below to access the administrator panel, one you login you can change your password within the panel.
-'.site_url('teacher').'
+'.site_url('teachers/dashboard').'
 
 Thank You,
 The HTHS Web Team');
@@ -237,7 +237,7 @@ Username: '.$teacher->username.'
 Password: '.$newPass.'
 
 Please use the link below to access the administrator panel, one you login you can change your password within the panel.
-'.site_url('teacher').'
+'.site_url('teachers/dashboard').'
 
 Thank You,
 The HTHS Web Team');
