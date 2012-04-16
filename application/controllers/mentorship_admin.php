@@ -229,4 +229,25 @@ The HTHS Web Team');
 				
 		$this->output->display_output('mentorship_admin/site_visits', $data, array('section' => 'teacher'));
 	}
+	
+	public function backup()
+	{
+		$this->load->library('zip');
+		$systemData = $this->mentorshipmod->getAllData();
+		$userdata = 'name|username|email|firm|mentor|tags|semester|year
+'; //Newline hack
+		foreach($systemData['users']->result() as $user) 
+			$userdata .= $user->name.'|'.$user->username.'|'.$user->email.'|'.$user->firm.'|'.$user->mentor.'|'.$user->tags.'|'.$user->semester.'|'.$user->year.'
+'; //Newline hack
+		$this->zip->add_data('user_manifest.txt', $userdata);
+		$this->zip->add_data('log_template.txt', 'user_id|date|time_in|time_out|activities|comments');
+		foreach($systemData['logs']->result() as $log) {
+			$logData = $log->user_id.'|'.$log->date.'|'.$log->in_time.'|'.$log->out_time.'|'.$log->activities.'|'.$log->comments.'
+'; //Newline hack
+			$this->zip->add_data('logs/'.$log->id.'.txt', $logData);
+		}
+		
+		$this->zip->archive('application/cache/mentorship_backup.zip');
+		$this->zip->download('application/cache/mentorship_backup.zip');
+	}
 }
