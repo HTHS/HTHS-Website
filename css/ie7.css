@@ -23,3 +23,9 @@ img {
 	bottom: 5px;
 	z-index: -1;
 }
+.teacherbox_link_right {
+	margin-top: -37px;
+}
+.teacherbox {
+	border-bottom: 7px solid #A70000;
+}

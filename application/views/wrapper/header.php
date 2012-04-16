@@ -16,6 +16,10 @@
             <link type="text/css" rel="stylesheet" href="<?=site_url('css/ie7.css')?>">
             <script src="<?=site_url('js/ie7.js')?>" type="text/javascript"></script>
         <![endif]-->
+        <!--[if IE 8]>
+            <link type="text/css" rel="stylesheet" href="<?=site_url('css/ie8.css')?>">
+            <script src="<?=site_url('js/ie8.js')?>" type="text/javascript"></script>
+        <![endif]-->
         <!--[if IE 9]>
             <link type="text/css" rel="stylesheet" href="<?=site_url('css/ie9.css')?>">
         <![endif]-->
