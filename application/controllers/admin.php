@@ -77,7 +77,7 @@ class Admin extends CI_Controller {
 		
 		if(count($_POST) > 0)
 		{
-			$this->form_validation->set_rules('password', 'Current Password Password', 'trim|required|callback_check_password');
+			$this->form_validation->set_rules('password', 'Current Password', 'trim|required|callback_check_password');
 			$this->form_validation->set_rules('new_password', 'New Password', 'trim|required|min_length[6]');
 			$this->form_validation->set_rules('confirm', 'Confirm New Password', 'trim|required|matches[new_password]');
 			$this->form_validation->set_message('check_password','Your password was incorrect.');

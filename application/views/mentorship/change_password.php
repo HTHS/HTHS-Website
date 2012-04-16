@@ -6,6 +6,7 @@
 			<p>Please enter your password and desired new password below:</p>
 			<br />
 			<form name="login" action="<?=current_url()?>" method="post">
+			<input type="hidden" name="username" value="<?=$this->session->userdata('username')?>" />
 				<table>
 					<tr>
 						<td>Current Password:</td>
