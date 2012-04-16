@@ -18,7 +18,8 @@ class Teachermod extends CI_Model {
 	{
 		$data = array(
 			'description' => $this->input->post('description'),
-			'blog' => $this->input->post('blog')
+			'blog' => $this->input->post('blog'),
+			'email_display_allowed' => $this->input->post('publicEmail')
 		);
 		
 		$this->db->where('id', $this->session->userdata('id'));
