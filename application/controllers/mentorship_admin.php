@@ -237,6 +237,7 @@ The HTHS Web Team');
 		$userdata = 'name|username|email|firm|mentor|tags|semester|year\n';
 		foreach($systemData['users']->result() as $user) 
 			$userdata .= $user->name.'|'.$user->username.'|'.$user->email.'|'.$user->firm.'|'.$user->mentor.'|'.$user->tags.'|'.$user->semester.'|'.$user->year.'\n';
+		$this->zip->add_data('backup_time.txt', 'Backup run at: '.date('m/d/Y', time()));
 		$this->zip->add_data('user_manifest.txt', $userdata);
 		$this->zip->add_data('log_template.txt', 'user_id|date|time_in|time_out|activities|comments');
 		foreach($systemData['logs']->result() as $log) {
