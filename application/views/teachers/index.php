@@ -100,7 +100,7 @@ function get_teacher_photo($username) {
 			<h2 class="fancytitle black">Teachers & Faculty</h2>
 			
 			<div id="teacherbox_container">
-				<? foreach($teachers->result() as $teacher): ?>
+				<? foreach($teachers as $teacher): ?>
 				<div class="teacherbox_outer">
 					<div class="teacherbox">
 						<div class="teacherbox_info">
