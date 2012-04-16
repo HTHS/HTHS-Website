@@ -31,7 +31,7 @@ class Initial_setup extends CI_Controller {
 		
 		foreach($teachers as $teacher) {
 			$salts[$teacher->id] = random_string('alnum', 16);
-			$hashes[$teacher->id] = md5($this->config->item('hardsalt') . $newPasswords[$teaher->id] . $salts[$teacher->id]);
+			$hashes[$teacher->id] = md5($this->config->item('hardsalt') . $newPasswords[$teacher->id] . $salts[$teacher->id]);
 		}
 		
 		$output .= 'Done!<br />Writing new passwords to database... ';
