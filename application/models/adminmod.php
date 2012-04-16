@@ -62,12 +62,6 @@ class Adminmod extends CI_Model {
 		
 		$this->db->insert('teacher', $data);
 		
-		$data = array (
-			'teacher_id' => $this->db->insert_id(),
-			'page_contents' => ''
-		);
-		
-		$this->db->insert('teacher_pages', $data);
 		return $password;
 	}
 	
