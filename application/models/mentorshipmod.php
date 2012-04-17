@@ -70,7 +70,7 @@ class Mentorshipmod extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->delete('mentorship_users');
 		
-		$this->db->where('id', $id);
+		$this->db->where('student_id', $id);
 		$this->db->delete('mentorship_logs');
 	}
 	
