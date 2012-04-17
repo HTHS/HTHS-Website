@@ -12,7 +12,7 @@ class Pages extends CI_Controller {
 	
 	public function index()
 	{
-		$url = implode('/', func_get_args());
+		$url = str_replace('pages/', '', $this->uri->uri_string());
 		$data = $this->pagesmod->getPageByUrl($url);
 		
 		if ($data == false) {
