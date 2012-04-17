@@ -15,7 +15,7 @@ class Emailmod extends CI_Model {
 			'email_address' => $this->input->post('email_address'),
 			'ip_address' => $this->input->ip_address(),
 			'subject' => $this->input->post('subject'),
-			'contents' => $this->input->post('message'),
+			'contents' => $this->input->post('contents', TRUE),
 			'time' => time()
 		);
 		

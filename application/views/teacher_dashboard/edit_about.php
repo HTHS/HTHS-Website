@@ -12,6 +12,9 @@
 					<td><input type="text" name="blog" value="<?=$about->blog?>" size="50" /></td>
 				</tr>
 				<tr>
+					<td>Make My Email Publically Visible: </td>
+					<td><input type="checkbox" name="publicEmail" value="1" <?=set_checkbox('publicEmail', '1', $about->email_display_allowed == 1)?> /></td>
+				<tr>
 					<td colspan="2"><input type="submit" value="Update" /></td>
 				</tr>
 			</table>

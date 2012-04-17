@@ -41,9 +41,8 @@
 			</p><p>
 			<h3>Contact via form:</h3>
 			<?php
-				$this->load->helper('form');
 				echo form_open('teachers/' . $teacher->username . '/contact/send');
-				
+				echo form_hidden(array('teacher_id' => $teacher->id));
 				$fields = array('Your Email Address:' => 'email_address', 'Subject:' => 'subject');
 				
 				echo '<table id="contact_form">';

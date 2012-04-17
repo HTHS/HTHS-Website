@@ -7,6 +7,13 @@ class Mentorshipmod extends CI_Model {
 		parent::__construct();
 	}
 	
+	public function getAllData()
+	{
+		$data['logs'] = $this->db->get('mentorship_logs');
+		$data['users'] = $this->db->get('mentorship_users');
+		return $data;
+	}
+	
 	public function checkKey($key, $id)
 	{
 		$this->db->where('id', $id);
