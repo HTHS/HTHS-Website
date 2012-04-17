@@ -28,16 +28,18 @@
 	<div id="content_left_above">
 		<div class="fancybox">
 			<h2 class="fancytitle">Contact <?=$teacher->name?></h2>
-			<p>You may either contact this teacher via direct email if he/she allows it, or you may send an email directly from this page via the form provided.</p>
+			<p>You may contact this teacher via a voicemail or via direct email, or you may send an email directly from this page via the form provided below.</p>
 			<p>
 			<h3>Contact via voicemail: </h3>
 				(732) 842-8444 x<?=$teacher->voicemail?>
+			</p>
+			<p>
 			<h3>Contact via direct email:</h3>
 			<?php
 			if ($email_display_allowed == true) {
 				echo safe_mailto($teacher->email, $teacher->email, array('id' => 'teacher_email'));
 			} else {
-				echo "<i>This teacher has disabled direct email contact, please use the form below.";
+				echo "<i>This teacher has requested not to display their email address, please use the form below.";
 			}
 			?>
 			</p><p>
