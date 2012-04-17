@@ -33,8 +33,19 @@ class Teachers extends CI_Controller {
         // Run by default when the user goes to /teachers/SomeTeacher, displays some biographical info and a photo, links to pages and blog
 		
         $teacher_id = $this->teachermod->getTeacherId($username);
+		
         $data['teacher'] = $this->teachermod->getTeacherInfo($teacher_id);
-        $data['pages'] = $this->teachermod->getPageList($teacher_id)->result();
+		
+		// Remove empty elements from the list of pages. 
+        $pages = $this->teachermod->getPageList($teacher_id)->result();
+		$data['pages'] = array();
+		for ($i = count($pages) - 1; $i >= 0; $i--) {
+			if ($pages[$i]->page_url != '') {
+				$data['pages'] = $pages[$i];
+			}
+		}
+		$data['pages'] = array_reverse($data['pages']);
+		
 		if($data['teacher']->blog != '')
 			$data['entries'] = $this->curlmod->fetchBlogEntries($data['teacher']->blog.'/atom.xml', 6, $teacher_id);
         
