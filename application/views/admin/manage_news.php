@@ -53,7 +53,6 @@
 			event.preventDefault();
 			$('#contentsDiv'+<?=$row->id?>).toggle('slow');
 		});
-		CKEDITOR.replace('contents'+<?=$row->id?>);
 		$('#contentsPopup'+<?=$row->id?>).dialog({ 
 			autoOpen: false, 
 			title: "Newspost Editor", 
@@ -63,6 +62,7 @@
 		$('#openEditor'+<?=$row->id?>).click(function(event) {
 			event.preventDefault();
 			$('#contentsPopup'+<?=$row->id?>).dialog('open');
+			CKEDITOR.replace('contents'+<?=$row->id?>);
 		});
 		$('#cancel'+<?=$row->id?>).click(function() {
 			$('#contentsDiv'+<?=$row->id?>).hide('slow');

@@ -130,7 +130,7 @@
 								<div class="downloads_type_item_info">
 									<span class="downloads_type_item_title"><?=$form->name?></span>
 									<span class="downloads_type_item_size"><?=format_filesize($form->filesize)?></span>
-									<span class="downloads_type_item_downloadcount"><?=number_format($form->download_count)?> downloads</span>
+									<span class="downloads_type_item_downloadcount"></span>
 									<span class="downloads_type_item_date"><?=date('M n, Y', $form->time)?></span>
 								</div>
 							</a>

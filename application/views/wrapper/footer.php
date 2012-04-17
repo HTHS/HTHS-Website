@@ -106,7 +106,7 @@
             
             <div class="right">
             	(c) <?=date('Y',time())?> High Technology High School <br  />
-                <a href="<?=site_url('pages/non-discrimination')?>">Non-Discrimination Clause</a>
+                <a href="<?=site_url('pages/non-discrimination')?>">Non-Discrimination Clause/Anti-Bullying Info</a>
             </div>
         </div>
 

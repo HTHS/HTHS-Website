@@ -22,7 +22,15 @@
 						<div id="hidden<?=$form->id?>" class="fancybox" style="display:none;">
 							Link: <input type="text" size="50" value="<?=site_url($this->config->item('downloads_directory').'/'.$form->filename)?>" /><br />
 							Downloaded: <?=$form->download_count?> times.<br />
-							<?=$archived?> <input type="button" onclick="window.location.href = '<?=site_url('admin/delete_form/'.$form->id)?>'" value="Delete Form" />
+							<?=$archived?> <input type="button" onclick="window.location.href = '<?=site_url('admin/delete_form/'.$form->id)?>'" value="Delete Form" /><br />
+							<form action="<?=current_url()?>" method="post">
+							<input type="hidden" name="filename" value="<?=$form->filename?>" />
+							<select name="type">
+								<? foreach($types as $typeLocal): ?>
+									<option value="<?=$typeLocal->id?>"><?=$typeLocal->type?></option>
+								<? endforeach; ?>
+							</select> <input type="submit" name="submit" value="Change Category" />
+							</form>
 						</div>
 						<script type="text/javascript">
 							$('#show'+<?=$form->id?>).click(function(event) {
@@ -54,7 +62,7 @@
 					</select></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="Upload Form" /></td>
+					<td colspan="2"><input type="submit" name="submit" value="Upload Form" /></td>
 				</tr>
 			</table>
 			</form>

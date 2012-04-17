@@ -30,6 +30,8 @@
 			<h2 class="fancytitle">Contact <?=$teacher->name?></h2>
 			<p>You may either contact this teacher via direct email if he/she allows it, or you may send an email directly from this page via the form provided.</p>
 			<p>
+			<h3>Contact via voicemail: </h3>
+				(732) 842-8444 x<?=$teacher->voicemail?>
 			<h3>Contact via direct email:</h3>
 			<?php
 			if ($email_display_allowed == true) {

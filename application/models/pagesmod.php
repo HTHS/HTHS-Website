@@ -52,6 +52,7 @@ class Pagesmod extends CI_Model {
 	
 	function addForm($filename)
 	{	
+		$fileInfo = get_file_info($this->config->item('downloads_directory') . '/' . $filename, 'size');
 		$data = array( 
 			'name' => $this->input->post('name'),
 			'filename' => $filename,
@@ -59,10 +60,17 @@ class Pagesmod extends CI_Model {
 			'archived' => 0,
 			'type' => $this->input->post('type'),
 			'download_count' => 0,
-			'filesize' => get_file_info('./' . $this->config->item('downloads_directory') . '/' . $filename, 'size')
+			'filesize' => $fileInfo['size']
 		);
 		
 		$this->db->insert('forms', $data);
+	}
+	
+	function updateForm($filename)
+	{
+		$data = array('type' => $this->input->post('type'));
+		$this->db->where('filename', $filename);
+		$this->db->update('forms', $data);
 	}
 	
 	function incrementFormDownloadCount($filename) {

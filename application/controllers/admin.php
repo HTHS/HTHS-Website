@@ -483,7 +483,8 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		
 		if(count($_POST) > 0) {
 			$this->load->library('form_validation');
-			$this->form_validation->set_rules('category', 'Category', 'trim|required');
+			$this->form_validation->set_rules('category', 'Category', 'trim|required|is_unique[form_types.type]');
+			$this->form_validation->set_message('is_unique', 'A category with that name already exists.');
 			if($this->form_validation->run())
 				$this->pagesmod->addCategory();
 		}
@@ -511,16 +512,22 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0) {
-			$config['upload_path'] = $this->config->item('downloads_directory') . '/';
-			$config['allowed_types'] = 'doc|docx|xls|xlsx|ppt|pptx|pdf';
-			$this->load->library('upload',$config);
-			$this->form_validation->set_rules('name', 'Name', 'trim|required');
-			if($this->form_validation->run()){
-				$this->upload->do_upload('form');
-				$data['errors'] = $this->upload->display_errors();
-				$uploadData = $this->upload->data();
-				if($data['errors'] == '')
-					$this->pagesmod->addForm($uploadData['file_name']);
+			if($this->input->post('submit') == 'Upload Form') {
+				$config['upload_path'] = $this->config->item('downloads_directory') . '/';
+				$config['allowed_types'] = 'doc|docx|xls|xlsx|ppt|pptx|pdf';
+				$this->load->library('upload',$config);
+				$this->form_validation->set_rules('name', 'Name', 'trim|required|is_unique[forms.name]');
+				$this->form_validation->set_message('is_unique', 'A form with that name already exists.');
+				if($this->form_validation->run()){
+					$this->upload->do_upload('form');
+					$data['errors'] = $this->upload->display_errors();
+					$uploadData = $this->upload->data();
+					if($data['errors'] == '')
+						$this->pagesmod->addForm($uploadData['file_name']);
+				}
+			}
+			else if($this->input->post('submit') == 'Change Category') {
+				$this->pagesmod->updateForm($this->input->post('filename'));
 			}
 		}
 		$data['types'] = $this->pagesmod->listFormTypes(true);

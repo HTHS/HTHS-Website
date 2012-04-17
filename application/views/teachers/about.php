@@ -25,7 +25,7 @@
 <div class="fancytitle"><?=$teacher->name?></div>
 <div id="teacher_description_wrapper">
 <? if(file_exists('images/teachers/' . $teacher->username.'.png')): ?>
-	<img src="<?=base_url('images/teachers/' . $teacher->username.'.png')?>" class="teacher_image" />
+	<img src="<?=base_url('images/teachers/' . $teacher->username.'.png')?>" height="200" class="teacher_image" />
 <? endif; ?>
 <div id="teacher_description">
 <?=$teacher->description?>

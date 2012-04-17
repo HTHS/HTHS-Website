@@ -41,6 +41,13 @@
 	{
 		$CI =& get_instance();
 		
+		//Send headers to force the site to prevent caching
+		$CI->output->set_header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+		$CI->output->set_header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+		$CI->output->set_header("Cache-Control: no-store, no-cache, must-revalidate");
+		$CI->output->set_header("Cache-Control: post-check=0, pre-check=0", false);
+		$CI->output->set_header("Pragma: no-cache");
+		
 		$CI->db->where('setting_name', 'online');
 		$status = $CI->db->get('site_settings')->row();
 		
