@@ -60,11 +60,15 @@
 		}
 		else
 		{
-			if (!isset($options['section'])) {
+			if (!isset($options['section']))
 				$templatedir = 'wrapper';
-			} else {
+			else 
 				$templatedir = 'wrapper/' . $options['section'];
-			}
+				
+			if(isset($options['title']))
+				$headerdata['title'] = $options['title'];
+			else
+				$headerdata['title'] = '';
 			
 			$CI->load->library('menu');
 			$headerdata['menu'] = $CI->menu->render();
