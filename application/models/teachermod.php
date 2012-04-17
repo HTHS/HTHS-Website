@@ -116,6 +116,16 @@ class Teachermod extends CI_Model {
 			$this->db->delete('teacher_pages');
 		}
 	}
+	
+	function check_email_display_allowed($id) {
+		$this->db->where('id',$id);
+		$email_display_allowed = $this->db->get('teacher')->row()->email_display_allowed;
+		if ($email_display_allowed == "1") {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 ?>

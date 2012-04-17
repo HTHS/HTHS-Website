@@ -58,6 +58,8 @@ $route['teachers/(:any)/page/(:any)'] = 'teachers/page/$1/$2';
 $route['teachers/(:any)/blog/view/(:num)'] = 'teachers/blog_entry/$1/$2';
 $route['teachers/(:any)/blog/page/(:num)'] = 'teachers/blog_home/$1/$2';
 $route['teachers/(:any)/blog'] = 'teachers/blog_home/$1';
+$route['teachers/(:any)/contact/send'] = 'teachers/contact_send/$1';
+$route['teachers/(:any)/contact'] = 'teachers/contact/$1';
 $route['teachers/(:any)'] = 'teachers/about/$1';
 
 /* End of file routes.php */
