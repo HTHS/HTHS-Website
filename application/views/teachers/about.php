@@ -8,6 +8,11 @@
     width: 160px;
     height: 200px;
 }
+
+#teacher_description ul, #teacher_description ol {
+	display: inline-block;
+	margin: 0 0 1em -20px;
+}
 </style>
 
 <div id="content_left">
@@ -17,8 +22,9 @@
 <? if(file_exists('images/teachers/' . $teacher->username.'.png')): ?>
 	<img src="<?=base_url('images/teachers/' . $teacher->username.'.png')?>" class="teacher_image" />
 <? endif; ?>
-<br /><br />
+<div id="teacher_description">
 <?=$teacher->description?>
+</div>
 </div>
 
 <? if($teacher->blog != ''): ?>
