@@ -140,9 +140,9 @@ All use of this form is logged, to report abuse please contact the webmaster.';
 			$this->emailmod->logEmail();
 			$this->emailmod->addFlood();
 		
-			$this->output->display_output('raw_text', array('text' => '<div class="fancybox"><div class="success">Email Sent!</div></div>'));
+			$this->output->display_output('text', array('text' => '<div class="fancybox"><div class="success">Email Sent!</div></div>'));
 		} else {
-			$this->output->display_output('raw_text', array('text' => '<div class="fancybox">' . validation_errors() . '<br /><hr /><br /><p>Your message was: '.$this->input->post('contents', TRUE).'</p></div>'));
+			$this->output->display_output('text', array('text' => '<div class="fancybox">' . validation_errors() . '<br /><hr /><br /><p>Your message was: '.$this->input->post('contents', TRUE).'</p></div>'));
 		}
 	}
 	
