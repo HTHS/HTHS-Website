@@ -1,3 +1,4 @@
+</div>
 	<? if(!isset($nosidebar)): ?>	
 		<div id="sidebar">
 			<div class="fancybox">

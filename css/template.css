@@ -175,7 +175,7 @@ div.fancybox {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 	box-shadow: 0 5px 10px #DDD;
 	border-radius: 2px;
-	padding: 5px 5px 10px 5px;
+	padding: 5px 5px 5px 5px;
 	margin: 5px;
 }
 

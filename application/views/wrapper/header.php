@@ -10,6 +10,7 @@
 		<script src="<?=site_url('js/jquery-1.7.1.min.js')?>" type="text/javascript"></script>
 		<script src="<?=site_url('js/jquery-ui-1.8.17.custom.min.js')?>" type="text/javascript"></script>
 		<script src="<?=site_url('js/main.js')?>" type="text/javascript"></script>
+		<script src="<?=site_url('js/dynamic.js')?>" type="text/javascript"></script>
 		
 		<!-- IE version specific stylesheets/scripts -->
 		<!--[if IE 7]>
@@ -48,8 +49,4 @@
         </div>
         
         <div id="container">
-        
-                
-				
-            
-            
+<div id="main_content_wrap">
