@@ -463,3 +463,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 #feed_icon {
 	border: 0;
 }
+
+#weather_widget {
+	padding-bottom: 2px;
+}

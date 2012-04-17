@@ -67,7 +67,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="fancybox">
+			<div id="weather_widget" class="fancybox">
 			    <h2 class="fancytitle">Weather</h2>
                 <!--Begin Weatherbug Code-->
                 <div class="wXstickerbody" style="word-wrap:normal !important;width:180px;height:150px;border:1px #000 solid;background:url(http://img.weather.weatherbug.com/images/stickers/v2/180x150/bg.gif) no-repeat; margin-left: -2px;">
