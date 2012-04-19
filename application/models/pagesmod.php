@@ -44,6 +44,13 @@ class Pagesmod extends CI_Model {
 		$this->db->insert('form_types',$data);
 	}
 	
+	function editCategory($id)
+	{
+		$data = array( 'type' => $this->input->post('category') );
+		$this->db->where('id', $id);
+		$this->db->update('form_types', $data);
+	}
+	
 	function deleteCategory($id)
 	{
 		$this->db->where('id',$id);

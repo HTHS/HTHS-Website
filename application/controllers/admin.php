@@ -485,8 +485,12 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('category', 'Category', 'trim|required|is_unique[form_types.type]');
 			$this->form_validation->set_message('is_unique', 'A category with that name already exists.');
-			if($this->form_validation->run())
-				$this->pagesmod->addCategory();
+			if($this->form_validation->run()) {
+				if($this->input->post('submit') == 'Add Category')
+					$this->pagesmod->addCategory();
+				else if($this->input->post('submit') == 'Rename')
+					$this->pagesmod->editCategory($this->input->post('id'));
+			}
 		}
 		
 		$data['unusedTypes'] = $this->pagesmod->listFormTypes(true,true);
