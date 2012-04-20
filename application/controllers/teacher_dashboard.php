@@ -77,7 +77,7 @@ class Teacher_dashboard extends CI_Controller {
 			$this->form_validation->set_message('check_password','Your password was incorrect.');
 			if($this->form_validation->run()) {
 				$this->loginmod->changePassword('teacher');
-				redirect('teacher');
+				redirect('teachers/dashboard');
 			}
 		}
 		
