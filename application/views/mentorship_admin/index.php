@@ -82,7 +82,7 @@
 				<p>The following people have not made any log entires in 2 weeks:</p>
 				<ul>
 					<? foreach($problemUsers->result() as $user): ?>
-						<li><?=$user->name?></li>
+							<li><?=$user->name?></li>
 					<? endforeach; ?>
 				</ul>
 				<p>Today's Site Visits:</p>
