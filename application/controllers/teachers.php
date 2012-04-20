@@ -111,7 +111,7 @@ class Teachers extends CI_Controller {
 		$this->email->clear();
 		
 		$this->form_validation->set_rules('email_address', 'Email Address', 'trim|required|valid_email');
-		$this->form_validation->set_rules('subject', 'Subject', 'trim|required|min_length[10]');
+		$this->form_validation->set_rules('subject', 'Subject', 'trim|required');
 		$this->form_validation->set_rules('contents', 'Messsage', 'trim|required');
 		$this->form_validation->set_rules('verify', 'Security Code', 'required|callback_check_captcha|callback_check_flood');
 		$this->form_validation->set_message('check_captcha', 'You must enter the security code correctly.');
@@ -142,7 +142,7 @@ All use of this form is logged, to report abuse please contact the webmaster.';
 		
 			$this->output->display_output('text', array('text' => '<div class="fancybox"><div class="success">Email Sent!</div></div>'));
 		} else {
-			$this->output->display_output('text', array('text' => '<div class="fancybox">' . validation_errors() . '<br /><hr /><br /><p>Your message was: '.$this->input->post('contents', TRUE).'</p></div>'));
+			$this->output->display_output('text', array('text' => '<div class="fancybox"><div class="error">Your message was not sent due to the following errors: </div><br />' . validation_errors() . '<br /><hr /><br /><p>The message that would have been sent was: '.$this->input->post('contents', TRUE).'</p></div>'));
 		}
 	}
 	

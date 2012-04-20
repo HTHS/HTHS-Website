@@ -1,0 +1,6 @@
+The following is a list of all core modifications made by HTHS developers. These changes must be carried over or re-made if the system folder is overwritten by a code igniter update.
+
+/system/helpers/captcha_helper.php
+
+-Edited the $pool variable to prevent commonly mistaken characters from appearing in the CAPTCHA. Line 111
+-Edits marked by //* HTHS Edit *// and //* End HTHS Edit *//
