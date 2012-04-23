@@ -29,7 +29,7 @@
 							</tr>
 							<tr>
 								<td>Login Name: </td>
-								<td><?=$teacher->username?></td>
+								<td><?=$teacher->username?><input type="hidden" name="old_username" value="<?=$teacher->username?>" /></td>
 							</tr>
 							<tr>
 								<td>Email Address: </td>

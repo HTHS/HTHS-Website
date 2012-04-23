@@ -209,6 +209,8 @@ The HTHS Web Team');
 			$this->form_validation->set_rules('subject', 'Subject', 'trim|required');
 			if($this->form_validation->run()) {
 				$username = substr($this->input->post('first'), 0, 1).$this->input->post('last');
+				if(file_exists('images/teachers/'.$this->input->post('old_username',TRUE).'.png'))
+					rename('images/teachers/'.$this->input->post('old_username',TRUE).'.png', 'images/teachers/'.$username.'.png');
 				$this->adminmod->editTeacher($id, $username);
 				redirect('admin/teachers');
 			}
