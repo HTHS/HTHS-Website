@@ -11,7 +11,7 @@
 			<p>Click an teacher's name to edit or remove that teacher.</p>
 			<ul>
 				<? foreach($teachers->result() as $teacher): ?>
-					<li><a href="" id="teacher<?=$teacher->id?>"><?=$teacher->prefix.''.$teacher->first_name.''.$teacher->last_name.''.$teacher->last_name.''.$teacher->suffix?></a></li>
+					<li><a href="" id="teacher<?=$teacher->id?>"><?=$teacher->prefix.''.$teacher->first_name.''.$teacher->last_name.''.$teacher->suffix?></a></li>
 					<div id="teacherHide<?=$teacher->id?>" style="display:none;" class="fancybox">
 					<form action="<?=site_url('admin/edit_teacher/'.$teacher->id)?>" method="post">
 						<table>
