@@ -17,7 +17,7 @@
 					</tr>
 					<tr>
 						<td>Prefix: </td>
-						<td><input type="text" name="prefix" size="10" value="<?=set_value('prefix')?>" /> Suffix: <input type="text" name="prefix" size="10" value="<?=set_value('suffix')?>" /></td>
+						<td><input type="text" name="prefix" size="10" value="<?=set_value('prefix')?>" /> Suffix: <input type="text" name="suffix" size="10" value="<?=set_value('suffix')?>" /></td>
 					</tr>
 					<tr>
 						<td>Email Address: </td>
