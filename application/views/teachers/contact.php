@@ -27,7 +27,7 @@
 <div id="content_left">
 	<div id="content_left_above">
 		<div class="fancybox">
-			<h2 class="fancytitle">Contact <?=$teacher->name?></h2>
+			<h2 class="fancytitle">Contact <?=$teacher->prefix.''.$teacher->first_name.''.$teacher->last_name.''.$teacher->last_name.''.$teacher-suffix?></h2>
 			<p>You may contact this teacher via a voicemail or via direct email, or you may send an email directly from this page via the form provided below.</p>
 			<p>
 			<h3>Contact via voicemail: </h3>

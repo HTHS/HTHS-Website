@@ -50,7 +50,10 @@ class Adminmod extends CI_Model {
 		$hash = md5($this->config->item('hardsalt') . $password . $salt);
 		
 		$data = array (
-			'name' => $this->input->post('first')." ".$this->input->post('last'),
+			'first_name' => $this->input->post('first'),
+			'last_name' => $this->input->post('last'),
+			'prefix' => $this->input->post('prefix'),
+			'suffix' => $this->input->post('suffix'),
 			'email' => $this->input->post('email'),
 			'hash' => $hash,
 			'salt' => $salt,
@@ -68,7 +71,10 @@ class Adminmod extends CI_Model {
 	function editTeacher($id, $username)
 	{
 		$data = array (
-			'name' => $this->input->post('first')." ".$this->input->post('last'),
+			'first_name' => $this->input->post('first'),
+			'last_name' => $this->input->post('last'),
+			'prefix' => $this->input->post('prefix'),
+			'suffix' => $this->input->post('suffix'),
 			'email' => $this->input->post('email'),
 			'subject' => $this->input->post('subject'),
 			'voicemail' => $this->input->post('voicemail'),

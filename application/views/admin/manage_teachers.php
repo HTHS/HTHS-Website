@@ -10,19 +10,22 @@
 			<? endif; ?>
 			<p>Click an teacher's name to edit or remove that teacher.</p>
 			<ul>
-				<? foreach($teachers->result() as $teacher): 
-					$name = explode(" ", $teacher->name); ?>
-					<li><a href="" id="teacher<?=$teacher->id?>"><?=$teacher->name?></a></li>
+				<? foreach($teachers->result() as $teacher): ?>
+					<li><a href="" id="teacher<?=$teacher->id?>"><?=$teacher->prefix.''.$teacher->first_name.''.$teacher->last_name.''.$teacher->last_name.''.$teacher->suffix?></a></li>
 					<div id="teacherHide<?=$teacher->id?>" style="display:none;" class="fancybox">
 					<form action="<?=site_url('admin/edit_teacher/'.$teacher->id)?>" method="post">
 						<table>
 							<tr>
 								<td>First Name: </td>
-								<td><input type="text" name="first" size="35" value="<?=$name[0]?>" /></td>
+								<td><input type="text" name="first" size="35" value="<?=$teacher->first_name?>" /></td>
 							</tr>
 							<tr>
 								<td>Last Name: </td>
-								<td><input type="text" name="last" size="35" value="<?=$name[1]?>" /></td>
+								<td><input type="text" name="last" size="35" value="<?=$teacher->last_name?>" /></td>
+							</tr>
+							<tr>
+								<td>Prefix: </td>
+								<td><input type="text" name="prefix" size="10" value="<?=$teacher->prefix?>" /> Suffix: <input type="text" name="prefix" size="10" value="<?=$teacher->suffix?>" /></td>
 							</tr>
 							<tr>
 								<td>Login Name: </td>

@@ -22,7 +22,7 @@
 <div id="content_left">
 <div id="content_left_above">
 <div class="fancybox">
-<div class="fancytitle"><?=$teacher->name?></div>
+<div class="fancytitle"><?=$teacher->prefix.''.$teacher->first_name.''.$teacher->last_name.''.$teacher->last_name.''.$teacher-suffix?></div>
 <div id="teacher_description_wrapper">
 <? if(file_exists('images/teachers/' . $teacher->username.'.png')): ?>
 	<img src="<?=base_url('images/teachers/' . $teacher->username.'.png')?>" height="200" class="teacher_image" />
