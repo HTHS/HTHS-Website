@@ -20,11 +20,8 @@ class Teachers extends CI_Controller {
 	
 	public function index()
 	{
-        // Displays a list of teachers, with links to their pages, blogs, and contact forms. 
-        $this->load->helper('teacher_sort');
-		
-		$teachers = $this->teachermod->getTeacherList()->result();
-		$data['teachers'] = teacher_sort($teachers);
+        // Displays a list of teachers, with links to their pages, blogs, and contact forms. 		
+		$data['teachers'] = $this->teachermod->getTeacherList()->result();
 		
 		$this->output->display_output('teachers/index',$data);
 	}

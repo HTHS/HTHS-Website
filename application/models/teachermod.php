@@ -43,7 +43,7 @@ class Teachermod extends CI_Model {
 	
 	function getTeacherList()
 	{
-		$this->db->order_by('name', 'ASC');
+		$this->db->order_by('last_name', 'ASC');
 		$entries = $this->db->get('teacher');
 		return $entries;
 	}
