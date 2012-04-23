@@ -113,7 +113,7 @@ function get_teacher_photo($username) {
 							</div>
 						</div>
 						<div class="teacherbox_title">
-							<div class="teacherbox_name" title="Teacher's Name"><?=$teacher->prefix.''.$teacher->first_name.''.$teacher->last_name.''.$teacher->suffix?></div>
+							<div class="teacherbox_name" title="Teacher's Name"><?=$teacher->prefix.' '.$teacher->first_name.' '.$teacher->last_name.' '.$teacher->suffix?></div>
 							<div class="teacherbox_subject" title="Teacher's Subject"><?=$teacher->subject?></div>
 						</div>
 					</div>
