@@ -39,6 +39,9 @@
 				<tr>
 					<td colspan="2"><input type="submit" value="Submit Log" /> <input type="button" value="Change Password" onclick="window.location.href = '<?=site_url('mentorship/change_password')?>'" /> <input type="button" value="Logout" onclick="window.location.href = '<?=site_url('mentorship/logout')?>'" /></td>
 				</tr>
+				<tr>
+					<td colspan="2">To edit or delete an existing log entry, click the date of the log entry you want to modify.</td>
+				</tr>
 			</table>
 		</div>
 	</div>
