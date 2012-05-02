@@ -148,7 +148,7 @@ class Mentorship extends CI_Controller {
 		$this->output->display_output('mentorship/change_password');
 	}
 	
-	public function view($id = 0, $key = 0, $offset = 0)
+	public function view($id = 0, $key = 0, $offset = 1)
 	{
 		if($id == 0 || $key == 0)
 			redirect();
@@ -156,18 +156,20 @@ class Mentorship extends CI_Controller {
 		if(!$this->mentorshipmod->checkKey($key, $id))
 			redirect();
 			
-		$data['log'] = $this->mentorshipmod->getEntries($id, 5, $offset);
-		$data['user'] = $this->mentorshipmod->getUserInfo($id);
-			
 		$this->load->library('pagination');
-		$config['base_url'] = $this->config->item('base_url').'mentorship/view/'.$id.'/'.$key.'/';
-		$config['total_rows'] =  $data['log']->num_rows();
+		$config['base_url'] = $this->config->item('base_url').'mentorship/view/'.$id.'/'.$key;
+		$config['total_rows'] =  $this->mentorshipmod->countEntries($id);
 		$config['per_page'] = 5;
 		$config['next_link'] = 'Next';
 		$config['prev_link'] = 'Previous';
 		$config['full_tag_open'] = '<p style="text-align:center;">';
+		$config['use_page_numbers'] = true;
+		$config['uri_segment'] = 5;
 		$this->pagination->initialize($config);
 		$data['pageLinks'] = $this->pagination->create_links();
+		
+		$data['log'] = $this->mentorshipmod->getEntries($id, 5, (($offset - 1) * $config['per_page']));
+		$data['user'] = $this->mentorshipmod->getUserInfo($id);
 		
 		$this->output->display_output('mentorship/view', $data);
 	}
