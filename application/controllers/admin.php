@@ -588,4 +588,15 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 			$this->output->display_output('admin/edit_menu', null, array('section' => 'admin'));
 		}
 	} 
+	
+	public function update()
+	{
+		if(count($_POST) > 0) {
+			//Run The Update
+		}
+		
+		$data['update'] = $this->curlmod->checkForUpdates();
+		
+		$this->output->display_output('admin/update_new', $data, array('section' => 'admin'));
+	}
 }

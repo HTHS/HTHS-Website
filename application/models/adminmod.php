@@ -15,6 +15,14 @@ class Adminmod extends CI_Model {
 		$result = $this->db->get('site_settings')->row();
 		return $result->online == 1;
 	}
+	
+	function getVersion()
+	{
+		$this->db->select('setting_value AS version');
+		$this->db->where('setting_name', 'version');
+		$result = $this->db->get('site_settings')->row();
+		return $result->version;
+	}
     
 	function addAdmin()
 	{
