@@ -23,6 +23,13 @@ class Adminmod extends CI_Model {
 		$result = $this->db->get('site_settings')->row();
 		return $result->version;
 	}
+	
+	function setNewVersion($vs)
+	{
+		$data = array('setting_value' => $vs);
+		$this->db->where('setting_name', 'version');
+		$this->db->update('site_settings', $data);
+	}
     
 	function addAdmin()
 	{

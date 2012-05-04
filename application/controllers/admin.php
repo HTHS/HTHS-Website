@@ -591,12 +591,62 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 	
 	public function update()
 	{
+		$this->load->model('curlmod');
+		
 		if(count($_POST) > 0) {
-			//Run The Update
+			if($this->input->post('submit') == 'Check For Updates') {
+				$data['update'] = $this->curlmod->checkForUpdates($this->input->post('url',TRUE));
+				$this->output->display_output('admin/update', $data, array('section' => 'admin'));
+			}
+			else if($this->input->post('submit') == 'Install Update') {
+				$data['changes'] = 'No changelog supplied.';
+				$this->curlmod->fetchUpdate($this->input->post('url',TRUE));
+				$zip = zip_open('application/cache/update.zip');
+				while($file = zip_read($zip)) {
+					if(zip_entry_name($file) == '1database.txt') {
+						zip_entry_open($zip, $file);
+						$this->db->query(zip_entry_read($file));
+						zip_entry_close($file);
+					}
+					else if(zip_entry_name($file) == '2convert.php') {
+						zip_entry_open($zip, $file);
+						$fh = fopen('convert.php', 'w');
+						fwrite($fh, zip_entry_read($file));
+						fclose($fh);
+						$this->curlmod->runUpdateScript();
+						unlink('convert.php');
+						zip_entry_close($file);
+					}
+					else if(zip_entry_name($file) == '3changelog.txt') {
+						zip_entry_open($zip, $file);
+						$data['changes'] = zip_entry_read($file);
+						zip_entry_close($file);
+					}	
+					else if(strpos(zip_entry_name($file), '4files') !== false) {
+						zip_entry_open($zip, $file);
+						$name = zip_entry_name($file);
+						if($name[strlen($name)-1] != '/') {
+							$fh = fopen(str_replace('4files/', '', zip_entry_name($file)), 'w');
+							fwrite($fh, zip_entry_read($file));
+							fclose($fh);
+						}
+						zip_entry_close($file);
+					}
+					else if(zip_entry_name($file) == '5deletions.txt') {
+						zip_entry_open($zip, $file);
+						$dels = explode(',', zip_entry_read($file));
+						foreach($dels as $del)
+							unlink($del);
+						zip_entry_close($file);
+					}
+				}
+				zip_close($zip);
+				unlink('application/cache/update.zip');
+				$this->adminmod->setNewVersion($this->curlmod->checkForUpdates($this->input->post('url',TRUE)));
+				$this->output->display_output('admin/update_success', $data, array('section' => 'admin'));
+			}
 		}
-		
-		$data['update'] = $this->curlmod->checkForUpdates();
-		
-		$this->output->display_output('admin/update_new', $data, array('section' => 'admin'));
+		else
+			$this->output->display_output('admin/update_check', null, array('section' => 'admin'));
 	}
 }

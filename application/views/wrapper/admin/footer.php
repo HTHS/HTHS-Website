@@ -8,7 +8,7 @@
 			<div class="fancybox">
 				<h2 class="fancytitle red">User Data</h2>
 				<p>Logged In As: <b><?=$this->session->userdata('username')?></b></p>
-				<p>Site Versoin: <b><?=$this->adminmod->getVersion()?></b></p>
+				<p>Site Version: <b><?=$this->adminmod->getVersion()?></b></p>
 				<p>Connected From: <b><?=$this->input->ip_address()?></b></p>
 				<? if($this->adminmod->isSiteOnline() == 1): ?>
 					<div class="success"><p>Site is Online</p></div>
