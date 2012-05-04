@@ -605,13 +605,13 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 				while($file = zip_read($zip)) {
 					if(zip_entry_name($file) == '1database.txt') {
 						zip_entry_open($zip, $file);
-						$this->db->query(zip_entry_read($file));
+						$this->db->query(zip_entry_read($file, zip_entry_filesize($file)));
 						zip_entry_close($file);
 					}
 					else if(zip_entry_name($file) == '2convert.php') {
 						zip_entry_open($zip, $file);
 						$fh = fopen('convert.php', 'w');
-						fwrite($fh, zip_entry_read($file));
+						fwrite($fh, zip_entry_read($file, zip_entry_filesize($file)));
 						fclose($fh);
 						$this->curlmod->runUpdateScript();
 						unlink('convert.php');
@@ -619,7 +619,7 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 					}
 					else if(zip_entry_name($file) == '3changelog.txt') {
 						zip_entry_open($zip, $file);
-						$data['changes'] = zip_entry_read($file);
+						$data['changes'] = zip_entry_read($file, zip_entry_filesize($file));
 						zip_entry_close($file);
 					}	
 					else if(strpos(zip_entry_name($file), '4files') !== false) {
@@ -627,14 +627,14 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 						$name = zip_entry_name($file);
 						if($name[strlen($name)-1] != '/') {
 							$fh = fopen(str_replace('4files/', '', zip_entry_name($file)), 'w');
-							fwrite($fh, zip_entry_read($file));
+							fwrite($fh, zip_entry_read($file, zip_entry_filesize($file)));
 							fclose($fh);
 						}
 						zip_entry_close($file);
 					}
 					else if(zip_entry_name($file) == '5deletions.txt') {
 						zip_entry_open($zip, $file);
-						$dels = explode(',', zip_entry_read($file));
+						$dels = explode(',', zip_entry_read($file, zip_entry_filesize($file)));
 						foreach($dels as $del)
 							unlink($del);
 						zip_entry_close($file);
