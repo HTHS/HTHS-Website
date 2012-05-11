@@ -130,7 +130,7 @@ All use of this form is logged, to report abuse please contact the webmaster.';
 			$this->email->from('noreply@hths.mcvsd.org','HTHS Web Emailer');
 			$this->email->reply_to($this->input->post('email_address'));
 			$this->email->subject($this->input->post('subject'));
-			$this->email->message($this->input->post('message').$messageFooter);
+			$this->email->message($this->input->post('contents').$messageFooter);
 
 			$this->email->send();
 			
