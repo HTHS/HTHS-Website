@@ -5,9 +5,10 @@
             	<script type="text/javascript">
             		$(function() {
             			var feedJSONHTHS = 'http://www.google.com/calendar/feeds/chiefsimonhths@gmail.com/public/full?alt=json-in-script&orderby=starttime&max-results=5&singleevents=true&sortorder=ascending&futureevents=true&callback=?';
-            			var feedJSONMCVSD = 'http://www.google.com/calendar/feeds/5j96g4ul0gkpcbd0ldq6li6mgo@group.calendar.google.com/public/full?alt=json-in-script&orderby=starttime&max-results=5&singleevents=true&sortorder=ascending&futureevents=true&callback=?';
-            			var feedJSONPFA = 'http://www.google.com/calendar/feeds/ppklihq3hv1k05n2phutlu7j84@group.calendar.google.com/public/full?alt=json-in-script&orderby=starttime&max-results=5&singleevents=true&sortorder=ascending&futureevents=true&callback=?';
-            			$.getJSON(feedJSONHTHS, function(data) {
+            			var feedJSONMCVSD = 'http://www.google.com/calendar/feeds/5j96g4ul0gkpcbd0ldq6li6mgo@group.calendar.google.com/public/full?alt=json-in-script&orderby=starttime&max-results=2&singleevents=true&sortorder=ascending&futureevents=true&callback=?';
+            			var feedJSONPFA = 'http://www.google.com/calendar/feeds/ppklihq3hv1k05n2phutlu7j84@group.calendar.google.com/public/full?alt=json-in-script&orderby=starttime&max-results=2&singleevents=true&sortorder=ascending&futureevents=true&callback=?';
+            			
+            			var generateWidget = (function(data, target) {
             				var events = data.feed.entry;
             				for (var i=0; i<events.length; i++) {
             					var event = events[i];
@@ -17,52 +18,24 @@
             					var element = $('#calendarwidget_primatives .calendarwidget_event').clone();
             					
             					// Create a readable date from the returned data. 
-            					var d = new Date(event.gd$when[0].startTime);
+            					var regex = /([0-9]+)-([0-9]+)-([0-9]+)/.exec(event.gd$when[0].startTime);
+            					var d = new Date(regex[1], regex[2]-1, regex[3]);
             					var date = d.toLocaleDateString();
             					
             					$(element).find('.calendarwidget_date').html(date);
             					$(element).find('.calendarwidget_title').html(event.title.$t);
             					
-            					$(element).appendTo('#calendarwidget_list_hths');
+            					$(element).appendTo(target);
             				}
+            			});
+            			$.getJSON(feedJSONHTHS, function(data) {
+            				generateWidget(data, '#calendarwidget_list_hths');
             			});
 						$.getJSON(feedJSONMCVSD, function(data) {
-            				var events = data.feed.entry;
-            				for (var i=0; i<2; i++) {
-            					var event = events[i];
-            					console.log(event);	
-            					
-            					// Clone the calendar widget event primative and hold it in a variable. 
-            					var element = $('#calendarwidget_primatives .calendarwidget_event').clone();
-            					
-            					// Create a readable date from the returned data. 
-            					var d = new Date(event.gd$when[0].startTime);
-            					var date = d.toLocaleDateString();
-            					
-            					$(element).find('.calendarwidget_date').html(date);
-            					$(element).find('.calendarwidget_title').html(event.title.$t);
-            					
-            					$(element).appendTo('#calendarwidget_list_mcvsd');
-            				}
+            				generateWidget(data, '#calendarwidget_list_mcvsd');
             			});
 						$.getJSON(feedJSONPFA, function(data) {
-            				var events = data.feed.entry;
-            				for (var i=0; i<2; i++) {
-            					var event = events[i];
-            					console.log(event);	
-            					
-            					// Clone the calendar widget event primative and hold it in a variable. 
-            					var element = $('#calendarwidget_primatives .calendarwidget_event').clone();
-            					
-            					// Create a readable date from the returned data. 
-            					var d = new Date(event.gd$when[0].startTime);
-            					var date = d.toLocaleDateString();
-            					
-            					$(element).find('.calendarwidget_date').html(date);
-            					$(element).find('.calendarwidget_title').html(event.title.$t);
-            					
-            					$(element).appendTo('#calendarwidget_list_pfa');
-            				}
+            				generateWidget(data, '#calendarwidget_list_pfa');
             			});
             		});
             	</script>
