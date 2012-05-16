@@ -48,6 +48,7 @@
 									<li><a href="<?=site_url('teachers/dashboard/mentorship/students')?>">Manage Students</a></li>
 									<li><a href="<?=site_url('teachers/dashboard/mentorship/search')?>">Search Logs</a></li>
 									<li><a href="<?=site_url('teachers/dashboard/mentorship/site_visits')?>">Site Visit Schedule</a></li>
+									<li><a href="<?=site_url('teachers/dashboard/mentorship/presentations')?>">Presentation Schedule</a></li>
 									<li><a href="<?=site_url('teachers/dashboard/mentorship/backup')?>">Run Backup</a></li>
 								</ul>
 							</li>

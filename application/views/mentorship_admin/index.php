@@ -67,10 +67,18 @@
 					<tr>
 						<td>Current Semester: </td>
 						<td>
-							<select name="semester">
-								
+							<select name="semester">		
 								<option value="1" <?=($settings['semester'] == 1) ? 'selected="selected"' : ''; ?> >Fall</option>
 								<option value="2" <?=($settings['semester'] == 2) ? 'selected="selected"' : ''; ?> >Spring</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td>Presentation Signups Open: </td>
+						<td>
+							<select name="schedule_open">
+								<option value="0" <?=($settings['schedule_open'] == 0) ? 'selected="selected"' : ''; ?> >No</option>
+								<option value="1" <?=($settings['schedule_open'] == 1) ? 'selected="selected"' : ''; ?> >Yes</option>
 							</select>
 						</td>
 					</tr>

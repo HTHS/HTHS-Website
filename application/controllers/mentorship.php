@@ -50,6 +50,7 @@ class Mentorship extends CI_Controller {
 		
 		$data['log'] = $this->mentorshipmod->getEntries($id, 5, (($offset - 1) * $config['per_page']));
 		$data['user'] = $this->mentorshipmod->getUserInfo($id);
+		$data['settings'] = $this->mentorshipmod->getSettings();
 		
 		$this->output->display_output('mentorship/index', $data);
 	}
@@ -172,6 +173,27 @@ class Mentorship extends CI_Controller {
 		$data['user'] = $this->mentorshipmod->getUserInfo($id);
 		
 		$this->output->display_output('mentorship/view', $data);
+	}
+	
+	public function presentations()
+	{
+		$settings = $this->mentorshipmod->getSettings();
+		$user = $this->mentorshipmod->getUserInfo($this->session->userdata('id'));
+		
+		if($settings['schedule_open'] != 1 || $settings['year'] != $user->year || $settings['semester'] != $user->semester)
+			redirect('mentorship');
+		
+		$this->load->helper('date');
+		
+		if(count($_POST) > 0) {
+			$this->mentorshipmod->saveSchedule($this->session->userdata('id'));
+			redirect('mentorship');
+		}
+		
+		$data['dates'] = $this->mentorshipmod->getFreeDates();
+		$data['user'] = $user;
+		
+		$this->output->display_output('mentorship/presentations', $data);
 	}
 	
 	public function check_password()

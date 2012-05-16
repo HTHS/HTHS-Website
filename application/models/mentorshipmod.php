@@ -70,7 +70,7 @@ class Mentorshipmod extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->delete('mentorship_users');
 		
-		$this->db->where('student_id', $id);
+		$this->db->where('user_id', $id);
 		$this->db->delete('mentorship_logs');
 	}
 	
@@ -98,6 +98,13 @@ class Mentorshipmod extends CI_Model {
 			);
 		
 		$this->db->where('setting_name', 'semester');
+		$this->db->update('mentorship_settings', $data);
+		
+		$data = array (
+				'setting_value' => $this->input->post('schedule_open')
+			);
+		
+		$this->db->where('setting_name', 'schedule_open');
 		$this->db->update('mentorship_settings', $data);
 	}
 	
@@ -216,5 +223,97 @@ class Mentorshipmod extends CI_Model {
 		$this->db->where('site_visit <=',$endDate);
 		
 		return $this->db->get('mentorship_users');
+	}
+	
+	public function getScheduleDates()
+	{
+		$this->db->order_by('date, time');
+		return $this->db->get('mentorship_schedule_dates');
+	}
+	
+	public function saveScheduleDates()
+	{
+		$dates = $this->db->select('id')->get('mentorship_schedule_dates')->result_array();
+
+		foreach($this->input->post() as $key => $value) {
+			$key = explode('::', $key);
+			if($key[0] == 'id') {
+			
+				$data = array(
+						'date' => friendly_to_unix($this->input->post('date::'.$key[1])),
+						'time' => $this->input->post('time::'.$key[1])
+					);
+				
+				if($this->searchForId($value, $dates)) { //Check function //Needs to be updated
+					$this->db->where('id', $value);
+					$this->db->update('mentorship_schedule_dates', $data);
+				} else { //New time
+					$this->db->insert('mentorship_schedule_dates', $data);
+				}
+			}
+		}
+		
+		$deleted = explode(',', $this->input->post('deleted'));
+		foreach($deleted as $del) {
+			$this->db->where('id', $del);
+			$this->db->delete('mentorship_schedule_dates');
+		}
+	}
+	
+	private function searchForId($id, $array) {
+		foreach ($array as $key => $val) {
+		    if ($val['id'] == $id) {
+			   return true;
+			}
+		}
+		return false;
+	}
+	
+	public function getSchedule()
+	{
+		$query = $this->db->get('mentorship_settings')->result();
+		$vals = array();
+		foreach($query as $row)
+			$vals[$row->setting_name] = $row->setting_value;
+		
+		$this->db->join('mentorship_schedule_dates', 'mentorship_schedule_dates.id = mentorship_users.schedule_date', 'left outer');
+		$this->db->where('year', $vals['year']);
+		$this->db->where('semester', $vals['semester']);
+		$this->db->where('schedule_date !=', '0');
+		$this->db->order_by('date, time');
+		
+		$data['schedule'] = $this->db->get('mentorship_users');
+		
+
+		$this->db->where('year', $vals['year']);
+		$this->db->where('semester', $vals['semester']);
+		$this->db->where('schedule_date', '0');
+		
+		$data['missing'] = $this->db->get('mentorship_users');
+		
+		return $data;
+	}
+	
+	public function getFreeDates() 
+	{
+		$query = $this->db->get('mentorship_settings')->result();
+		$vals = array();
+		foreach($query as $row)
+			$vals[$row->setting_name] = $row->setting_value;
+			
+		$this->db->select('mentorship_schedule_dates.*, mentorship_users.name');
+		$this->db->join('mentorship_users', 'mentorship_users.schedule_date = mentorship_schedule_dates.id AND year = '.$vals['year'].' AND semester = '.$vals['semester'], 'left outer');
+		$this->db->order_by('date, time');
+		return $this->db->get('mentorship_schedule_dates');
+	}
+	
+	public function saveSchedule($id)
+	{
+		$data = array(
+			'schedule_date' => $this->input->post('date', TRUE) //XSS Clean this Input
+		);
+		
+		$this->db->where('id', $id);
+		$this->db->update('mentorship_users', $data);
 	}
 }
