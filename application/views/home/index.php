@@ -11,22 +11,7 @@
                     <div id="content_left_left">
                         <div id="shortcuts" class="fancybox">
                             <h2 class="fancytitle">Portals</h2>
-                            <a href="pages/prospective" class="button_link">
-                                <table>
-                                    <tr>
-                                        <td>>></td>
-                                        <td>Prospective Students</td>
-                                    </tr>
-                                </table>
-                            </a>             
-                            <a href="http://hthsalumni.org/" class="button_link">
-                                <table>
-                                    <tr>
-                                        <td>>></td>
-                                        <td>Alumni</td>
-                                    </tr>
-                                </table>
-                            </a>
+							<?=$this->menu->render_portals()?>
                         </div> 
 						<div id="feed" class="fancybox">
 							<h2 class="fancytitle">Social Feed</h2>

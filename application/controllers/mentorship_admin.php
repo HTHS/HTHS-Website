@@ -230,6 +230,42 @@ The HTHS Web Team');
 		$this->output->display_output('mentorship_admin/site_visits', $data, array('section' => 'teacher'));
 	}
 	
+	public function presentations()
+	{
+		$this->load->helper('date');
+		
+		if(count($_POST) > 0) {
+			$this->mentorshipmod->saveScheduleDates();
+		}
+		
+		$data = $this->mentorshipmod->getSchedule();
+		$data['slots'] = $this->mentorshipmod->getScheduleDates();
+		
+		$data['sl'] = array();
+		$temp_date = '';
+		$i = 0;
+		foreach($data['slots']->result() as $value) {
+			if($value->date != $temp_date) {
+				$temp_date = $value->date;
+			}
+			$data['sl'][$temp_date][$i] = $value;
+			$i++;
+		}
+		
+		$temp_date = '';
+		$data['sch'] = array();
+		$i = 0;
+		foreach($data['schedule']->result() as $value) {
+			if($value->date != $temp_date) {
+				$temp_date = $value->date;
+			}
+			$data['sch'][$temp_date][$i] = $value;
+			$i++;
+		}
+		
+		$this->output->display_output('mentorship_admin/presentations', $data, array('section' => 'teacher'));
+	}
+	
 	public function backup()
 	{
 		$this->load->library('zip');

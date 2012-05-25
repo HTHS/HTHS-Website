@@ -5,6 +5,15 @@
 				<b>You have an upcoming site visit on <?=date('F j, Y', $user->site_visit)?>.</b>
 			</div>
 		<? endif; ?>
+		<? if($settings['schedule_open'] == 1 && $settings['year'] == $user->year && $settings['semester'] == $user->semester): ?>
+			<div class="fancybox">
+				<? if($user->schedule_date != '0'): ?>
+					<b class="success">Your presentation date is set! <a href="<?=site_url('mentorship/presentations')?>">Click here to change.</a></b>
+				<? else: ?>
+					<b class="error">You have not yet set a presentation date. <a href="<?=site_url('mentorship/presentations')?>">Click here to set one.</a></b>
+				<? endif; ?>
+			</div>
+		<? endif; ?>
 		<div class="fancybox">
 			<h2 class="fancytitle black">Add a Log Entry</h2>
 			<?=validation_errors()?>
