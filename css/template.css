@@ -6,10 +6,10 @@ body, h1, h2, h3 {
 body {
 	font-family: helvetica, arial, sans-serif;
 	font-size: 10pt;
-	background-image: url("../images/atom_bg.png");
+	/*background-image: url("../images/atom_bg.png");
 	background-repeat: no-repeat;
 	background-position: center 70px;
-	background-attachment: fixed;
+	background-attachment: fixed;*/
 }
 
 h1, h2, h3 {
