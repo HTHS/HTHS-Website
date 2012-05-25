@@ -492,7 +492,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 }
 
 /* Mobile friendly display of site */
-@media screen and (min-width:480px) and (max-width:800px) {
+@media screen and (max-width:800px) {
 	#content_left, #content_left_left, #content_left_right, #sidebar {
 		width: auto;
 		float: none;
