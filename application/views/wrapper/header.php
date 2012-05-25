@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><? if($title != ''): echo $title.' :: '; endif; ?>High Technology High School</title>
         <link type="text/css" href="<?=site_url('css/template.css')?>" rel="stylesheet" />
+        <link type="text/css" href="<?=site_url('css/mobile.css')?>" rel="stylesheet" />
 		<link type="text/css" href="<?=site_url('css/jquery-ui-1.8.17.custom.css')?>" rel="stylesheet" />
 		<script src="<?=site_url('js/jquery-1.7.1.min.js')?>" type="text/javascript"></script>
 		<script src="<?=site_url('js/jquery-ui-1.8.17.custom.min.js')?>" type="text/javascript"></script>
