@@ -127,7 +127,8 @@
                 <a href="<?=site_url('pages/non-discrimination')?>">Non-Discrimination Clause/Anti-Bullying Info</a>
             </div>
         </div>
-
+        
+        <div id="mobile_switcher">View site in:<br /><a href="#" id="mobileview">Mobile View</a>&nbsp;|&nbsp;<a href="#" id="desktopview">Desktop View</a></div>
 	</body>
 
 <script type="text/javascript">

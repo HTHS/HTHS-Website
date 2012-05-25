@@ -490,3 +490,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 #navbar_mobile {
 	display: none;
 }
+
+#mobile_switcher {
+	display: none;
+}
+
+@media screen and (max-width:800px) {
+	#mobile_switcher {
+		display: block;
+		padding: 15px;
+		font-size: 18px;
+		text-align: center;
+	}
+}
