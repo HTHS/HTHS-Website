@@ -486,3 +486,61 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', end
 #weather_widget {
 	padding-bottom: 2px;
 }
+
+#navbar_mobile {
+	display: none;
+}
+
+/* Mobile friendly display of site */
+@media screen and (min-width:480px) and (max-width:800px) {
+	#content_left, #content_left_left, #content_left_right, #sidebar {
+		width: auto;
+		float: none;
+	}
+	#footer .left, #footer .right {
+		float: none;
+		text-align: left;
+		margin-bottom: 1em;
+	}
+	#navbar {
+		display: none;
+	}
+	#navbar_mobile_outer {
+		display: block;
+		position: absolute;
+		top: 160px;
+		width: 100%;
+	}
+	#navbar_mobile {
+		display: block;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	#navbar_mobile select {
+		width: 100%;
+	}
+	#header {
+		height: 200px;
+	}
+	#header_container {
+		width: auto;
+	}
+	#title_wrapper {
+		width: 350px;
+		top: 22px;
+		left: 25px;
+	}
+	#header_links {
+		top: 120px;
+		left: 8px;
+		text-align: left;
+	}
+	#container, #footer {
+		width: auto;
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+	#gallery_wrapper {
+		display: none;
+	}
+}

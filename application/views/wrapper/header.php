@@ -45,6 +45,8 @@
 				<div id="navbar">
 					<?=$menu?>
 				</div>
+				
+				<div id="navbar_mobile_outer"><div id="navbar_mobile"></div></div>
 			</div>
         </div>
         
