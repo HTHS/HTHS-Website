@@ -576,11 +576,11 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		
 		$this->load->library('menu');
 		if ($command == 'get') {
-			$data['text'] = $this->menu->get_menu_data(true);
+			$data['text'] = $this->menu->get_menu_data(true, 'menu');
 			$this->output->enable_profiler(false);
 			$this->load->view('raw_text', $data);
 		} else if ($command == 'save') {
-			$this->menu->save_menu_data($_POST['menu'], true);
+			$this->menu->save_menu_data($_POST['menu'], true, 'menu');
 			$data['text'] = 'Saved successfuly.';
 			$this->output->enable_profiler(false);
 			$this->load->view('raw_text', $data);
@@ -591,6 +591,9 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 	
 	public function update()
 	{
+		if(!$this->isLoggedIn)
+			redirect('admin/login');
+			
 		$this->load->model('curlmod');
 		
 		if(count($_POST) > 0) {
@@ -649,4 +652,23 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 		else
 			$this->output->display_output('admin/update_check', null, array('section' => 'admin'));
 	}
+	
+	public function edit_portals($command = 'editor') {
+		if(!$this->isLoggedIn)
+			redirect('admin/login');
+		
+		$this->load->library('menu');
+		if ($command == 'get') {
+			$data['text'] = $this->menu->get_menu_data(true, 'portals');
+			$this->output->enable_profiler(false);
+			$this->load->view('raw_text', $data);
+		} else if ($command == 'save') {
+			$this->menu->save_menu_data($_POST['menu'], true, 'portals');
+			$data['text'] = 'Saved successfuly.';
+			$this->output->enable_profiler(false);
+			$this->load->view('raw_text', $data);
+		} else {
+			$this->output->display_output('admin/edit_portals', null, array('section' => 'admin'));
+		}
+	} 
 }
