@@ -1,4 +1,4 @@
-body, h1, h2, h3{
+body, h1, h2, h3 {
 	margin: 0;
 	padding: 0;
 }
@@ -6,6 +6,10 @@ body, h1, h2, h3{
 body {
 	font-family: helvetica, arial, sans-serif;
 	font-size: 10pt;
+	background-image: url("../images/atom_bg.png");
+	background-repeat: no-repeat;
+	background-position: center 70px;
+	background-attachment: fixed;
 }
 
 h1, h2, h3 {
@@ -25,6 +29,15 @@ a {
 	height: 100px;
 }
 
+#header_logo {
+	background-image: url("../images/atom_small.png");
+	width: 87px;
+	height: 100px;
+	position: absolute;
+	left: -30px;
+	bottom: -7px;
+}
+
 #header_links {
 	text-align: right;
 	color: #ffffff;
@@ -36,9 +49,15 @@ a {
 
 #title_wrapper {
 	text-align: left;
-	color: #ffffff;
 	position: absolute;
-	bottom: 40px;
+	bottom: 38px;
+	left: 15px;
+}
+#title_wrapper h1 {
+	color: #ffffff;
+	font-size: 30px;
+	text-transform: uppercase;
+	text-shadow: -1px -1px 0px black, 0 0 7px #600;
 }
 
 #header {

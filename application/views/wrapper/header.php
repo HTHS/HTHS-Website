@@ -30,6 +30,7 @@
     
 		<div id="header">
 			<div id="header_container">
+				<div id="header_logo"></div>
 				<div id="header_links">
 					<form action="<?=site_url('home/search')?>" method="get">
 						<input type="text" name="query" size="25" />
@@ -38,7 +39,7 @@
 				</div>
 				
 				<div id="title_wrapper">
-					<h1>HIGH TECHNOLOGY HIGH SCHOOL</h1>
+					<h1>High Technology High School</h1>
 				</div>
 				
 				<div id="navbar">
