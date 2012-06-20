@@ -10,23 +10,27 @@
             			
             			var generateWidget = (function(data, target) {
             				var events = data.feed.entry;
-            				for (var i=0; i<events.length; i++) {
-            					var event = events[i];
-            					console.log(event);	
-            					
-            					// Clone the calendar widget event primative and hold it in a variable. 
-            					var element = $('#calendarwidget_primatives .calendarwidget_event').clone();
-            					
-            					// Create a readable date from the returned data. 
-            					var regex = /([0-9]+)-([0-9]+)-([0-9]+)/.exec(event.gd$when[0].startTime);
-            					var d = new Date(regex[1], regex[2]-1, regex[3]);
-            					var date = d.toLocaleDateString();
-            					
-            					$(element).find('.calendarwidget_date').html(date);
-            					$(element).find('.calendarwidget_title').html(event.title.$t);
-            					
-            					$(element).appendTo(target);
-            				}
+                            if (typeof(events) !== 'undefined') {
+                                for (var i=0; i<events.length; i++) {
+                                    var event = events[i];
+                                    console.log(event);	
+                                    
+                                    // Clone the calendar widget event primative and hold it in a variable. 
+                                    var element = $('#calendarwidget_primatives .calendarwidget_event').clone();
+                                    
+                                    // Create a readable date from the returned data. 
+                                    var regex = /([0-9]+)-([0-9]+)-([0-9]+)/.exec(event.gd$when[0].startTime);
+                                    var d = new Date(regex[1], regex[2]-1, regex[3]);
+                                    var date = d.toLocaleDateString();
+                                    
+                                    $(element).find('.calendarwidget_date').html(date);
+                                    $(element).find('.calendarwidget_title').html(event.title.$t);
+                                    
+                                    $(element).appendTo(target);
+                                }
+                            } else {
+                                $(target).append('<div style="text-align: center; font-style: italic">No upcoming events</div>');
+                            }
             			});
             			$.getJSON(feedJSONHTHS, function(data) {
             				generateWidget(data, '#calendarwidget_list_hths');
