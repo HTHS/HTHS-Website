@@ -41,4 +41,15 @@ $(function() {
 	$("#navbar_mobile select").change(function() {
 		window.location = $(this).find("option:selected").val();
 	});
+	
+	// Mobile/desktop view switcher
+	$('link[href$="mobile.css"]').attr('disabled', false);
+	$('a#mobileview').click(function(e) {
+	    e.preventDefault();
+	    $('link[href$="mobile.css"]').attr('disabled', false);
+	});
+	$('a#desktopview').click(function(e) {
+        e.preventDefault();
+        $('link[href$="mobile.css"]').attr('disabled', true);
+    });
 });
