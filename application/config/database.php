@@ -48,9 +48,15 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'jmooneyham.serveftp.net';
-$db['default']['username'] = 'hths';
-$db['default']['password'] = 'hthsmysql';
+if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'keys.php')) {
+    require_once('keys.php');
+} else {
+    require_once('keys.php.sample');
+}
+
+$db['default']['hostname'] = $keys['db_hostname'];
+$db['default']['username'] = $keys['db_username'];
+$db['default']['password'] = $keys['db_password'];
 $db['default']['database'] = 'hths';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

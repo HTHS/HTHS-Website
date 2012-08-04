@@ -5,8 +5,6 @@
             	<script type="text/javascript">
             		$(function() {
             			var feedJSONHTHS = 'http://www.google.com/calendar/feeds/chiefsimonhths@gmail.com/public/full?alt=json-in-script&orderby=starttime&max-results=5&singleevents=true&sortorder=ascending&futureevents=true&callback=?';
-            			var feedJSONMCVSD = 'http://www.google.com/calendar/feeds/5j96g4ul0gkpcbd0ldq6li6mgo@group.calendar.google.com/public/full?alt=json-in-script&orderby=starttime&max-results=2&singleevents=true&sortorder=ascending&futureevents=true&callback=?';
-            			var feedJSONPFA = 'http://www.google.com/calendar/feeds/ppklihq3hv1k05n2phutlu7j84@group.calendar.google.com/public/full?alt=json-in-script&orderby=starttime&max-results=2&singleevents=true&sortorder=ascending&futureevents=true&callback=?';
             			
             			var generateWidget = (function(data, target) {
             				var events = data.feed.entry;
@@ -35,23 +33,11 @@
             			$.getJSON(feedJSONHTHS, function(data) {
             				generateWidget(data, '#calendarwidget_list_hths');
             			});
-						$.getJSON(feedJSONMCVSD, function(data) {
-            				generateWidget(data, '#calendarwidget_list_mcvsd');
-            			});
-						$.getJSON(feedJSONPFA, function(data) {
-            				generateWidget(data, '#calendarwidget_list_pfa');
-            			});
             		});
             	</script>
 				<p id="calendarwidget">
-					<div id="calendarwidget_header">Upcoming HTHS Events:</div>
+					<div id="calendarwidget_header">Upcoming Events:</div>
 					<div id="calendarwidget_list_hths"></div>
-					<br />
-					<div id="calendarwidget_header">MCVSD Events:</div>
-					<div id="calendarwidget_list_mcvsd"></div>
-					<br />
-					<div id="calendarwidget_header">PFA Events:</div>
-					<div id="calendarwidget_list_pfa"></div>
 					<div id="calendarwidget_link"><a href="https://www.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23FFFFFF&src=chiefsimonhths%40gmail.com&color=%23182C57&src=5j96g4ul0gkpcbd0ldq6li6mgo%40group.calendar.google.com&color=%23691426&src=ppklihq3hv1k05n2phutlu7j84%40group.calendar.google.com&color=%23856508&ctz=America%2FNew_York">See all events</a></div>
 				</p>
 				<style type='text/css'>

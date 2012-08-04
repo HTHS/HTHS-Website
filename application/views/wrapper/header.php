@@ -29,7 +29,18 @@
 
 	<body>
 
-    
+<?php
+$CI = get_instance();
+$CI->load->model('loginmod');
+if($CI->loginmod->checkLogin('admin')) {
+	$privilege = 'admin';
+} else {
+	$privilege = '';
+}
+if ($privilege == 'admin') {
+	print $CI->load->view('toolbar/admin', true);
+}
+?>
 		<div id="header">
 			<div id="header_container">
 				<div id="header_logo"></div>
