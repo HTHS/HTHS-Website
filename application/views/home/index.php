@@ -76,7 +76,7 @@
                                 </tr>
                                 <tr>
                                 	<td><img src="<?=site_url('images/icons/twitter.gif')?>" /></td>
-                                    <td><a href="http://twitter.com/chiefsimonhths">Follow Us on Twitter</a></td>
+                                    <td><a href="http://twitter.com/HighTechHS">Follow Us on Twitter</a></td>
                                 </tr>
 								<tr>
 									<td><img src="<?=site_url('images/icons/news_archive.gif')?>" /></td>
