@@ -4,33 +4,41 @@
             	<h2 class="fancytitle">Calendar</h2>
             	<script type="text/javascript">
             		$(function() {
-            			var feedJSONHTHS = 'http://www.google.com/calendar/feeds/kbals@ctemc.org/public/full?alt=json-in-script&orderby=starttime&max-results=5&singleevents=true&sortorder=ascending&futureevents=true&callback=?';
+            			var feed = 'https://www.googleapis.com/calendar/v3/calendars/kbals%40ctemc.org/events?maxResults=5&orderBy=startTime&singleEvents=true&key=AIzaSyCqFFbiPUTDxSMFdTutYJs1OmOMwLZi7Ts';
             			
             			var generateWidget = (function(data, target) {
-            				var events = data.feed.entry;
-                            if (typeof(events) !== 'undefined') {
+            				var events = data.items;
+                            if (typeof(events) !== 'undefined' && events.length > 0) {
                                 for (var i=0; i<events.length; i++) {
                                     var event = events[i];
-                                    console.log(event);	
                                     
                                     // Clone the calendar widget event primative and hold it in a variable. 
                                     var element = $('#calendarwidget_primatives .calendarwidget_event').clone();
                                     
                                     // Create a readable date from the returned data. 
-                                    var regex = /([0-9]+)-([0-9]+)-([0-9]+)/.exec(event.gd$when[0].startTime);
+                                    var regex = /([0-9]+)-([0-9]+)-([0-9]+)/.exec(event.start.dateTime);
                                     var d = new Date(regex[1], regex[2]-1, regex[3]);
                                     var date = d.toLocaleDateString();
                                     
-                                    $(element).find('.calendarwidget_date').html(date);
-                                    $(element).find('.calendarwidget_title').html(event.title.$t);
+                                    // Read the title of the event, or use a generic title if there is none
+                                    if (typeof(event.title) != 'undefined') {
+                                        var title = event.title;
+                                    } else {
+                                        var title = 'Event'
+                                    }
                                     
+                                    // Add event information to widget item
+                                    $(element).find('.calendarwidget_date').html(date);
+                                    $(element).find('.calendarwidget_title').html(title);
+                                    
+                                    // Insert the item into the widget for display
                                     $(element).appendTo(target);
                                 }
                             } else {
                                 $(target).append('<div style="text-align: center; font-style: italic">No upcoming events</div>');
                             }
             			});
-            			$.getJSON(feedJSONHTHS, function(data) {
+            			$.getJSON(feed, function(data) {
             				generateWidget(data, '#calendarwidget_list_hths');
             			});
             		});
