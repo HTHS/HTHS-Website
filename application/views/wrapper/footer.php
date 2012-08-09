@@ -4,10 +4,12 @@
             	<h2 class="fancytitle">Calendar</h2>
             	<script type="text/javascript">
             		$(function() {
-            			var feed = 'https://www.googleapis.com/calendar/v3/calendars/kbals%40ctemc.org/events?maxResults=5&orderBy=startTime&singleEvents=true&key=AIzaSyCqFFbiPUTDxSMFdTutYJs1OmOMwLZi7Ts';
+            		    var calendar = 'ctemc.org_u5nehkjekie46r2cpe2f58c7l0%40group.calendar.google.com';
+            			var feed = 'https://www.googleapis.com/calendar/v3/calendars/' + calendar + '/events?maxResults=5&orderBy=startTime&singleEvents=true&key=AIzaSyCqFFbiPUTDxSMFdTutYJs1OmOMwLZi7Ts';
             			
             			var generateWidget = (function(data, target) {
             				var events = data.items;
+            				console.log(events);
                             if (typeof(events) !== 'undefined' && events.length > 0) {
                                 for (var i=0; i<events.length; i++) {
                                     var event = events[i];
@@ -16,13 +18,20 @@
                                     var element = $('#calendarwidget_primatives .calendarwidget_event').clone();
                                     
                                     // Create a readable date from the returned data. 
-                                    var regex = /([0-9]+)-([0-9]+)-([0-9]+)/.exec(event.start.dateTime);
+                                    if (typeof(event.start.dateTime) !== 'undefined') {
+                                        var dateSource = event.start.dateTime;
+                                    } else if (typeof(event.start.date) !== 'undefined') {
+                                        var dateSource = event.start.date;
+                                    } else {
+                                        continue;
+                                    }
+                                    var regex = /([0-9]+)-([0-9]+)-([0-9]+)/.exec(dateSource);
                                     var d = new Date(regex[1], regex[2]-1, regex[3]);
                                     var date = d.toLocaleDateString();
                                     
                                     // Read the title of the event, or use a generic title if there is none
-                                    if (typeof(event.title) != 'undefined') {
-                                        var title = event.title;
+                                    if (typeof(event.summary) != 'undefined') {
+                                        var title = event.summary;
                                     } else {
                                         var title = 'Event'
                                     }
@@ -46,7 +55,7 @@
 				<p id="calendarwidget">
 					<div id="calendarwidget_header">Upcoming Events:</div>
 					<div id="calendarwidget_list_hths"></div>
-					<div id="calendarwidget_link"><a href="https://www.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23FFFFFF&src=kbals%40ctemc.org&color=%23182C57&src=5j96g4ul0gkpcbd0ldq6li6mgo%40group.calendar.google.com&color=%23691426&src=ppklihq3hv1k05n2phutlu7j84%40group.calendar.google.com&color=%23856508&ctz=America%2FNew_York">See all events</a></div>
+					<div id="calendarwidget_link"><a href="https://www.google.com/calendar/embed?height=600&wkst=1&bgcolor=%23FFFFFF&src=ctemc.org_u5nehkjekie46r2cpe2f58c7l0%40group.calendar.google.com&color=%23182C57&src=5j96g4ul0gkpcbd0ldq6li6mgo%40group.calendar.google.com&color=%23691426&src=ppklihq3hv1k05n2phutlu7j84%40group.calendar.google.com&color=%23856508&ctz=America%2FNew_York">See all events</a></div>
 				</p>
 				<style type='text/css'>
 					#calendarwidget_primatives {
