@@ -5,7 +5,7 @@
             	<script type="text/javascript">
             		$(function() {
             		    var calendar = 'ctemc.org_u5nehkjekie46r2cpe2f58c7l0%40group.calendar.google.com';
-            			var feed = 'https://www.googleapis.com/calendar/v3/calendars/' + calendar + '/events?maxResults=5&singleEvents=true&key=AIzaSyCqFFbiPUTDxSMFdTutYJs1OmOMwLZi7Ts';
+            			var feed = 'https://www.googleapis.com/calendar/v3/calendars/' + calendar + '/events?maxResults=5&singleEvents=true&timeMin=' + (new Date().toISOString()) + '&orderBy=startTime&key=AIzaSyCqFFbiPUTDxSMFdTutYJs1OmOMwLZi7Ts';
             			
             			var generateWidget = (function(data, target) {
             				var events = data.items;
