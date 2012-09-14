@@ -130,7 +130,7 @@ The HTHS Web Team');
 	
 	public function reset_password($id)
 	{
-		$newPassword = $this->loginmod->changePass('mentorship_users', $id);
+		$newPassword = $this->loginmod->changePassword('mentorship_users', $id);
 		$user = $this->mentorshipmod->getUserInfo($id);
 		$this->load->library('email');
 		

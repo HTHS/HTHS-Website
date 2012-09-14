@@ -9,6 +9,7 @@ class Captcha extends CI_Model {
 	
 	public function addCaptcha($cap)
 	{
+        $this->db->where('captcha_time', time()-'7200');
 		$data = array(
 			'captcha_time'	=> $cap['time'],
 			'ip_address'	=> $this->input->ip_address(),
