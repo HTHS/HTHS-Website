@@ -386,6 +386,9 @@ The HTHS Web Team');
 				if($this->input->post('email') == 1) {
 				
 					$this->load->library('email');
+                    
+                    $this->email->initialize(array('mailtype' => 'html'));
+                    
 					$this->load->model('emailmod');
 					
 					$emailList = $this->emailmod->getEmails();
@@ -403,7 +406,8 @@ To unsubscribe please go to: http://www.hths.mcvsd.org/home/subscribe';
 						$emails[] = $email->email_address;
 						
 					$this->email->clear();
-					$this->email->to($emails);
+					$this->email->bcc($emails);
+                    $this->email->to('HighTechHS@gmail.com');
 					$this->email->from('noreply@hths.mcvsd.org','High Technology High School');
 					$this->email->subject($this->input->post('title'));
 					$this->email->message($this->input->post('contents').$emailSuffix);
