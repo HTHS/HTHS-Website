@@ -9,7 +9,7 @@ class Captcha extends CI_Model {
 	
 	public function addCaptcha($cap)
 	{
-        $this->db->where('captcha_time', time()-'7200');
+        $this->db->where('captcha_time < ' . time()-7200);
 		$this->db->delete('captcha');
         
 		$data = array(
@@ -23,7 +23,7 @@ class Captcha extends CI_Model {
 	
 	public function checkCaptcha($word)
 	{
-		$this->db->where('captcha_time', time()-'7200');
+		$this->db->where('captcha_time < ' . time()-7200);
 		$this->db->delete('captcha');
 		
 		$this->db->where('word', $word);
