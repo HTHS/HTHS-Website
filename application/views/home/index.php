@@ -67,19 +67,19 @@
 							<h2 class="fancytitle">Stay Connected</h2>
 							<table>
 								<tr>
-									<td><img height="16" width="20" src="<?=site_url('images/icons/plus.gif')?>" /></td>
+									<td><img height="16" width="16" src="<?=site_url('images/icons/plus.gif')?>" /></td>
 									<td><a href="<?=site_url('news/subscribe')?>" />Subscribe to News Feed</a></td>
 								</tr>
                                 <tr>
-                                	<td><img src="<?=site_url('images/icons/facebook.gif')?>" /></td>
+                                	<td><img height="16" width="16" src="<?=site_url('images/icons/facebook.gif')?>" /></td>
                                     <td><a href="https://www.facebook.com/HighTechHS">Like Us on Facebook</a></td>
                                 </tr>
                                 <tr>
-                                	<td><img src="<?=site_url('images/icons/twitter.gif')?>" /></td>
+                                	<td><img height="16" width="16" src="<?=site_url('images/icons/twitter.gif')?>" /></td>
                                     <td><a href="http://twitter.com/HighTechHS">Follow Us on Twitter</a></td>
                                 </tr>
 								<tr>
-									<td><img src="<?=site_url('images/icons/news_archive.gif')?>" /></td>
+									<td><img height="16" width="16" src="<?=site_url('images/icons/news_archive.gif')?>" /></td>
 									<td><?=safe_mailto('HighTechHS@gmail.com', 'Contact Webmaster')?></td>
                             </table>
 						</div>
