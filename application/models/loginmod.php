@@ -65,7 +65,7 @@ class Loginmod extends CI_Model {
 			if($this->session->userdata('area') == $table) 
 				return true;
 			else
-				$this->session->sess_destroy();
+				//$this->session->sess_destroy();
 		
 		return false;
 	}
