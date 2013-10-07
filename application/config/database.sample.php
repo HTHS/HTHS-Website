@@ -48,16 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'keys.php')) {
-    require_once('keys.php');
-} else {
-    require_once('keys.php.sample');
-}
-
-$db['default']['hostname'] = $keys['db_hostname'];
-$db['default']['username'] = $keys['db_username'];
-$db['default']['password'] = $keys['db_password'];
-$db['default']['database'] = 'hths';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'username_here';
+$db['default']['password'] = 'password_here';
+$db['default']['database'] = 'database_name_here';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
