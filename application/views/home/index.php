@@ -17,20 +17,19 @@
 							<h2 class="fancytitle">Social Feed</h2>
 							<script type="text/javascript">
 							var post_limit = 3;
-							var feed_url = "https://www.facebook.com/feeds/page.php?format=atom10&id=218788884843140";
-							var feed_json = 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=' + encodeURIComponent(feed_url) + '&callback=?';
+							var feed_json = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=HighTechHS&callback=?';
 							$.getJSON(feed_json, function(data) {
-								var posts = data.responseData.feed.entries;
+								var posts = data;
 								for (var i=0; i<posts.length && i<post_limit; i++) {
 									var post = posts[i];
 									
-									var date_parse = new Date(post.publishedDate);
+									var date_parse = new Date(post.created_at);
 									var date_string = date_parse.toDateString();
 									
 									var element = $('#socialwidget_primatives .socialwidget_post').clone();
 									
-									$(element).find('a').attr('href', post.link);
-									$(element).find('.socialwidget_post_content').html(post.contentSnippet);
+									$(element).find('a').attr('href', 'https://twitter.com/HighTechHS/status/' + post.id_str);
+									$(element).find('.socialwidget_post_content').html(post.text);
 									$(element).find('.socialwidget_post_date').html(date_string);
 									
 									$(element).appendTo('#socialwidget');

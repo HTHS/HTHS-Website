@@ -1,6 +1,30 @@
+#www.hths.mcvsd.org
+#
+#DO NOT EDIT, RENAME OR REMOVE THIS FILE!
+#Updated 4-17-2012
+#If you have any questions, please contact Chris Widmer.
+#
+#php workaround to deal with iWeb generated pages.
+#not required with PHP5
+#php_value short_open_tag 0
+#
+#
+#Disable Directory Browsing
+Options All -Indexes
+#
+<Files .htaccess>
 Order Allow,Deny
-Allow from all
+Deny from all
+</Files>
+#
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+#
+
+#OLD .htaccess settings
+#RewriteCond %{REQUEST_URI} !(.*)/$
+#RewriteRule ^(.*)$ http://www.hths.mcvsd.org/index.php/$1/ [L,R=301]
+#RewriteBase /
+#

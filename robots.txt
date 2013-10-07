@@ -1,0 +1,21 @@
+###############################
+#
+# sample robots.txt file for this website 
+#
+# addresses all robots by using wild card *
+#
+User-Agent: *
+#
+#
+# list folders robots are not allowed to index 
+#
+# Disallow: /
+#
+# list specific files robots are not allowed to index
+#
+# 
+Allow: /
+#
+# End of robots.txt file
+#
+###############################
