@@ -1,4 +1,4 @@
-	<? if(!isset($nosidebar)): ?>	
+	<?php if(!isset($nosidebar)): ?>	
 		<div id="sidebar">
 			<div class="fancybox">
             	<h2 class="fancytitle">Calendar</h2>
@@ -119,7 +119,7 @@
                 <!--End Weatherbug Code-->
             </div>
 		</div>
-	<? endif; ?>
+	<?php endif; ?>
 		<div id="clear_float">
 		</div>
 		</div>

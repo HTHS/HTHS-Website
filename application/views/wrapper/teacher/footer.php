@@ -1,4 +1,4 @@
-	<? if(!isset($nosidebar)): ?>	
+	<?php if(!isset($nosidebar)): ?>	
 		<div id="sidebar">
 			<div class="fancybox">
 				<a href="<?=site_url('teachers/dashboard')?>" class="button_link">>> Home</a>
@@ -11,7 +11,7 @@
 				<p>Connected From: <b><?=$this->input->ip_address()?></b></p>
 			</div>
 		</div>
-	<? endif; ?>
+	<?php endif; ?>
 		<div id="clear_float">
 		</div>
 		</div>

@@ -28,7 +28,7 @@
 					<td><b>Link</b></td>
 					<td><b>Delete</td></b>
 				</tr>
-				<? foreach($images as $image): ?>
+				<?php foreach($images as $image): ?>
 					<tr>
 						<td><?=$image['name']?></td>
 						<td><?=(int)($image['size'] / 1000)?> KB</td>
@@ -36,7 +36,7 @@
 						<td><input type="text" size="35" value="<?=site_url('images/upload/'.$image['name'])?>" /></td>
 						<td><a href="<?=site_url('admin/delete_image/'.$image['name'])?>" onclick="return verify();">Delete</a></td>
 					</tr>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 			</table>
 		</div>
 	</div>

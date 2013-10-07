@@ -1,19 +1,19 @@
 <div id="content_left">
 	<div id="content_left_above">
-		<? if($user->site_visit >= mktime(0,0,0,date('n',time()),date('j',time()),date('Y',time()))): ?>
+		<?php if($user->site_visit >= mktime(0,0,0,date('n',time()),date('j',time()),date('Y',time()))): ?>
 			<div class="fancybox">
 				<b>You have an upcoming site visit on <?=date('F j, Y', $user->site_visit)?>.</b>
 			</div>
-		<? endif; ?>
-		<? if($settings['schedule_open'] == 1 && $settings['year'] == $user->year && $settings['semester'] == $user->semester): ?>
+		<?php endif; ?>
+		<?php if($settings['schedule_open'] == 1 && $settings['year'] == $user->year && $settings['semester'] == $user->semester): ?>
 			<div class="fancybox">
-				<? if($user->schedule_date != '0'): ?>
+				<?php if($user->schedule_date != '0'): ?>
 					<b class="success">Your presentation date is set! <a href="<?=site_url('mentorship/presentations')?>">Click here to change.</a></b>
-				<? else: ?>
+				<?php else: ?>
 					<b class="error">You have not yet set a presentation date. <a href="<?=site_url('mentorship/presentations')?>">Click here to set one.</a></b>
-				<? endif; ?>
+				<?php endif; ?>
 			</div>
-		<? endif; ?>
+		<?php endif; ?>
 		<div class="fancybox">
 			<h2 class="fancytitle black">Add a Log Entry</h2>
 			<?=validation_errors()?>
@@ -57,20 +57,20 @@
 	<div id="content_left_below">
 		<div class="fancybox">
 			<h2 class="fancytitle">My Log Entries</h2>
-			<? foreach($log->result() as $entry): ?>
+			<?php foreach($log->result() as $entry): ?>
 				<h3><a href="<?=site_url('mentorship/edit/'.$entry->id)?>"><?=date('F j, Y',$entry->date)?></a></h3><br />
 				<p><b>Time In:</b> <?=$entry->in_time?> <b>Time Out:</b> <?=$entry->out_time?></p>
 				<p><b>Activities:</b> <?=nl2br($entry->activities)?></p><br />
 				<p><b>Comments/Problems:</b> <?=nl2br($entry->comments)?></p>
 				<br /><br />
-			<? endforeach; ?>
+			<?php endforeach; ?>
 		</div>
 		
-		<? if($pageLinks != ''): ?>
+		<?php if($pageLinks != ''): ?>
 			<div class="fancybox">
 			<?=$pageLinks?>
 			</div>
-		<? endif; ?>
+		<?php endif; ?>
 	</div>
 </div>
 

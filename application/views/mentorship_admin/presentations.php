@@ -2,25 +2,25 @@
 	<div id="content_left_above">
 	<div class="fancybox">
 			<h2 class="fancytitle">Presentation Schedule</h2>
-			<? foreach($sch as $date => $day): ?>
+			<?php foreach($sch as $date => $day): ?>
 				<h3><?=date('F j, Y', $date)?></h3>
 				<br />
-				<? foreach($day as $key => $entry): ?>
+				<?php foreach($day as $key => $entry): ?>
 					<b>Time: <?=$entry->time?></b><br />
 					Student: <?=$entry->name?><br />
 					Mentor: <?=$entry->mentor?><br />
 					Firm: <?=$entry->firm?>
 					<br /><br />
-				<? endforeach; ?>
-			<? endforeach; ?>
+				<?php endforeach; ?>
+			<?php endforeach; ?>
 		</div>
 
 		<div class="fancybox">
 				<h2 class="fancytitle black">Students Not Signed Up</h2>
 					<ul>
-						<? foreach($missing->result() as $student): ?>
+						<?php foreach($missing->result() as $student): ?>
 							<li><?=$student->name?></li>
-						<? endforeach; ?>
+						<?php endforeach; ?>
 					</ul>
 		</div>
 	</div>
@@ -29,10 +29,10 @@
 			<h2 class="fancytitle">Dates</h2>
 				<form action="<?=current_url()?>" method="post">
 				<input type="hidden" name="deleted" id="deleted" value="" />
-				<? foreach($sl as $date => $day): ?>
+				<?php foreach($sl as $date => $day): ?>
 					<h3><?=date('F j, Y', $date)?></h3>
 					<ul>
-						<? foreach($day as $key => $entry): ?>
+						<?php foreach($day as $key => $entry): ?>
 							<div id="old<?=$entry->id?>">
 								<input type="hidden" name="id::<?=$key?>" value="<?=$entry->id?>" />
 								<li>Date: <input type="text" id="date<?=$key?>" name="date::<?=$key?>" size="20" value="<?=unix_to_friendly($entry->date)?>" /> Time: <input type="text" name="time::<?=$key?>" size="20" value="<?=$entry->time?>" /> <a onclick="del('<?=$entry->id?>');">Delete</a></li>
@@ -40,9 +40,9 @@
 							<script type="text/javascript">
 								$('#date'+<?=$key?>).datepicker();
 							</script>
-						<? endforeach; ?>
+						<?php endforeach; ?>
 					</ul>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 				<h3>New Times</h3>
 				<ul id="new_times">
 				</ul>

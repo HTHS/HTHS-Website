@@ -8,13 +8,13 @@
 				<td width="25%"><b>Time In</b></td>
 				<td width="25%"><b>Time Out</b></td>
 			</tr>
-			<? foreach($log->result() as $entry): ?>
+			<?php foreach($log->result() as $entry): ?>
 				<tr>
 					<td><?=date('F j, Y',$entry->date)?></td>
 					<td><?=$entry->in_time?></td>
 					<td><?=$entry->out_time?></td>
 				</tr>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 			</table>
 		</div>
 	</div>

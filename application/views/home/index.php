@@ -112,8 +112,8 @@
                     </div>
 				</div>
             </div>
-			<? foreach($news as $newsItem): ?>
-				<? if($newsItem->urgent == 1 && $this->input->cookie('un') != $newsItem->id):
+			<?php foreach($news as $newsItem): ?>
+				<?php if($newsItem->urgent == 1 && $this->input->cookie('un') != $newsItem->id):
 					$cookie = array(
 						'name'   => 'un',
 						'value'  => $newsItem->id,
@@ -127,8 +127,8 @@
 					<script type="text/javascript">
 						$('#urgentNews').dialog({ autoOpen: true, title: "Important Message from HTHS: <?=$newsItem->title?>" });
 					</script>
-					<? break; ?>
-				<? else: 
+					<?php break; ?>
+				<?php else: 
 					$cookie = array(
 						'name'   => 'un',
 						'value'  => $this->input->cookie('un'),
@@ -137,6 +137,6 @@
 					);
 					$this->input->set_cookie($cookie);
 				endif; ?>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 			
 			

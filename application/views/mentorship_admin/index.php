@@ -49,9 +49,9 @@
 			<div class="fancybox">
 				<h2 class="fancytitle">View Logs</h2>
 				<ul>
-					<? foreach($currentStudents->result() as $student): ?>
+					<?php foreach($currentStudents->result() as $student): ?>
 						<li><a href="<?=site_url('teachers/dashboard/mentorship/view/'.$student->id)?>"><?=$student->name?></a></li>
-					<? endforeach; ?>
+					<?php endforeach; ?>
 				</ul>
 			</div>
 		</div>
@@ -89,15 +89,15 @@
 				</form>
 				<p>The following people have not made any log entires in 2 weeks:</p>
 				<ul>
-					<? foreach($problemUsers->result() as $user): ?>
+					<?php foreach($problemUsers->result() as $user): ?>
 							<li><?=$user->name?></li>
-					<? endforeach; ?>
+					<?php endforeach; ?>
 				</ul>
 				<p>Today's Site Visits:</p>
 				<ul>
-					<? foreach($visits->result() as $visit): ?>
+					<?php foreach($visits->result() as $visit): ?>
 						<li><?=$visit->name?></li>
-					<? endforeach; ?>
+					<?php endforeach; ?>
 				</ul>
 			</div>
 		</div>

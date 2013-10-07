@@ -7,7 +7,7 @@
 			<br />
 			<p><b>Categories Not in Use</b></p>
 			<ul>
-				<? foreach($unusedTypes as $type): ?>
+				<?php foreach($unusedTypes as $type): ?>
 					<li><a href="" id="openUnused<?=$type->id?>"><?=$type->type?></a>
 						<div class="fancybox" style="display:none;" id="unused<?=$type->id?>">
 							<form action="<?=current_url()?>" method="post">
@@ -16,12 +16,12 @@
 							</form>
 						</div>
 					</li>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 			</ul>
 	        <br />
 			<p><b>Categories in Use</b></p>
 			<ul>
-				<? foreach($usedTypes as $type): ?>
+				<?php foreach($usedTypes as $type): ?>
 					<li><a href="" id="openUsed<?=$type->id?>"><?=$type->type?></a>
 						<div class="fancybox" style="display:none;" id="used<?=$type->id?>">
 							<form action="<?=current_url()?>" method="post">
@@ -30,7 +30,7 @@
 							</form>
 						</div>
 					</li>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 			</ul>
 			<br />
 			<p><b>Add a Category</b></p>
@@ -42,16 +42,16 @@
 </div>
 
 <script type="text/javascript">
-	<? foreach($unusedTypes as $type): ?>
+	<?php foreach($unusedTypes as $type): ?>
 		$('#openUnused<?=$type->id?>').click(function(event) {
 			event.preventDefault();
 			$('#unused'+<?=$type->id?>).toggle('slow');
 		});
-	<? endforeach; ?>
-	<? foreach($usedTypes as $type): ?>
+	<?php endforeach; ?>
+	<?php foreach($usedTypes as $type): ?>
 		$('#openUsed<?=$type->id?>').click(function(event) {
 			event.preventDefault();
 			$('#used<?=$type->id?>').toggle('slow');
 		});
-	<? endforeach; ?>
+	<?php endforeach; ?>
 </script>

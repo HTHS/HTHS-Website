@@ -6,31 +6,31 @@
 			<form action="<?=current_url()?>" method="post">
 			<p>Please select one of the dates below for your mentorship presentation date.</p>
 			<table cellpadding="5" border="1" width="98%">
-				<? foreach($dates->result() as $date): ?>
+				<?php foreach($dates->result() as $date): ?>
 					<tr>
 						<td width="20%">
-							<? if($date->name != null && $date->name != $user->name): ?>
+							<?php if($date->name != null && $date->name != $user->name): ?>
 								<b class="error">Unavailable</b>
-							<? elseif($date->name == $user->name): ?>
+							<?php elseif($date->name == $user->name): ?>
 								<input type="radio" name="date" value="<?=$date->id?>" checked="checked" />
-							<? else: ?>
+							<?php else: ?>
 								<input type="radio" name="date" value="<?=$date->id?>" />
-							<? endif; ?>
+							<?php endif; ?>
 						</td>
 						<td><?=date('F j, Y', $date->date)?> <?=$date->time?></td>
 					</tr>
-				<? endforeach; ?>
-				<? if($user->schedule_date == '0'): ?>
+				<?php endforeach; ?>
+				<?php if($user->schedule_date == '0'): ?>
 					<tr>
 						<td><input type="radio" name="date" value="0" checked="checked" /></td>
 						<td>Undecided</td>
 					</tr>
-				<? else: ?>
+				<?php else: ?>
 					<tr>
 						<td><input type="radio" name="date" value="0" /></td>
 						<td>Undecided</td>
 					</tr>
-				<? endif; ?>
+				<?php endif; ?>
 			</table>
 			<br />
 			<input type="submit" value="Save!" /> <input type="button" onclick="window.location.href = '<?=site_url('mentorship')?>'" value="Cancel" />

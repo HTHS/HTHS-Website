@@ -1,4 +1,4 @@
-	<? if(!isset($nosidebar)): ?>	
+	<?php if(!isset($nosidebar)): ?>	
 		<div id="sidebar">
 			<div class="fancybox">
 				<a href="<?=site_url('admin')?>" class="button_link">>> ACP Home</a>
@@ -10,14 +10,14 @@
 				<p>Logged In As: <b><?=$this->session->userdata('username')?></b></p>
 				<p>Site Version: <b><?=$this->adminmod->getVersion()?></b></p>
 				<p>Connected From: <b><?=$this->input->ip_address()?></b></p>
-				<? if($this->adminmod->isSiteOnline() == 1): ?>
+				<?php if($this->adminmod->isSiteOnline() == 1): ?>
 					<div class="success"><p>Site is Online</p></div>
-				<? else: ?>
+				<?php else: ?>
 					<div class="error"><p>Site is Offline</p></div>
-				<? endif; ?>
+				<?php endif; ?>
 			</div>
 		</div>
-	<? endif; ?>
+	<?php endif; ?>
 		<div id="clear_float">
 		</div>
 		</div>

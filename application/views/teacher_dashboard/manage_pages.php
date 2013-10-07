@@ -4,20 +4,20 @@
 			<h2 class="fancytitle black">Manage Pages</h2>
 			<p>Click the name of a page below to edit or delete that page.</p>
 			<ul>
-			<? foreach($pages->result() as $page): ?>
+			<?php foreach($pages->result() as $page): ?>
 				<li><a href="" id="page<?=$page->id?>"><?=$page->page_title?></a></li>
 				<div id="pageOptions<?=$page->id?>" style="display:none;">
 					Link: <input type="text" size="50" value="<?=site_url('teachers/'.$this->session->userdata('username').'/page/'.$page->page_url)?>" /><br />
 					<input type="button" value="Edit Page" onclick="window.location.href = '<?=site_url('teachers/dashboard/edit_page/'.$page->id)?>'" /> <input type="button" value="Delete Page" onclick="confirm<?=$page->id?>();" />
 				</div>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 			</ul>
 		</div>
 	</div>
 </div>
 
 <script type="text/javascript">
-	<? foreach($pages->result() as $page): ?>
+	<?php foreach($pages->result() as $page): ?>
 		$('#page'+<?=$page->id?>).click(function(event) {
 			event.preventDefault();
 			$('#pageOptions'+<?=$page->id?>).show('slow');
@@ -28,5 +28,5 @@
 			if(c)
 				window.location.href = '<?=site_url("teachers/dashboard/delete_page/".$page->id)?>';
 		}
-	<? endforeach; ?>
+	<?php endforeach; ?>
 </script>

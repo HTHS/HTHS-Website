@@ -2,15 +2,15 @@
 	<div id="content_left_above">
 		<div class="fancybox">
 			<h2 class="fancytitle black">Manage Teachers</h2>
-			<? if(isset($_GET['error'])): ?>
+			<?php if(isset($_GET['error'])): ?>
 				<div class="error">
 					<p>An error occured, the teacher was not edited.</p>
 				</div>
 				<br />
-			<? endif; ?>
+			<?php endif; ?>
 			<p>Click an teacher's name to edit or remove that teacher.</p>
 			<ul>
-				<? foreach($teachers->result() as $teacher): ?>
+				<?php foreach($teachers->result() as $teacher): ?>
 					<li><a href="" id="teacher<?=$teacher->id?>"><?=$teacher->prefix.' '.$teacher->first_name.' '.$teacher->last_name.' '.$teacher->suffix?></a></li>
 					<div id="teacherHide<?=$teacher->id?>" style="display:none;" class="fancybox">
 					<form action="<?=site_url('admin/edit_teacher/'.$teacher->id)?>" method="post">
@@ -53,14 +53,14 @@
 						</table>
 					</form>
 					</div>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 			</ul>
 		</div>
 	</div>
 </div>
 
 <script type="text/javascript">
-	<? foreach($teachers->result() as $teacher): ?>
+	<?php foreach($teachers->result() as $teacher): ?>
 		$('#teacher'+<?=$teacher->id?>).click(function(event) {
 			event.preventDefault();
 			$('#teacherHide'+<?=$teacher->id?>).toggle('slow');
@@ -68,5 +68,5 @@
 		$('#cancel'+<?=$teacher->id?>).click(function() {
 			$('#teacherHide'+<?=$teacher->id?>).hide('slow');
 		});
-	<? endforeach; ?>
+	<?php endforeach; ?>
 </script>

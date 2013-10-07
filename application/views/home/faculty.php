@@ -11,22 +11,22 @@
 					<td width="15%">Webpage</td>
 					<td width="10%">Blog</td>
 				</tr>
-				<? foreach($teachers->result() as $teacher): ?>
+				<?php foreach($teachers->result() as $teacher): ?>
 					<tr>
 						<td><?=$teacher->name?></td>
 						<td><?=$teacher->subject?></td>
 						<td><?=$teacher->voicemail?></td>
-						<td><? if($teacher->email != ''): ?><a href="" id="email<?=$teacher->id?>">Send Email</a><? else: ?>Not Available<? endif; ?></td>
-						<td><? if($teacher->page_contents != ''): ?><a href="<?=site_url('home/teacher_pages/'.$teacher->id)?>">Webpage</a><? else: ?>Not Available<? endif; ?></td>
-						<td><? if($teacher->blog_count != 0): ?><a href="<?=site_url('home/blogs/'.$teacher->id)?>">Blog</a><? else: ?>Not Available<? endif; ?></td>
+						<td><?php if($teacher->email != ''): ?><a href="" id="email<?=$teacher->id?>">Send Email</a><?php else: ?>Not Available<?php endif; ?></td>
+						<td><?php if($teacher->page_contents != ''): ?><a href="<?=site_url('home/teacher_pages/'.$teacher->id)?>">Webpage</a><?php else: ?>Not Available<?php endif; ?></td>
+						<td><?php if($teacher->blog_count != 0): ?><a href="<?=site_url('home/blogs/'.$teacher->id)?>">Blog</a><?php else: ?>Not Available<?php endif; ?></td>
 					</tr>
-				<? endforeach; ?>
+				<?php endforeach; ?>
 			</table>
 		</div>
 	</div>
 </div>
 
-<? foreach($teachers->result() as $teacher): 
+<?php foreach($teachers->result() as $teacher): 
 	if($teacher->email != ''): ?>
 		<div id="teacherEmail<?=$teacher->id?>" style="display:none;">
 			<div id="formOutput<?=$teacher->id?>"></div>
@@ -56,11 +56,11 @@
 			<br />
 			<p>All emails sent are logged, please use this for serious contact only.</p>
 		</div>
-<?  endif; 
+<?php  endif; 
 endforeach; ?>
 
 <script type="text/javascript">
-<? foreach($teachers->result() as $teacher): 
+<?php foreach($teachers->result() as $teacher): 
 	if($teacher->email != ''): ?>
 		$('#teacherEmail'+<?=$teacher->id?>).dialog({autoOpen: false, title: 'Email <?=$teacher->name?>', width: 600, height: 600});
 		$('#teacherEmail'+<?=$teacher->id?>).attr('style', '');
@@ -83,6 +83,6 @@ endforeach; ?>
 					$('#formOutput'+id).html(response);
 			});
 		})
-<?  endif; 
+<?php  endif; 
 endforeach; ?>
 </script>

@@ -23,9 +23,9 @@
 <div class="fancybox">
 <div class="fancytitle"><?=$teacher->prefix.' '.$teacher->first_name.' '.$teacher->last_name.' '.$teacher->suffix?></div>
 <div id="teacher_description_wrapper">
-<? if(file_exists('images/teachers/' . $teacher->username.'.png')): ?>
+<?php if(file_exists('images/teachers/' . $teacher->username.'.png')): ?>
 	<img src="<?=base_url('images/teachers/' . $teacher->username.'.png')?>" height="200" class="teacher_image" />
-<? endif; ?>
+<?php endif; ?>
 <div id="teacher_description">
 <?=$teacher->description?>
 </div>
@@ -34,7 +34,7 @@
 
 <div class="fancybox" id="blog">
 <div class="fancytitle black">Latest Blog Posts<?php if($teacher->blog != '') {?> - <a href="<?=$teacher->blog?>">View Blog</a><?}?></div>
-<? if($teacher->blog != '') { ?>
+<?php if($teacher->blog != '') { ?>
 <?php
 $this->load->helper('news_formatter');
 foreach ($entries as $entry) {

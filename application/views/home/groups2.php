@@ -9,12 +9,12 @@
 				<input type="hidden" name="groups" value="<?=$groups?>" />
 				<p>To continue, please enter the names of the students in the table below.</p>
 				<table>
-					<? for($i = 1; $i <= $count; $i++): ?>
+					<?php for($i = 1; $i <= $count; $i++): ?>
 						<tr>
 							<td>Student <?=$i?>: </td>
 							<td><input type="text" name="student<?=$i?>" size="25" value="<?=set_value('student'.$i)?>" />
 						</tr>
-					<? endfor; ?>
+					<?php endfor; ?>
 					<tr>
 						<td colspan="2"><input type="submit" value="Continue" /></td>
 					</tr>

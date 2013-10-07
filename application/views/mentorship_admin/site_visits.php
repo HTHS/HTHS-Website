@@ -20,12 +20,12 @@
 
 <script type="text/javascript">
 	var data = new Array();
-	<? foreach($visits->result() as $visit): ?>
+	<?php foreach($visits->result() as $visit): ?>
 		if(data[<?=date('j',$visit->site_visit)?>] == undefined)
 			data[<?=date('j',$visit->site_visit)?>] = '<p>Visit to <?=$visit->firm?> to visit <?=$visit->name?> working with <?=$visit->mentor?>.</p>';
 		else
 			data[<?=date('j',$visit->site_visit)?>] += '<p>Visit to <?=$visit->firm?> to visit <?=$visit->name?> working with <?=$visit->mentor?>.</p>';
-	<? endforeach; ?>
+	<?php endforeach; ?>
 	
 	function showDetails(date) {
 		$('#dynamicContent').html(data[date]);

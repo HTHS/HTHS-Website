@@ -41,7 +41,7 @@
 								<li><a href="<?=site_url('teachers/dashboard/pages')?>">Manage Pages</a></li>
 							</ul>
 						</li>
-						<? if($this->session->userdata('mentorship_admin')): ?>
+						<?php if($this->session->userdata('mentorship_admin')): ?>
 							<li><a href="<?=site_url('teachers/dashboard/mentorship')?>">Mentorship</a>
 								<ul>
 									<li><a href="<?=site_url('teachers/dashboard/mentorship/add_student')?>">Add Student</a></li>
@@ -52,7 +52,7 @@
 									<li><a href="<?=site_url('teachers/dashboard/mentorship/backup')?>">Run Backup</a></li>
 								</ul>
 							</li>
-						<? endif; ?>
+						<?php endif; ?>
                         <li><a href="<?=site_url('teachers/dashboard/logout')?>">Logout</a></li>
 					</ul>
 				</div>

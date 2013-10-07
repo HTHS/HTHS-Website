@@ -12,7 +12,7 @@ function generate_news_item($item, $url_path, $remote_url = false) {
     // $url_path is the relative path to which the item id will be added to generate a link. 
 	($remote_url) ? $link = $url_path : $link = site_url($url_path . $item->id);
 ?>
-<? ($item->urgent == 1) ? $style = 'style="color:red;"' : $style = ''; ?>
+<?php ($item->urgent == 1) ? $style = 'style="color:red;"' : $style = ''; ?>
 <a class="newsitem" href="<?=$link?>">
 <div class="dateindicator">
 <span class="dateindicator_month"><?=date('M',$item->date)?></span>&nbsp;<span class="dateindicator_day"><?=date('j',$item->date)?></span>&nbsp;<span class="dateindicator_year"><?=date('Y',$item->date)?></span>

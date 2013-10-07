@@ -113,15 +113,15 @@
 				<div id="downloads_sorter" class="downloads_sorter_floating">
 					<h4 id="downloads_sorter_title">Categories</h4>
 					<ul id="downloads_sorter_typewrapper">
-						<? foreach ($types as $type): ?>
+						<?php foreach ($types as $type): ?>
 						<a href="#<?=download_type_anchor($type->type)?>"><li class="downloads_sorter_type"><?=$type->type?></li></a>
-						<? endforeach; ?>
+						<?php endforeach; ?>
 					</ul>
 				</div>
-			<? foreach ($types as $type): ?>
+			<?php foreach ($types as $type): ?>
 				<h3 class="downloads_type_title" id="<?=download_type_anchor($type->type)?>"><?=$type->type?></h3>
 				<ul class="downloads_type_itemwrapper">
-					<? foreach ($forms[$type->type] as $form): ?>
+					<?php foreach ($forms[$type->type] as $form): ?>
 						<li>
 							<a class="downloads_type_item" href="<?=site_url($this->config->item('downloads_directory').'/' . $form->filename)?>">
 								<div class="downloads_type_item_icon">
@@ -135,9 +135,9 @@
 								</div>
 							</a>
 						</li>
-					<? endforeach; ?>
+					<?php endforeach; ?>
 				</ul>
-			<? endforeach; ?>
+			<?php endforeach; ?>
 			</div>
 		</div>
 	</div>
