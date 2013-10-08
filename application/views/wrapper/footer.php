@@ -6,8 +6,9 @@
             		$(function() {
             		    var calendar = 'ctemc.org_u5nehkjekie46r2cpe2f58c7l0%40group.calendar.google.com';
             			var feed = 'https://www.googleapis.com/calendar/v3/calendars/' + calendar + '/events?maxResults=5&singleEvents=true&timeMin=' + (new Date().toISOString()) + '&orderBy=startTime&key=AIzaSyCqFFbiPUTDxSMFdTutYJs1OmOMwLZi7Ts';
-            			
-            			var generateWidget = (function(data, target) {
+                        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+                        var generateWidget = (function(data, target) {
             				var events = data.items;
             				console.log(events);
                             if (typeof(events) !== 'undefined' && events.length > 0) {
@@ -27,7 +28,7 @@
                                     }
                                     var regex = /([0-9]+)-([0-9]+)-([0-9]+)/.exec(dateSource);
                                     var d = new Date(regex[1], regex[2]-1, regex[3]);
-                                    var date = d.toLocaleDateString();
+                                    var date = months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
                                     
                                     // Read the title of the event, or use a generic title if there is none
                                     if (typeof(event.summary) != 'undefined') {
