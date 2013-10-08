@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Mentorship_admin extends CI_Controller {
 

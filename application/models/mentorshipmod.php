@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Mentorshipmod extends CI_Model {
 
