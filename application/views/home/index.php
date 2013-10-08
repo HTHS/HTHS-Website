@@ -15,55 +15,11 @@
                         </div> 
 						<div id="feed" class="fancybox">
 							<h2 class="fancytitle">Social Feed</h2>
-							<script type="text/javascript">
-							var post_limit = 3;
-							var feed_json = 'http://api.twitter.com/1/statuses/user_timeline.json?screen_name=HighTechHS&callback=?';
-							$.getJSON(feed_json, function(data) {
-								var posts = data;
-								for (var i=0; i<posts.length && i<post_limit; i++) {
-									var post = posts[i];
-									
-									var date_parse = new Date(post.created_at);
-									var date_string = date_parse.toDateString();
-									
-									var element = $('#socialwidget_primatives .socialwidget_post').clone();
-									
-									$(element).find('a').attr('href', 'https://twitter.com/HighTechHS/status/' + post.id_str);
-									$(element).find('.socialwidget_post_content').html(post.text);
-									$(element).find('.socialwidget_post_date').html(date_string);
-									
-									$(element).appendTo('#socialwidget');
-								}
-							});
-							</script>
-							<style type="text/css">
-							#socialwidget_primatives {
-								display: none;
-							}
-							
-							.socialwidget_post {
-								margin: 5px 0 5px 0;
-							}
-							.socialwidget_post_content {
-								font-size: 9pt;
-							}
-							.socialwidget_post_date {
-								font-size: 8pt;
-								color: #555;
-								font-style: italic;
-								text-align: right;
-							}
-							</style>
-							<div id="socialwidget"></div>
-							<div id="socialwidget_primatives">
-								<div class="socialwidget_post">
-									<a href="#">
-										<div class="socialwidget_post_content"></div>
-										<div class="socialwidget_post_date"></div>
-									</a>
-								</div>
-							</div>
-							<h2 class="fancytitle">Stay Connected</h2>
+
+                            <a class="twitter-timeline" href="https://twitter.com/HighTechHS" data-widget-id="387519246885875713" data-chrome="nofooter">Tweets by @HighTechHS</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+                            <h2 class="fancytitle">Stay Connected</h2>
 							<table>
 								<tr>
 									<td><img height="16" width="16" src="<?=site_url('images/icons/plus.gif')?>" /></td>
