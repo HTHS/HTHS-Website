@@ -23,7 +23,7 @@
 							<table>
 								<tr>
 									<td><img height="16" width="16" src="<?=site_url('images/icons/plus.gif')?>" /></td>
-									<td><a href="<?=site_url('news/subscribe')?>" />Subscribe to News Feed</a></td>
+									<td><a href="<?=site_url('news/subscribe')?>">Subscribe to News Feed</a></td>
 								</tr>
                                 <tr>
                                 	<td><img height="16" width="16" src="<?=site_url('images/icons/facebook.gif')?>" /></td>
@@ -36,6 +36,7 @@
 								<tr>
 									<td><img height="16" width="16" src="<?=site_url('images/icons/news_archive.gif')?>" /></td>
 									<td><?=safe_mailto('HighTechHS@gmail.com', 'Contact Webmaster')?></td>
+                                </tr>
                             </table>
 						</div>
                     </div>	
