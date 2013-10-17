@@ -45,18 +45,38 @@ class Google_login extends CI_Model {
 
         // Check that user is valid, cancel if not
         if (!$this->isValid()) {
-            $this->doLogout();
+            self::doLogout();
             return false;
         } else if ($this->checkGid()) {
-            $this->session->set_userdata('login', true);
+            self::finishAuth();
             return true;
         } else if ($this->checkEmail()) {
             $this->confirmNewUser();
-            $this->session->set_userdata('login', true);
+            self::finishAuth();
             return true;
         } else {
+            self::doLogout();
             return false;
         }
+    }
+
+    private function finishAuth() {
+        $this->session->set_userdata('login', true);
+
+        // Get user privileges
+        $this->db->select('privilege');
+        $this->db->from('google_users');
+        $this->db->where('gid', self::getPayload()['sub']);
+        $this->db->join('google_users_privileges', 'google_users.id = google_users_privileges.id', 'left inner');
+        $query = $this->db->get();
+
+        $results = $query->result();
+        $privileges = array();
+        foreach ($results as $result) {
+            $privileges[] = $result->privilege;
+        }
+
+        $this->session->set_userdata('privileges', $privileges);
     }
 
     public function doLogout()
