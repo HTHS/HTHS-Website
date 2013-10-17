@@ -3,7 +3,6 @@
 
 class Google extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -12,7 +11,7 @@ class Google extends CI_Controller
 
     public function index()
     {
-        if ($this->session->userdata('google_token')) {
+        if ($this->google_login->isLoggedIn()) {
             var_dump($this->google_login->getPayload());
             echo '<a href="' . site_url('/google/logout') . '">Logout</a>';
         } else {
@@ -26,7 +25,7 @@ class Google extends CI_Controller
             $this->google_login->doAuth();
             redirect('/google');
         } else {
-            $this->google_login->doLoginRedirect();
+            redirect($this->google_login->getLoginRedirect());
         }
     }
 
@@ -35,6 +34,4 @@ class Google extends CI_Controller
         $this->google_login->doLogout();
         redirect('/google');
     }
-
-
 }
