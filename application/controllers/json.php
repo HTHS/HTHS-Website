@@ -2,10 +2,10 @@
 
 class Json extends CI_Controller {
 
-	function __contruct()
+	function __construct()
 	{
-		//Call parent contructor
-		parent::__contruct();
+		//Call parent constructor
+		parent::__construct();
 	}
 	
 	function index()
