@@ -10,7 +10,7 @@ class Migration_Google_login extends CI_Migration {
   `email` text NOT NULL,
   `gid` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;';
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1;';
 
         $query2 = 'CREATE TABLE `google_users_privileges` (
   `id` int(11) NOT NULL,
