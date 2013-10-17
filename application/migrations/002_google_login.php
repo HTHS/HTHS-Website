@@ -14,7 +14,8 @@ class Migration_Google_login extends CI_Migration {
 
         $query2 = 'CREATE TABLE `google_users_privileges` (
   `id` int(11) NOT NULL,
-  `privilege` varchar(10) NOT NULL
+  `privilege` varchar(10) NOT NULL,
+  UNIQUE KEY `id` (`id`,`privilege`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;';
 
         $this->db->query($query1);
