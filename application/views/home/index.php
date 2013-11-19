@@ -57,14 +57,6 @@
                             <h2 class="fancytitle">Alerts</h2>
                             <img src="<?=site_url('images/icons/one-call-now-banner-logo.gif')?>" /><br />
                             <iframe width="298" height="70" frameborder="0" scrolling="no" marginheight="0" src="http://secure.onecallnow.com/access/banner/bannerwrapper.aspx?BT=LHB&EGI=0%2fXbzuia0a5jnWFIqn9mcw%3d%3d&S=09%2c10%2c11%2c12%2c20&L=&lt;-+Click+button+to+play+latest+message.+++++++++++++++++++++++++++++++++++++++++++++++++&F=1&Y=s"></iframe>
-                            <hr />
-                            <table>
-                                <tr>
-                                    <td width="32" align="right"><img src="<?=site_url('images/icons/plus.gif')?>" /></td>
-                                    <td><a href="https://secure.onecallnow.com/Access/FamilyProfile/FamilyProfile.aspx?G=DBWFgIxwNPowx%2bNPnanAWg%3d%3d">
-                                        Click here to add additional phone numbers or email addresses to One Call Now.</a></td>
-                                </tr>
-                            </table>
                         </div>
                     </div>
 				</div>
