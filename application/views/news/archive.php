@@ -2,7 +2,7 @@
 	<div id="news" class="fancybox">
 		<h2 class="fancytitle black">News Archives</h2>
 	<?php foreach($posts as $news): ?>
-		<h3><?=$news->title?></h2>
+		<h3><?=$news->title?></h3>
 		<p><font size="-5">Posted on <?=date('F j, Y',$news->start)?></font></p>
 		<?=$news->contents?>
 		<br /><br />
