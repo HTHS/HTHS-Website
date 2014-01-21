@@ -41,7 +41,7 @@ foreach ($entries as $entry) {
     generate_news_item($entry, $entry->link, true);
 }
 ?>
-<?
+<?php
 } else {
 	echo '<i>This teacher does not have a blog.</i>';
 }
