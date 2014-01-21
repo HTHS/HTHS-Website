@@ -9,9 +9,14 @@ class Mentorship_admin extends CI_Controller {
 		$this->load->model('loginmod');
 		$this->load->model('mentorshipmod');
 		
-		if(!$this->loginmod->checkLogin('teacher') || !$this->session->userdata('mentorship_admin'))
-			redirect('teachers/dashboard');
+		if(!$this->isLoggedIn() && $this->router->method != 'login')
+			redirect('mentorship_admin/login');
 	}
+
+    private function isLoggedIn()
+    {
+        return $this->loginmod->checkLogin('teacher') && $this->session->userdata('mentorship_admin');
+    }
 	
 	public function index()
 	{
@@ -31,7 +36,66 @@ class Mentorship_admin extends CI_Controller {
 		
 		$this->output->display_output('mentorship_admin/index', $data, array('section' => 'teacher'));
 	}
-	
+
+    public function login()
+    {
+        if ($this->isLoggedIn()) {
+            redirect('mentorship_admin');
+        }
+
+        $this->load->library('form_validation');
+
+        if(count($_POST) > 0)
+        {
+            $this->form_validation->set_rules('username', 'Username', 'trim|required|is_not_unique[teacher.username]');
+            $this->form_validation->set_rules('password', 'Password', 'trim|required|callback_check_password');
+            $this->form_validation->set_message('is_not_unique','Your username was not found.');
+            $this->form_validation->set_message('check_password','Your password was incorrect.');
+            if($this->form_validation->run()) {
+                $this->loginmod->addSession('teacher');
+                redirect('mentorship_admin');
+            }
+        }
+
+        $this->output->display_output('teacher_dashboard/login', array());
+    }
+
+    public function check_password()
+    {
+        return $this->loginmod->checkPassword('teacher', $this->loginmod->getUserId('teacher'));
+    }
+
+    public function logout()
+    {
+        if(!$this->isLoggedIn)
+            redirect('mentorship_admin/login');
+
+        $this->session->sess_destroy();
+        redirect();
+    }
+
+    public function change_password()
+    {
+        if(!$this->isLoggedIn)
+            redirect('mentorship_admin/login');
+
+        $this->load->library('form_validation');
+
+        if(count($_POST) > 0)
+        {
+            $this->form_validation->set_rules('password', 'Current Password Password', 'trim|required|callback_check_password');
+            $this->form_validation->set_rules('new_password', 'New Password', 'trim|required|min_length[6]');
+            $this->form_validation->set_rules('confirm', 'Confirm New Password', 'trim|required|matches[new_password]');
+            $this->form_validation->set_message('check_password','Your password was incorrect.');
+            if($this->form_validation->run()) {
+                $this->loginmod->changePassword('teacher');
+                redirect('mentorship_admin');
+            }
+        }
+
+        $this->output->display_output('teacher_dashboard/change_password', array(), array('section' => 'teacher'));
+    }
+    
 	public function add_student()
 	{
 		$this->load->library('form_validation');
@@ -69,7 +133,7 @@ The HTHS Web Team');
 
 				$this->email->send();
 				
-				redirect('teachers/dashboard/mentorship/students');
+				redirect('mentorship_admin/students');
 			}
 		}
 		
@@ -113,7 +177,7 @@ The HTHS Web Team');
 		{
 			if($this->form_validation->run()) {
 				$this->mentorshipmod->updateAccount($id);
-				redirect('teachers/dashboard/mentorship/students');
+				redirect('mentorship_admin/students');
 			}
 		}
 		
@@ -125,7 +189,7 @@ The HTHS Web Team');
 	public function delete_student($id)
 	{
 		$this->mentorshipmod->deleteAccount($id);
-		redirect('teachers/dashboard/mentorship/students');
+		redirect('mentorship_admin/students');
 	}
 	
 	public function reset_password($id)
@@ -150,14 +214,14 @@ The HTHS Web Team');
 
 		$this->email->send();
 		
-		redirect('teachers/dashboard/mentorship/students');
+		redirect('mentorship_admin/students');
 	}
 		
 	
 	public function view($id, $offset = 1)
 	{			
 		$this->load->library('pagination');
-		$config['base_url'] = $this->config->item('base_url').'teachers/dashboard/mentorship/view/'.$id.'/';
+		$config['base_url'] = $this->config->item('base_url').'mentorship_admin/view/'.$id.'/';
 		$config['total_rows'] =  $this->mentorshipmod->countEntries($id);
 		$config['per_page'] = 5;
 		$config['next_link'] = 'Next';
@@ -219,7 +283,7 @@ The HTHS Web Team');
 		
 		$prefs = array (
                'show_next_prev'  => TRUE,
-               'next_prev_url'   => site_url('teachers/dashboard/mentorship/site_visits/')
+               'next_prev_url'   => site_url('mentorship_admin/site_visits/')
              );
 
 		$this->load->library('calendar', $prefs);
