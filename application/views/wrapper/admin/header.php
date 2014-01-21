@@ -34,32 +34,16 @@
 								<li><a href="<?=site_url('admin/admins')?>">Manage Admins</a></li>
 							</ul>
 						</li>
-						<li><a href="<?=site_url('admin/pages')?>">Pages</a>
-							<ul>
-								<li><a href="<?=site_url('admin/add_page')?>">Add Page</a></li>
-								<li><a href="<?=site_url('admin/pages')?>">Manage Pages</a></li>
-								<li><a href="<?=site_url('admin/images')?>">Image Manager</a></li>
-							</ul>
-						</li>
 						<li><a href="<?=site_url('admin/teachers')?>">Teachers</a>
 							<ul>
 								<li><a href="<?=site_url('admin/add_teacher')?>">Add Teacher</a></li>
 								<li><a href="<?=site_url('admin/teachers')?>">Manage Teachers</a></li>
 							</ul>
 						</li>
-						<li><a href="<?=site_url('admin/news')?>">News</a>
-							<ul>
-								<li><a href="<?=site_url('admin/add_news')?>">Add News</a></li>
-								<li><a href="<?=site_url('admin/news')?>">Manage News</a></li>
-							</ul>
-						</li>
 						<li><a href="<?=site_url('admin/settings')?>">Settings</a>
 							<ul>
 								<li><a href="<?=site_url('admin/settings')?>">Manage Settings</a></li>
-								<li><a href="<?=site_url('admin/download_categories')?>">Manage Download Categories</a></li>
-								<li><a href="<?=site_url('admin/downloads')?>">Manage Downloads</a></li>
 								<li><a href="<?=site_url('admin/edit_menu')?>">Edit Site Menu</a></li>
-								<li><a href="<?=site_url('admin/edit_portals')?>">Edit Portals</a></li>
 								<li><a href="<?=site_url('admin/update')?>">Check For Updates</a></li>
 							</ul>
 						</li>
