@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Mentorship extends CI_Controller {
 
@@ -19,7 +19,7 @@ class Mentorship extends CI_Controller {
 	public function index($offset = 1)
 	{
 		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
+			redirect('/login');
 		
 		$id = $this->session->userdata('id');
 		
@@ -33,7 +33,7 @@ class Mentorship extends CI_Controller {
 		if(count($_POST) > 0) {
 			if($this->form_validation->run()) {
 				$this->mentorshipmod->logEntry();
-				redirect('mentorship');
+				redirect('/');
 			}
 		}
 		
@@ -58,7 +58,7 @@ class Mentorship extends CI_Controller {
 	public function edit($id)
 	{
 		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
+			redirect('/login');
 			
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('in', 'Time In', 'trim|required');
@@ -68,7 +68,7 @@ class Mentorship extends CI_Controller {
 		if(count($_POST) > 0) {
 			if($this->form_validation->run()) {
 				$this->mentorshipmod->editLog($id);
-				redirect('mentorship');
+				redirect('/');
 			}
 		}
 			
@@ -76,7 +76,7 @@ class Mentorship extends CI_Controller {
 		
 		//Make sure the person is editing a log that they have access to
 		if($data['entry']->user_id != $this->session->userdata('id'))
-			redirect('mentorship');
+			redirect('/');
 		
 		$this->output->display_output('mentorship/edit', $data);
 	}
@@ -84,22 +84,22 @@ class Mentorship extends CI_Controller {
 	public function delete($id)
 	{
 		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
+			redirect('/login');
 		
 		$data['entry'] = $this->mentorshipmod->getEntryById($id);
 		
 		//Make sure the person is deleting a log that they have access to
 		if($data['entry']->user_id != $this->session->userdata('id'))
-			redirect('mentorship');
+			redirect('/');
 			
 		$this->mentorshipmod->deleteLog($id);
-		redirect('mentorship');
+		redirect('/');
 	}
 	
 	public function login()
 	{
 		if($this->isLoggedIn)
-			redirect('mentorship');
+			redirect('/');
 			
 		$this->load->library('form_validation');
 		
@@ -111,7 +111,7 @@ class Mentorship extends CI_Controller {
 			$this->form_validation->set_message('check_password','Your password was incorrect.');
 			if($this->form_validation->run()) {
 				$this->loginmod->addSession('mentorship_users');
-				redirect('mentorship');
+				redirect('/');
 			}
 		}
 		
@@ -121,7 +121,7 @@ class Mentorship extends CI_Controller {
 	public function logout()
 	{
 		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
+			redirect('/login');
 		
 		$this->session->sess_destroy();
 		redirect();
@@ -130,7 +130,7 @@ class Mentorship extends CI_Controller {
 	public function change_password()
 	{
 		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
+			redirect('/login');
 		
 		$this->load->library('form_validation');
 		
@@ -142,7 +142,7 @@ class Mentorship extends CI_Controller {
 			$this->form_validation->set_message('check_password','Your password was incorrect.');
 			if($this->form_validation->run()) {
 				$this->loginmod->changePassword('mentorship_users');
-				redirect('mentorship');
+				redirect('/');
 			}
 		}
 		
@@ -181,13 +181,13 @@ class Mentorship extends CI_Controller {
 		$user = $this->mentorshipmod->getUserInfo($this->session->userdata('id'));
 		
 		if($settings['schedule_open'] != 1 || $settings['year'] != $user->year || $settings['semester'] != $user->semester)
-			redirect('mentorship');
+			redirect('/');
 		
 		$this->load->helper('date');
 		
 		if(count($_POST) > 0) {
 			$this->mentorshipmod->saveSchedule($this->session->userdata('id'));
-			redirect('mentorship');
+			redirect('/');
 		}
 		
 		$data['dates'] = $this->mentorshipmod->getFreeDates();

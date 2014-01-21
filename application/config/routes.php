@@ -38,29 +38,17 @@
 |
 */
 
-$route['default_controller'] = "home";
+$route['default_controller'] = "mentorship";
 $route['404_override'] = '';
-$route['pages/(:any)'] = 'pages/index/$1';
-$route['downloads/(:any)'] = 'downloads/index/$1';
-$route['mentorship/(:num)'] = 'mentorship/index/$1';
-$route['mentorship/page/(:num)'] = 'mentorship/index/$1';
-$route['rss/(:any).xml'] = 'rss/feed/$1';
-$route['rss/(:any).rss'] = 'rss/feed/$1';
 
-// Mentorship acp reroute
-$route['teachers/dashboard/mentorship'] = 'mentorship_admin';
-$route['teachers/dashboard/mentorship/(:any)'] = 'mentorship_admin/$1';
+// Define admin and mentorship_admin routes, to prevent them from being sent to mentorship controller
+$route['admin'] = 'admin';
+$route['admin/(:any)'] = 'admin/$1';
+$route['mentorship_admin'] = 'mentorship_admin';
+$route['mentorship_admin/(:any)'] = 'mentorship_admin/$1';
 
-// Teachers section routing
-$route['teachers/dashboard'] = 'teacher_dashboard';
-$route['teachers/dashboard/(:any)'] = 'teacher_dashboard/$1';
-$route['teachers/(:any)/page/(:any)'] = 'teachers/page/$1/$2';
-$route['teachers/(:any)/blog/view/(:num)'] = 'teachers/blog_entry/$1/$2';
-$route['teachers/(:any)/blog/page/(:num)'] = 'teachers/blog_home/$1/$2';
-$route['teachers/(:any)/blog'] = 'teachers/blog_home/$1';
-$route['teachers/(:any)/contact/send'] = 'teachers/contact_send/$1';
-$route['teachers/(:any)/contact'] = 'teachers/contact/$1';
-$route['teachers/(:any)'] = 'teachers/about/$1';
+// Send all other routes to mentorship controller
+$route['(:any)'] = 'mentorship/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
