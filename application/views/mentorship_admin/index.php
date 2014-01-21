@@ -2,7 +2,7 @@
 	<div id="content_left_above">
 		<div class="fancybox">
 			<h2 class="fancytitle black">Add Student</h2>
-			<form action="<?=site_url('teachers/dashboard/mentorship/add_student')?>" method="post">
+			<form action="<?=site_url('mentorship_admin/add_student')?>" method="post">
 			<table>
 				<tr>
 					<td>Name: </td>
@@ -50,7 +50,7 @@
 				<h2 class="fancytitle">View Logs</h2>
 				<ul>
 					<?php foreach($currentStudents->result() as $student): ?>
-						<li><a href="<?=site_url('teachers/dashboard/mentorship/view/'.$student->id)?>"><?=$student->name?></a></li>
+						<li><a href="<?=site_url('mentorship_admin/view/'.$student->id)?>"><?=$student->name?></a></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>

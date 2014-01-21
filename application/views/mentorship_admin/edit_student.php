@@ -43,7 +43,7 @@
 					<td><input type="text" name="site_visit" id="visit" value="<?=set_value('site_visit', unix_to_friendly($user->site_visit))?>" /> <a href="" id="clear">(Clear)</a></td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="Save Changes" /> <input type="button" value="Cancel" onclick="window.location.href = '<?=site_url('teachers/dashboard/mentorship/students')?>'" /></td>
+					<td colspan="2"><input type="submit" value="Save Changes" /> <input type="button" value="Cancel" onclick="window.location.href = '<?=site_url('mentorship_admin/students')?>'" /></td>
 				</tr>
 			</table>
 			</form>

@@ -27,29 +27,15 @@
 				<div id="navbar">
 					<ul>
 						<li><a href="<?=site_url()?>">Site Home</a></li>
-						<li><a href="<?=site_url('teachers/dashboard')?>">Dashboard</a></li>
-						<li><a href="<?=site_url('teachers/dashboard/about')?>">My Info</a>
-							<ul>
-								<li><a href="<?=site_url('teachers/dashboard/about')?>">Update Bio</a></li>
-								<li><a href="<?=site_url('teachers/dashboard/photo')?>">Update Photo</a></li>
-							</ul>
-						</li>
-						</li>
-						<li><a href="<?=site_url('teachers/dashboard/pages')?>">My Pages</a>
-							<ul>
-								<li><a href="<?=site_url('teachers/dashboard/add_page')?>">Add Page</a></li>
-								<li><a href="<?=site_url('teachers/dashboard/pages')?>">Manage Pages</a></li>
-							</ul>
-						</li>
 						<?php if($this->session->userdata('mentorship_admin')): ?>
-							<li><a href="<?=site_url('teachers/dashboard/mentorship')?>">Mentorship</a>
+							<li><a href="<?=site_url('mentorship_admin')?>">Mentorship</a>
 								<ul>
-									<li><a href="<?=site_url('teachers/dashboard/mentorship/add_student')?>">Add Student</a></li>
-									<li><a href="<?=site_url('teachers/dashboard/mentorship/students')?>">Manage Students</a></li>
-									<li><a href="<?=site_url('teachers/dashboard/mentorship/search')?>">Search Logs</a></li>
-									<li><a href="<?=site_url('teachers/dashboard/mentorship/site_visits')?>">Site Visit Schedule</a></li>
-									<li><a href="<?=site_url('teachers/dashboard/mentorship/presentations')?>">Presentation Schedule</a></li>
-									<li><a href="<?=site_url('teachers/dashboard/mentorship/backup')?>">Run Backup</a></li>
+									<li><a href="<?=site_url('mentorship_admin/add_student')?>">Add Student</a></li>
+									<li><a href="<?=site_url('mentorship_admin/students')?>">Manage Students</a></li>
+									<li><a href="<?=site_url('mentorship_admin/search')?>">Search Logs</a></li>
+									<li><a href="<?=site_url('mentorship_admin/site_visits')?>">Site Visit Schedule</a></li>
+									<li><a href="<?=site_url('mentorship_admin/presentations')?>">Presentation Schedule</a></li>
+									<li><a href="<?=site_url('mentorship_admin/backup')?>">Run Backup</a></li>
 								</ul>
 							</li>
 						<?php endif; ?>
