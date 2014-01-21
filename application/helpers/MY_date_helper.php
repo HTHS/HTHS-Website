@@ -1,4 +1,4 @@
-<?
+<?php
 
 function friendly_to_unix($date)
 {
