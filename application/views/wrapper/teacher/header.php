@@ -39,7 +39,7 @@
 								</ul>
 							</li>
 						<?php endif; ?>
-                        <li><a href="<?=site_url('teachers/dashboard/logout')?>">Logout</a></li>
+                        <li><a href="<?=site_url('mentorship_admin/logout')?>">Logout</a></li>
 					</ul>
 				</div>
 			</div>

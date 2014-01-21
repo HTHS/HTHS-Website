@@ -59,7 +59,7 @@ Username: '.$teacher->username.'
 Password: '.$newPasswords[$teacher->id].'
 
 Please use the link below to access the teacher dashboard, one you login you can change your password there.
-'.site_url('teachers/dashboard').'
+'.site_url('mentorship_admin').'
 
 Thank You,
 The HTHS Web Team');

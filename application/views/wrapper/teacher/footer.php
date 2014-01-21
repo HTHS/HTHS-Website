@@ -1,9 +1,9 @@
 	<?php if(!isset($nosidebar)): ?>	
 		<div id="sidebar">
 			<div class="fancybox">
-				<a href="<?=site_url('teachers/dashboard')?>" class="button_link">>> Home</a>
-				<a href="<?=site_url('teachers/dashboard/change_password')?>" class="button_link">>> Change Password</a>             
-				<a href="<?=site_url('teachers/dashboard/logout')?>" class="button_link">>> Logout</a>
+				<a href="<?=site_url('mentorship_admin')?>" class="button_link">>> Home</a>
+				<a href="<?=site_url('mentorship_admin/change_password')?>" class="button_link">>> Change Password</a>
+				<a href="<?=site_url('mentorship_admin/logout')?>" class="button_link">>> Logout</a>
 			</div> 
 			<div class="fancybox">
 				<h2 class="fancytitle red">User Data</h2>
