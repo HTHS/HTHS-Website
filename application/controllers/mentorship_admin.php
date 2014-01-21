@@ -67,18 +67,12 @@ class Mentorship_admin extends CI_Controller {
 
     public function logout()
     {
-        if(!$this->isLoggedIn)
-            redirect('mentorship_admin/login');
-
-        $this->session->sess_destroy();
-        redirect();
+        if ($this->isLoggedIn()) $this->session->sess_destroy();
+        redirect('mentorship_admin/login');
     }
 
     public function change_password()
     {
-        if(!$this->isLoggedIn)
-            redirect('mentorship_admin/login');
-
         $this->load->library('form_validation');
 
         if(count($_POST) > 0)
