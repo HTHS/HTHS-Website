@@ -12,15 +12,46 @@ class Mentorship extends CI_Controller {
 		$this->load->model('loginmod');
 		$this->load->helper('date');
 		
-		if($this->loginmod->checkLogin('mentorship_users'))
-			$this->isLoggedIn = true;
+		$this->ensure_login();
 	}
+
+    /**
+     * Enforces a login requirement on all pages in this controller, except the login method.
+     * Redirects to the login page if not currently logged in.
+     * Saves any POST data first, and restores it when returning away from the login page.
+     *
+     * @return bool true if logged in, false if not logged in, null if on login page
+     */
+    private function ensure_login()
+    {
+        if ($this->router->method == 'login') {
+            // Don't do any checks on the login page
+            // Persist the flashdata POST until next page load
+            $this->session->keep_flashdata('POST');
+            return null;
+        } else if ($this->loginmod->checkLogin('mentorship_users')) {
+            // Retrieve saved POST data, if any
+            $saved_POST = $this->session->flashdata('POST');
+            if ($saved_POST) {
+                global $_POST;
+                $_POST = $saved_POST;
+            }
+            return true;
+        } else {
+            // Save any current POST data
+            if (count($_POST) > 0) {
+                $this->session->set_flashdata('POST', $_POST);
+            }
+            // Save redirect URL
+            $this->session->set_flashdata('redirect', uri_string());
+            // Redirect to login
+            redirect('mentorship/login');
+            return false;
+        }
+    }
 	
 	public function index($offset = 1)
 	{
-		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
-		
 		$id = $this->session->userdata('id');
 		
 		$this->load->library('form_validation');
@@ -57,9 +88,6 @@ class Mentorship extends CI_Controller {
 	
 	public function edit($id)
 	{
-		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
-			
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('in', 'Time In', 'trim|required');
 		$this->form_validation->set_rules('out', 'Time Out', 'trim|required');
@@ -83,9 +111,6 @@ class Mentorship extends CI_Controller {
 	
 	public function delete($id)
 	{
-		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
-		
 		$data['entry'] = $this->mentorshipmod->getEntryById($id);
 		
 		//Make sure the person is deleting a log that they have access to
@@ -98,9 +123,9 @@ class Mentorship extends CI_Controller {
 	
 	public function login()
 	{
-		if($this->isLoggedIn)
-			redirect('mentorship');
-			
+		// No need to log in if already logged in
+        if ($this->loginmod->checkLogin('mentorship_users')) redirect('mentorship');
+
 		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0)
@@ -111,27 +136,34 @@ class Mentorship extends CI_Controller {
 			$this->form_validation->set_message('check_password','Your password was incorrect.');
 			if($this->form_validation->run()) {
 				$this->loginmod->addSession('mentorship_users');
-				redirect('mentorship');
+
+                // If a saved redirect URI is set, redirect to it, otherwise go to mentorship home page
+				if ($this->session->flashdata('redirect')) {
+                    redirect($this->session->flashdata('redirect'));
+                } else {
+                    redirect('mentorship');
+                }
+
+                return;
 			}
 		}
-		
-		$this->output->display_output('mentorship/login');
+
+        // Persist the redirect URI, since it was not yet used
+        $this->session->keep_flashdata('redirect');
+		$this->output->display_output('mentorship/login', array(
+            'redirect' => $this->session->flashdata('redirect')
+        ));
+        return;
 	}
 	
 	public function logout()
 	{
-		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
-		
 		$this->session->sess_destroy();
 		redirect();
 	}
 	
 	public function change_password()
 	{
-		if(!$this->isLoggedIn)
-			redirect('mentorship/login');
-		
 		$this->load->library('form_validation');
 		
 		if(count($_POST) > 0)

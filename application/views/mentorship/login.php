@@ -1,5 +1,11 @@
 <div id="content_left">
 	<div id="content_left_above">
+        <?php if ($redirect) :?>
+        <div class="fancybox">
+            <b>You must be logged in first.</b>
+        </div>
+        <?php endif; ?>
+
 		<div class="fancybox">
 			<h2 class="fancytitle black">Mentorship Login</h2>
 			<?=validation_errors()?>
